@@ -1,0 +1,37 @@
+{
+  "name": "@hiyocord/discord-rest-api",
+  "version": "2.0.0",
+  "description": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiyocord/hiyocord.git"
+  },
+  "author": "kurages <develop@kurages.dev> (https://kurages.dev)",
+  "bugs": {
+    "url": "https://github.com/hiyocord/hiyocord/issues"
+  },
+  "homepage": "https://github.com/hiyocord/hiyocord#readme",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "../../LICENSE"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "vite build",
+    "test": "true",
+    "publish": "true",
+    "openapi": "npx openapi-typescript https://raw.githubusercontent.com/discord/discord-api-spec/refs/heads/main/specs/openapi.json  -o src/discord-api-spec.gen.ts"
+  },
+  "dependencies": {
+    "@hiyocord/rest-api-core": "^2.0.0",
+    "openapi-fetch": "^0.14.1"
+  }
+}

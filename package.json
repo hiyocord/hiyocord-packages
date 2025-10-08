@@ -1,0 +1,38 @@
+{
+  "name": "hiyocord",
+  "private": true,
+  "homepage": "https://github.com/hiyocord/hiyocord#readme",
+  "bugs": {
+    "url": "https://github.com/hiyocord/hiyocord/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiyocord/hiyocord.git"
+  },
+  "license": "MIT",
+  "author": "kurages <develop@kurages.dev> (https://kurages.dev)",
+  "scripts": {
+    "clean": "npm run -ws clean",
+    "build": "npm run -ws build",
+    "test": "npm run -ws test",
+    "publish": "npm run -ws publish",
+    "migrations": "npm run -ws migrations",
+    "lint": "npx prettier -c *",
+    "fixlint": "npx prettier -w *"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251008.0",
+    "@types/node": "^24.7.0",
+    "openapi-typescript": "^7.9.1",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "vite-plugin-dts": "^4.5.4",
+    "wrangler": "^4.42.1"
+  },
+  "workspaces": [
+    "packages/rest-api-core",
+    "packages/discord-rest-api",
+    "packages/github-rest-api"
+  ]
+}

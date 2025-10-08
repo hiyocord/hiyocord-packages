@@ -1,0 +1,40 @@
+{
+  "name": "@hiyocord/rest-api-core",
+  "version": "2.0.0",
+  "description": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiyocord/hiyocord.git"
+  },
+  "author": "kurages <develop@kurages.dev> (https://kurages.dev)",
+  "bugs": {
+    "url": "https://github.com/hiyocord/hiyocord/issues"
+  },
+  "homepage": "https://github.com/hiyocord/hiyocord#readme",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "umd": "./dist/index.umd.js",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "../../LICENSE"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "true"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.14.1"
+  }
+}

@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compileOnSave": true,
+    "buildOptions": {
+        "incremental": true
+    },
+    "compilerOptions": {
+        "composite": true,
+
+        // directories
+        "rootDir": "${configDir}/src",
+        "baseUrl": "${configDir}/src",
+        "outDir": "${configDir}/dist",
+
+        // syntax
+        "target": "ES2024",
+        "lib": ["ES2024"],
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+
+        "jsx": "react",
+        "types": ["@cloudflare/workers-types"],
+
+        // build system
+        "moduleResolution": "bundler",
+
+        // dist
+        "importHelpers": true,
+        "removeComments": true,
+
+        // types
+        "noEmit": true,
+        "emitDeclarationOnly": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "declarationDir": "${configDir}/dist",
+
+        "incremental": true
+    },
+    "exclude": ["node_modules", "${configDir}/dist"],
+    "include": ["${configDir}/src/**/*"]
+}

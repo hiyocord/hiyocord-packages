@@ -1,0 +1,131 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          path: "**/node_modules"
+          key: dev-${{ hashFiles('**/package-lock.json') }}
+      - run: npm install
+      - name: build
+        run: npm run build
+      - uses: actions/cache/save@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+
+  lint:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          path: "**/node_modules"
+          key: dev-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache/restore@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+      - name: lint
+        run: npm run lint
+
+  test:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          path: "**/node_modules"
+          key: prd-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache/restore@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+      - name: Install only production dependencies
+        run: npm install --production
+      - name: test
+        run: npm run test
+
+  get-workspaces:
+    runs-on: ubuntu-latest
+    outputs:
+      workspaces: ${{ steps.get.outputs.workspaces }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Get workspaces from package.json
+        id: get
+        run: echo "workspaces=$(jq -c '.workspaces' package.json)" >> $GITHUB_OUTPUT
+
+  publish:
+    needs:
+      - lint
+      - test
+      - get-workspaces
+    runs-on: ubuntu-latest
+    if: |
+      github.ref_name == github.event.repository.default_branch
+      && always()
+      && (
+           needs.lint.result == 'success'
+        || needs.test.result == 'success'
+      )
+    permissions:
+      packages: write
+      contents: read
+    strategy:
+      matrix:
+        package: ${{ fromJSON(needs.get-workspaces.outputs.workspaces) }}
+    env:
+      BASE_COMMIT: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PACKAGE_JSON: "packages/${{ matrix.package }}/package.json"
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+      - uses: actions/checkout@v5
+      - uses: actions/cache/restore@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+      - name: get version
+        run: |
+          base_version=$(jq -r ".version" <(git show $BASE_COMMIT:${PACKAGE_JSON}))
+          head_version=$(jq -r ".version" <(git show HEAD:${PACKAGE_JSON}))
+          echo "BASE_VERSION=${base_version}" >> $GITHUB_ENV
+          echo "HEAD_VERSION=${head_version}" >> $GITHUB_ENV
+      - name: check package version
+        run: |
+          [[ $BASE_VERSION = $HEAD_VERSION ]] || touch .execute
+      - name: publish
+        if: ${{ hashFiles('.execute') != '' }}
+        run: |
+          npm publish -w packages/${{ matrix.package }}
+

@@ -1,0 +1,20 @@
+{
+  "name": "@hiyocord/github-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "kurages <develop@kurages.dev> (https://kurages.dev/)",
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "vite build",
+    "test": "true",
+    "publish": "true",
+    "openapi": "npx openapi-typescript https://raw.githubusercontent.com/github/rest-api-description/refs/heads/main/descriptions/api.github.com/api.github.com.json -o src/github-api-spec.gen.ts"
+  },
+  "dependencies": {
+    "@hiyocord/rest-api-core": "^2.0.0",
+    "openapi-fetch": "^0.14.1"
+  }
+}
