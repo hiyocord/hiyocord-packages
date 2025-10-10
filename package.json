@@ -22,13 +22,13 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20251008.0",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.7.1",
     "openapi-typescript": "^7.9.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3",
     "vite": "^7.1.9",
     "vite-plugin-dts": "^4.5.4",
-    "wrangler": "^4.42.1"
+    "wrangler": "^4.42.2"
   },
   "workspaces": [
     "packages/rest-api-core",
