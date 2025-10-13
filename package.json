@@ -21,8 +21,8 @@
     "fixlint": "npx prettier -w *"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251008.0",
-    "@types/node": "^24.7.1",
+    "@cloudflare/workers-types": "^4.20251011.0",
+    "@types/node": "^24.7.2",
     "openapi-typescript": "^7.9.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3",
