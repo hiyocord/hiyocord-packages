@@ -21,14 +21,14 @@
     "fixlint": "npx prettier -w *"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251008.0",
-    "@types/node": "^24.7.1",
-    "openapi-typescript": "^7.9.1",
+    "@cloudflare/workers-types": "^4.20251011.0",
+    "@types/node": "^24.7.2",
+    "openapi-typescript": "^7.10.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3",
-    "vite": "^7.1.9",
+    "vite": "^7.1.10",
     "vite-plugin-dts": "^4.5.4",
-    "wrangler": "^4.42.2"
+    "wrangler": "^4.43.0"
   },
   "workspaces": [
     "packages/rest-api-core",
