@@ -35,6 +35,6 @@
     "test": "true"
   },
   "dependencies": {
-    "openapi-fetch": "^0.14.1"
+    "openapi-fetch": "^0.15.0"
   }
 }
