@@ -5,13 +5,13 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/hiyocord/hiyocord.git",
+        "url": "git+https://github.com/hiyocord/hiyocord-packages.git"
     },
     "author": "kurages <develop@kurages.dev> (https://kurages.dev)",
     "bugs": {
-        "url": "https://github.com/hiyocord/hiyocord/issues",
+        "url": "https://github.com/hiyocord/hiyocord-packages/issues"
     },
-    "homepage": "https://github.com/hiyocord/hiyocord#readme",
+    "homepage": "https://github.com/hiyocord/hiyocord-packages#readme",
     "type": "commonjs",
     "main": "dist/index.js",
     "exports": {
