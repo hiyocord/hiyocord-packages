@@ -31,7 +31,6 @@
     "openapi": "npx openapi-typescript https://raw.githubusercontent.com/discord/discord-api-spec/refs/heads/main/specs/openapi.json  -o src/discord-api-spec.gen.ts"
   },
   "dependencies": {
-    "@hiyocord/rest-api-core": "^2.0.0",
     "openapi-fetch": "^0.15.0"
   }
 }
