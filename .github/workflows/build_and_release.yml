@@ -1,0 +1,105 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          path: "**/node_modules"
+          key: dev-${{ hashFiles('**/package-lock.json') }}
+      - run: npm install
+      - name: build
+        run: npm run build
+      - uses: actions/cache/save@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+
+  lint:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          path: "**/node_modules"
+          key: dev-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache/restore@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+      - name: lint
+        run: npm run lint
+
+  # TODO テストコード書く
+  # test:
+  #   needs:
+  #     - build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v5
+  #     - uses: actions/setup-node@v6
+  #       with:
+  #         node-version: 22
+  #     - uses: actions/cache@v4
+  #       with:
+  #         path: "**/node_modules"
+  #         key: prd-${{ hashFiles('**/package-lock.json') }}
+  #     - uses: actions/cache/restore@v4
+  #       with:
+  #         path: packages/**/dist
+  #         key: dist-${{ github.sha }}
+  #     - name: Install only production dependencies
+  #       run: npm install --production
+  #     - name: test
+  #       run: npm run test
+
+  publish:
+    needs:
+      - lint
+      # - test
+    runs-on: ubuntu-latest
+    if: github.ref_name == github.event.repository.default_branch
+    # TODO テストコード書く
+    # if: |
+    #   github.ref_name == github.event.repository.default_branch
+    #   && always()
+    #   && (
+    #        needs.lint.result == 'success'
+    #     || needs.test.result == 'success'
+    #   )
+    permissions:
+      packages: write
+      contents: read
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/cache/restore@v4
+        with:
+          path: packages/**/dist
+          key: dist-${{ github.sha }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+
+      - run: npx changeset publish
