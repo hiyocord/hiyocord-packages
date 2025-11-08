@@ -4,70 +4,6 @@
  */
 
 export interface paths {
-    "/oauth2/applications/@me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_my_oauth2_application"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/@me/connections": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["list_my_connections"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/@me/channels": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["create_dm"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/@me/guilds": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["list_my_guilds"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/applications/@me": {
         parameters: {
             query?: never;
@@ -84,194 +20,204 @@ export interface paths {
         patch: operations["update_my_application"];
         trace?: never;
     };
-    "/gateway/bot": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_bot_gateway"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/oauth2/userinfo": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_openid_connect_userinfo"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/oauth2/keys": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_public_keys"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/oauth2/@me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_my_oauth2_authorization"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/voice/regions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["list_voice_regions"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/@me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_my_user"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["update_my_user"];
-        trace?: never;
-    };
-    "/soundboard-default-sounds": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_soundboard_default_sounds"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/stage-instances": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["create_stage_instance"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/sticker-packs": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["list_sticker_packs"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/gateway": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["get_gateway"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["create_guild"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/users/@me/threads/archived/private": {
+    "/applications/{application_id}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                channel_id: components["schemas"]["SnowflakeType"];
+                application_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["list_my_private_archived_threads"];
+        get: operations["get_application"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_application"];
+        trace?: never;
+    };
+    "/applications/{application_id}/activity-instances/{instance_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                instance_id: string;
+            };
+            cookie?: never;
+        };
+        get: operations["applications_get_activity_instance"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/attachment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["upload_application_attachment"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/commands": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_application_commands"];
+        put: operations["bulk_set_application_commands"];
+        post: operations["create_application_command"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/commands/{command_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_application_command"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_application_command"];
+        options?: never;
+        head?: never;
+        patch: operations["update_application_command"];
+        trace?: never;
+    };
+    "/applications/{application_id}/emojis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_application_emojis"];
+        put?: never;
+        post: operations["create_application_emoji"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/emojis/{emoji_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_application_emoji"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_application_emoji"];
+        options?: never;
+        head?: never;
+        patch: operations["update_application_emoji"];
+        trace?: never;
+    };
+    "/applications/{application_id}/entitlements": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_entitlements"];
+        put?: never;
+        post: operations["create_entitlement"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/entitlements/{entitlement_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                entitlement_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_entitlement"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_entitlement"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/entitlements/{entitlement_id}/consume": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                entitlement_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["consume_entitlement"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/applications/{application_id}/guilds/{guild_id}/commands": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_application_commands"];
+        put: operations["bulk_set_guild_application_commands"];
+        post: operations["create_guild_application_command"];
         delete?: never;
         options?: never;
         head?: never;
@@ -291,155 +237,6 @@ export interface paths {
         get: operations["list_guild_application_command_permissions"];
         put?: never;
         post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_application_command_permissions"];
-        put: operations["set_guild_application_command_permissions"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/@me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-                emoji_name: string;
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put: operations["add_my_message_reaction"];
-        post?: never;
-        delete: operations["delete_my_message_reaction"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/threads/archived/private": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_private_archived_threads"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/threads/archived/public": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_public_archived_threads"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/@me/applications/{application_id}/role-connection": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_application_user_role_connection"];
-        put: operations["update_application_user_role_connection"];
-        post?: never;
-        delete: operations["delete_application_user_role_connection"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/@me/guilds/{guild_id}/member": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_my_guild_member"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/role-connections/metadata": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_application_role_connections_metadata"];
-        put: operations["update_application_role_connections_metadata"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/entitlements/{entitlement_id}/consume": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                entitlement_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["consume_entitlement"];
         delete?: never;
         options?: never;
         head?: never;
@@ -466,26 +263,63 @@ export interface paths {
         patch: operations["update_guild_application_command"];
         trace?: never;
     };
-    "/applications/{application_id}/guilds/{guild_id}/commands": {
+    "/applications/{application_id}/guilds/{guild_id}/commands/{command_id}/permissions": {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 application_id: components["schemas"]["SnowflakeType"];
                 guild_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["list_guild_application_commands"];
-        put: operations["bulk_set_guild_application_commands"];
-        post: operations["create_guild_application_command"];
+        get: operations["get_guild_application_command_permissions"];
+        put: operations["set_guild_application_command_permissions"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/channels/{channel_id}/thread-members/@me": {
+    "/applications/{application_id}/role-connections/metadata": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_application_role_connections_metadata"];
+        put: operations["update_application_role_connections_metadata"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_channel"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_channel"];
+        options?: never;
+        head?: never;
+        patch: operations["update_channel"];
+        trace?: never;
+    };
+    "/channels/{channel_id}/followers": {
         parameters: {
             query?: never;
             header?: never;
@@ -495,9 +329,45 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        put: operations["join_thread"];
-        post?: never;
-        delete: operations["leave_thread"];
+        put?: never;
+        post: operations["follow_channel"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/invites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_channel_invites"];
+        put?: never;
+        post: operations["create_channel_invite"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_messages"];
+        put?: never;
+        post: operations["create_message"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -516,6 +386,140 @@ export interface paths {
         put?: never;
         post: operations["bulk_delete_messages"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/pins": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_pins"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/pins/{message_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["create_pin"];
+        post?: never;
+        delete: operations["delete_pin"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/{message_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_message"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_message"];
+        options?: never;
+        head?: never;
+        patch: operations["update_message"];
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/{message_id}/crosspost": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["crosspost_message"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/{message_id}/reactions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: operations["delete_all_message_reactions"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+                emoji_name: string;
+            };
+            cookie?: never;
+        };
+        get: operations["list_message_reactions_by_emoji"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_all_message_reactions_by_emoji"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}/@me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+                emoji_name: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["add_my_message_reaction"];
+        post?: never;
+        delete: operations["delete_my_message_reaction"];
         options?: never;
         head?: never;
         patch?: never;
@@ -542,64 +546,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/channels/{channel_id}/messages/{message_id}/reactions/{emoji_name}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-                emoji_name: string;
-            };
-            cookie?: never;
-        };
-        get: operations["list_message_reactions_by_emoji"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_all_message_reactions_by_emoji"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/messages/{message_id}/reactions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete: operations["delete_all_message_reactions"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/messages/{message_id}/crosspost": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["crosspost_message"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/channels/{channel_id}/messages/{message_id}/threads": {
         parameters: {
             query?: never;
@@ -614,6 +560,62 @@ export interface paths {
         put?: never;
         post: operations["create_thread_from_message"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/permissions/{overwrite_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                overwrite_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["set_channel_permission_overwrite"];
+        post?: never;
+        delete: operations["delete_channel_permission_overwrite"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/pins": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["deprecated_list_pins"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/pins/{message_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["deprecated_create_pin"];
+        post?: never;
+        delete: operations["deprecated_delete_pin"];
         options?: never;
         head?: never;
         patch?: never;
@@ -658,38 +660,322 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/webhooks/{webhook_id}/{webhook_token}/messages/@original": {
+    "/channels/{channel_id}/recipients/{user_id}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["get_original_webhook_message"];
-        put?: never;
+        get?: never;
+        put: operations["add_group_dm_user"];
         post?: never;
-        delete: operations["delete_original_webhook_message"];
+        delete: operations["delete_group_dm_user"];
         options?: never;
         head?: never;
-        patch: operations["update_original_webhook_message"];
+        patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/users": {
+    "/channels/{channel_id}/send-soundboard-sound": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["send_soundboard_sound"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/thread-members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_thread_members"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/thread-members/@me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["join_thread"];
+        post?: never;
+        delete: operations["leave_thread"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/thread-members/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_thread_member"];
+        put: operations["add_thread_member"];
+        post?: never;
+        delete: operations["delete_thread_member"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/threads": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["create_thread"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/threads/archived/private": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_private_archived_threads"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/threads/archived/public": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_public_archived_threads"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/threads/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["thread_search"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/typing": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["trigger_typing_indicator"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/users/@me/threads/archived/private": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_my_private_archived_threads"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/channels/{channel_id}/webhooks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_channel_webhooks"];
+        put?: never;
+        post: operations["create_webhook"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/gateway": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_gateway"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/gateway/bot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_bot_gateway"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/templates/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_template"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 guild_id: components["schemas"]["SnowflakeType"];
-                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["list_guild_scheduled_event_users"];
+        get: operations["get_guild"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_guild"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/audit-logs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_audit_log_entries"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/auto-moderation/rules": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_auto_moderation_rules"];
+        put?: never;
+        post: operations["create_auto_moderation_rule"];
         delete?: never;
         options?: never;
         head?: never;
@@ -715,7 +1001,7 @@ export interface paths {
         patch: operations["update_auto_moderation_rule"];
         trace?: never;
     };
-    "/guilds/{guild_id}/auto-moderation/rules": {
+    "/guilds/{guild_id}/bans": {
         parameters: {
             query?: never;
             header?: never;
@@ -724,43 +1010,7 @@ export interface paths {
             };
             cookie?: never;
         };
-        get: operations["list_auto_moderation_rules"];
-        put?: never;
-        post: operations["create_auto_moderation_rule"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/voice-states/@me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_self_voice_state"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["update_self_voice_state"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/members/search": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["search_guild_members"];
+        get: operations["list_guild_bans"];
         put?: never;
         post?: never;
         delete?: never;
@@ -769,7 +1019,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/threads/active": {
+    "/guilds/{guild_id}/bans/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_ban"];
+        put: operations["ban_user_from_guild"];
+        post?: never;
+        delete: operations["unban_user_from_guild"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/bulk-ban": {
         parameters: {
             query?: never;
             header?: never;
@@ -778,7 +1047,135 @@ export interface paths {
             };
             cookie?: never;
         };
-        get: operations["get_active_guild_threads"];
+        get?: never;
+        put?: never;
+        post: operations["bulk_ban_users_from_guild"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/channels": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_channels"];
+        put?: never;
+        post: operations["create_guild_channel"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["bulk_update_guild_channels"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/emojis": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_emojis"];
+        put?: never;
+        post: operations["create_guild_emoji"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/emojis/{emoji_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_emoji"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_guild_emoji"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_emoji"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/integrations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_integrations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/integrations/{integration_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                integration_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: operations["delete_guild_integration"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/invites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_invites"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_members"];
         put?: never;
         post?: never;
         delete?: never;
@@ -805,6 +1202,43 @@ export interface paths {
         patch: operations["update_my_guild_member"];
         trace?: never;
     };
+    "/guilds/{guild_id}/members/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["search_guild_members"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/members/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_member"];
+        put: operations["add_guild_member"];
+        post?: never;
+        delete: operations["delete_guild_member"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_member"];
+        trace?: never;
+    };
     "/guilds/{guild_id}/members/{user_id}/roles/{role_id}": {
         parameters: {
             query?: never;
@@ -825,524 +1259,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/users/@me/guilds/{guild_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete: operations["leave_guild"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/activity-instances/{instance_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                instance_id: string;
-            };
-            cookie?: never;
-        };
-        get: operations["applications_get_activity_instance"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/entitlements/{entitlement_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                entitlement_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_entitlement"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_entitlement"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/entitlements": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_entitlements"];
-        put?: never;
-        post: operations["create_entitlement"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/attachment": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["upload_application_attachment"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/commands/{command_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_application_command"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_application_command"];
-        options?: never;
-        head?: never;
-        patch: operations["update_application_command"];
-        trace?: never;
-    };
-    "/applications/{application_id}/commands": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_application_commands"];
-        put: operations["bulk_set_application_commands"];
-        post: operations["create_application_command"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/applications/{application_id}/emojis/{emoji_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_application_emoji"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_application_emoji"];
-        options?: never;
-        head?: never;
-        patch: operations["update_application_emoji"];
-        trace?: never;
-    };
-    "/applications/{application_id}/emojis": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_application_emojis"];
-        put?: never;
-        post: operations["create_application_emoji"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/interactions/{interaction_id}/{interaction_token}/callback": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                interaction_id: components["schemas"]["SnowflakeType"];
-                interaction_token: string;
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["create_interaction_response"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/send-soundboard-sound": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["send_soundboard_sound"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/thread-members/{user_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_thread_member"];
-        put: operations["add_thread_member"];
-        post?: never;
-        delete: operations["delete_thread_member"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/thread-members": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_thread_members"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/permissions/{overwrite_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                overwrite_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put: operations["set_channel_permission_overwrite"];
-        post?: never;
-        delete: operations["delete_channel_permission_overwrite"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/recipients/{user_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put: operations["add_group_dm_user"];
-        post?: never;
-        delete: operations["delete_group_dm_user"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/followers": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["follow_channel"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/messages/{message_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_message"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_message"];
-        options?: never;
-        head?: never;
-        patch: operations["update_message"];
-        trace?: never;
-    };
-    "/channels/{channel_id}/messages": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_messages"];
-        put?: never;
-        post: operations["create_message"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/webhooks": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_channel_webhooks"];
-        put?: never;
-        post: operations["create_webhook"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/invites": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_channel_invites"];
-        put?: never;
-        post: operations["create_channel_invite"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/threads": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["create_thread"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/typing": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["trigger_typing_indicator"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/pins/{message_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put: operations["pin_message"];
-        post?: never;
-        delete: operations["unpin_message"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/channels/{channel_id}/pins": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_pinned_messages"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_webhook_message"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_webhook_message"];
-        options?: never;
-        head?: never;
-        patch: operations["update_webhook_message"];
-        trace?: never;
-    };
-    "/webhooks/{webhook_id}/{webhook_token}/github": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["execute_github_compatible_webhook"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/webhooks/{webhook_id}/{webhook_token}/slack": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["execute_slack_compatible_webhook"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/templates/{code}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                code: string;
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_template"];
-        put?: never;
-        post: operations["create_guild_from_template"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/guilds/{guild_id}/new-member-welcome": {
         parameters: {
             query?: never;
@@ -1353,172 +1269,6 @@ export interface paths {
             cookie?: never;
         };
         get: operations["get_guild_new_member_welcome"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/soundboard-sounds/{sound_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sound_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_soundboard_sound"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_guild_soundboard_sound"];
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_soundboard_sound"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/soundboard-sounds": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_soundboard_sounds"];
-        put?: never;
-        post: operations["create_guild_soundboard_sound"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_scheduled_event"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_guild_scheduled_event"];
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_scheduled_event"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/scheduled-events": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_scheduled_events"];
-        put?: never;
-        post: operations["create_guild_scheduled_event"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/welcome-screen": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_welcome_screen"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_welcome_screen"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/voice-states/{user_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_voice_state"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["update_voice_state"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/integrations/{integration_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                integration_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete: operations["delete_guild_integration"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/integrations": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_integrations"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/widget.json": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_widget"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1545,6 +1295,282 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/guilds/{guild_id}/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_preview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/prune": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["preview_prune_guild"];
+        put?: never;
+        post: operations["prune_guild"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/regions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_voice_regions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_roles"];
+        put?: never;
+        post: operations["create_guild_role"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["bulk_update_guild_roles"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/roles/{role_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                role_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_role"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_guild_role"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_role"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/scheduled-events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_scheduled_events"];
+        put?: never;
+        post: operations["create_guild_scheduled_event"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_scheduled_event"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_guild_scheduled_event"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_scheduled_event"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/scheduled-events/{guild_scheduled_event_id}/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_scheduled_event_users"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/soundboard-sounds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_soundboard_sounds"];
+        put?: never;
+        post: operations["create_guild_soundboard_sound"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/soundboard-sounds/{sound_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sound_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_soundboard_sound"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_guild_soundboard_sound"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_soundboard_sound"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/stickers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_stickers"];
+        put?: never;
+        post: operations["create_guild_sticker"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/stickers/{sticker_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sticker_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_sticker"];
+        put?: never;
+        post?: never;
+        delete: operations["delete_guild_sticker"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_sticker"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/templates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["list_guild_templates"];
+        put?: never;
+        post: operations["create_guild_template"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/templates/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                code: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["sync_guild_template"];
+        post?: never;
+        delete: operations["delete_guild_template"];
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_template"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/threads/active": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_active_guild_threads"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/guilds/{guild_id}/vanity-url": {
         parameters: {
             query?: never;
@@ -1563,7 +1589,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/audit-logs": {
+    "/guilds/{guild_id}/voice-states/@me": {
         parameters: {
             query?: never;
             header?: never;
@@ -1572,7 +1598,98 @@ export interface paths {
             };
             cookie?: never;
         };
-        get: operations["list_guild_audit_log_entries"];
+        get: operations["get_self_voice_state"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_self_voice_state"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/voice-states/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_voice_state"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_voice_state"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/webhooks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_webhooks"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/guilds/{guild_id}/welcome-screen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_welcome_screen"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_welcome_screen"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/widget": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_widget_settings"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_guild_widget_settings"];
+        trace?: never;
+    };
+    "/guilds/{guild_id}/widget.json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_guild_widget"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1599,384 +1716,359 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/templates/{code}": {
+    "/interactions/{interaction_id}/{interaction_token}/callback": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
+                interaction_id: components["schemas"]["SnowflakeType"];
+                interaction_token: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["create_interaction_response"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/invites/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
                 code: string;
             };
             cookie?: never;
         };
-        get?: never;
-        put: operations["sync_guild_template"];
+        get: operations["invite_resolve"];
+        put?: never;
         post?: never;
-        delete: operations["delete_guild_template"];
+        delete: operations["invite_revoke"];
         options?: never;
         head?: never;
-        patch: operations["update_guild_template"];
+        patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/templates": {
+    "/lobbies": {
         parameters: {
             query?: never;
             header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
+            path?: never;
             cookie?: never;
         };
-        get: operations["list_guild_templates"];
-        put?: never;
-        post: operations["create_guild_template"];
+        get?: never;
+        put: operations["create_or_join_lobby"];
+        post: operations["create_lobby"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/stickers/{sticker_id}": {
+    "/lobbies/{lobby_id}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sticker_id: components["schemas"]["SnowflakeType"];
+                lobby_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["get_guild_sticker"];
+        get: operations["get_lobby"];
         put?: never;
         post?: never;
-        delete: operations["delete_guild_sticker"];
+        delete?: never;
         options?: never;
         head?: never;
-        patch: operations["update_guild_sticker"];
+        patch: operations["edit_lobby"];
         trace?: never;
     };
-    "/guilds/{guild_id}/bulk-ban": {
+    "/lobbies/{lobby_id}/channel-linking": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
+                lobby_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         get?: never;
         put?: never;
-        post: operations["bulk_ban_users_from_guild"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/stickers": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_stickers"];
-        put?: never;
-        post: operations["create_guild_sticker"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/webhooks": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_webhooks"];
-        put?: never;
         post?: never;
         delete?: never;
         options?: never;
         head?: never;
-        patch?: never;
+        patch: operations["edit_lobby_channel_link"];
         trace?: never;
     };
-    "/guilds/{guild_id}/channels": {
+    "/lobbies/{lobby_id}/members/@me": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
+                lobby_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["list_guild_channels"];
+        get?: never;
         put?: never;
-        post: operations["create_guild_channel"];
-        delete?: never;
+        post?: never;
+        delete: operations["leave_lobby"];
         options?: never;
         head?: never;
-        patch: operations["bulk_update_guild_channels"];
+        patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/members/{user_id}": {
+    "/lobbies/{lobby_id}/members/@me/invites": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["create_linked_lobby_guild_invite_for_self"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lobbies/{lobby_id}/members/bulk": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["bulk_update_lobby_members"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lobbies/{lobby_id}/members/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
                 user_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["get_guild_member"];
-        put: operations["add_guild_member"];
+        get?: never;
+        put: operations["add_lobby_member"];
         post?: never;
-        delete: operations["delete_guild_member"];
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_member"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/members": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_members"];
-        put?: never;
-        post?: never;
-        delete?: never;
+        delete: operations["delete_lobby_member"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}/preview": {
+    "/lobbies/{lobby_id}/members/{user_id}/invites": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_preview"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/invites": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_invites"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/regions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_voice_regions"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/emojis/{emoji_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_emoji"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_guild_emoji"];
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_emoji"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/emojis": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_emojis"];
-        put?: never;
-        post: operations["create_guild_emoji"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/widget": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_widget_settings"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_widget_settings"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/roles/{role_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                role_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_role"];
-        put?: never;
-        post?: never;
-        delete: operations["delete_guild_role"];
-        options?: never;
-        head?: never;
-        patch: operations["update_guild_role"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/roles": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_roles"];
-        put?: never;
-        post: operations["create_guild_role"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["bulk_update_guild_roles"];
-        trace?: never;
-    };
-    "/guilds/{guild_id}/prune": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["preview_prune_guild"];
-        put?: never;
-        post: operations["prune_guild"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/bans/{user_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
+                lobby_id: components["schemas"]["SnowflakeType"];
                 user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_guild_ban"];
-        put: operations["ban_user_from_guild"];
-        post?: never;
-        delete: operations["unban_user_from_guild"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/bans": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["list_guild_bans"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/guilds/{guild_id}/mfa": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         get?: never;
         put?: never;
-        post: operations["set_guild_mfa_level"];
+        post: operations["create_linked_lobby_guild_invite_for_user"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lobbies/{lobby_id}/messages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_lobby_messages"];
+        put?: never;
+        post: operations["create_lobby_message"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth2/@me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_my_oauth2_authorization"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth2/applications/@me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_my_oauth2_application"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth2/keys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_public_keys"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth2/userinfo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_openid_connect_userinfo"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/partner-sdk/provisional-accounts/unmerge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["partner_sdk_unmerge_provisional_account"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/partner-sdk/provisional-accounts/unmerge/bot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["bot_partner_sdk_unmerge_provisional_account"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/partner-sdk/token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["partner_sdk_token"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/partner-sdk/token/bot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["bot_partner_sdk_token"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/soundboard-default-sounds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_soundboard_default_sounds"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/stage-instances": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["create_stage_instance"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2001,6 +2093,22 @@ export interface paths {
         patch: operations["update_stage_instance"];
         trace?: never;
     };
+    "/sticker-packs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list_sticker_packs"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sticker-packs/{pack_id}": {
         parameters: {
             query?: never;
@@ -2019,43 +2127,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/applications/{application_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        get: operations["get_application"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["update_application"];
-        trace?: never;
-    };
-    "/webhooks/{webhook_id}/{webhook_token}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        get: operations["get_webhook_by_token"];
-        put?: never;
-        post: operations["execute_webhook"];
-        delete: operations["delete_webhook_by_token"];
-        options?: never;
-        head?: never;
-        patch: operations["update_webhook_by_token"];
-        trace?: never;
-    };
     "/stickers/{sticker_id}": {
         parameters: {
             query?: never;
@@ -2066,6 +2137,158 @@ export interface paths {
             cookie?: never;
         };
         get: operations["get_sticker"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/@me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["get_my_user"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["update_my_user"];
+        trace?: never;
+    };
+    "/users/@me/applications/{application_id}/role-connection": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_application_user_role_connection"];
+        put: operations["update_application_user_role_connection"];
+        post?: never;
+        delete: operations["delete_application_user_role_connection"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/@me/channels": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["create_dm"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/@me/connections": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list_my_connections"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/@me/guilds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list_my_guilds"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/@me/guilds/{guild_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: operations["leave_guild"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/@me/guilds/{guild_id}/member": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_my_guild_member"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        get: operations["get_user"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/voice/regions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["list_voice_regions"];
         put?: never;
         post?: never;
         delete?: never;
@@ -2092,72 +2315,96 @@ export interface paths {
         patch: operations["update_webhook"];
         trace?: never;
     };
-    "/channels/{channel_id}": {
+    "/webhooks/{webhook_id}/{webhook_token}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                channel_id: components["schemas"]["SnowflakeType"];
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
             };
             cookie?: never;
         };
-        get: operations["get_channel"];
+        get: operations["get_webhook_by_token"];
         put?: never;
-        post?: never;
-        delete: operations["delete_channel"];
+        post: operations["execute_webhook"];
+        delete: operations["delete_webhook_by_token"];
         options?: never;
         head?: never;
-        patch: operations["update_channel"];
+        patch: operations["update_webhook_by_token"];
         trace?: never;
     };
-    "/invites/{code}": {
+    "/webhooks/{webhook_id}/{webhook_token}/github": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                code: string;
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
             };
             cookie?: never;
         };
-        get: operations["invite_resolve"];
+        get?: never;
         put?: never;
-        post?: never;
-        delete: operations["invite_revoke"];
+        post: operations["execute_github_compatible_webhook"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/guilds/{guild_id}": {
+    "/webhooks/{webhook_id}/{webhook_token}/messages/@original": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                guild_id: components["schemas"]["SnowflakeType"];
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
             };
             cookie?: never;
         };
-        get: operations["get_guild"];
+        get: operations["get_original_webhook_message"];
         put?: never;
         post?: never;
-        delete: operations["delete_guild"];
+        delete: operations["delete_original_webhook_message"];
         options?: never;
         head?: never;
-        patch: operations["update_guild"];
+        patch: operations["update_original_webhook_message"];
         trace?: never;
     };
-    "/users/{user_id}": {
+    "/webhooks/{webhook_id}/{webhook_token}/messages/{message_id}": {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                user_id: components["schemas"]["SnowflakeType"];
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+                message_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
-        get: operations["get_user"];
+        get: operations["get_webhook_message"];
         put?: never;
         post?: never;
+        delete: operations["delete_webhook_message"];
+        options?: never;
+        head?: never;
+        patch: operations["update_webhook_message"];
+        trace?: never;
+    };
+    "/webhooks/{webhook_id}/{webhook_token}/slack": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["execute_slack_compatible_webhook"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2178,6 +2425,8 @@ export interface components {
              * @enum {integer}
              */
             type: 1;
+            /** Format: int32 */
+            id?: number | null;
             components: (components["schemas"]["ButtonComponentForMessageRequest"] | components["schemas"]["ChannelSelectComponentForMessageRequest"] | components["schemas"]["MentionableSelectComponentForMessageRequest"] | components["schemas"]["RoleSelectComponentForMessageRequest"] | components["schemas"]["StringSelectComponentForMessageRequest"] | components["schemas"]["UserSelectComponentForMessageRequest"])[];
         };
         ActionRowComponentForModalRequest: {
@@ -2186,6 +2435,8 @@ export interface components {
              * @enum {integer}
              */
             type: 1;
+            /** Format: int32 */
+            id?: number | null;
             components: components["schemas"]["TextInputComponentForModalRequest"][];
         };
         ActionRowComponentResponse: {
@@ -2196,12 +2447,11 @@ export interface components {
             type: 1;
             /** Format: int32 */
             id: number;
-            components?: (components["schemas"]["ButtonComponentResponse"] | components["schemas"]["ChannelSelectComponentResponse"] | components["schemas"]["MentionableSelectComponentResponse"] | components["schemas"]["RoleSelectComponentResponse"] | components["schemas"]["StringSelectComponentResponse"] | components["schemas"]["TextInputComponentResponse"] | components["schemas"]["UserSelectComponentResponse"])[] | null;
+            components: (components["schemas"]["ButtonComponentResponse"] | components["schemas"]["ChannelSelectComponentResponse"] | components["schemas"]["MentionableSelectComponentResponse"] | components["schemas"]["RoleSelectComponentResponse"] | components["schemas"]["StringSelectComponentResponse"] | components["schemas"]["TextInputComponentResponse"] | components["schemas"]["UserSelectComponentResponse"])[];
         };
         ActivitiesAttachmentResponse: {
             attachment: components["schemas"]["AttachmentResponse"];
         };
-        ActivityLocationKinds: string & ("gc" | "pc");
         /** Format: int32 */
         AfkTimeouts: number & (60 | 300 | 900 | 1800 | 3600);
         AllowedMentionTypes: string & ("users" | "roles" | "everyone");
@@ -2228,16 +2478,16 @@ export interface components {
              */
             type: 11;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
+            required?: boolean;
         };
         ApplicationCommandAutocompleteCallbackRequest: {
             /**
@@ -2270,16 +2520,16 @@ export interface components {
              */
             type: 5;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
+            required?: boolean;
         };
         ApplicationCommandChannelOption: {
             /**
@@ -2305,17 +2555,17 @@ export interface components {
              */
             type: 7;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
-            channel_types?: components["schemas"]["ChannelTypes"][] | null;
+            required?: boolean;
+            channel_types?: components["schemas"]["ChannelTypes"][];
         };
         ApplicationCommandCreateRequest: {
             name: string;
@@ -2363,20 +2613,20 @@ export interface components {
              */
             type: 4;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
-            autocomplete?: boolean | null;
-            choices?: components["schemas"]["ApplicationCommandOptionIntegerChoiceResponse"][] | null;
-            min_value?: null | components["schemas"]["Int53Type"];
-            max_value?: null | components["schemas"]["Int53Type"];
+            required?: boolean;
+            autocomplete?: boolean;
+            choices?: components["schemas"]["ApplicationCommandOptionIntegerChoiceResponse"][];
+            min_value?: components["schemas"]["Int53Type"];
+            max_value?: components["schemas"]["Int53Type"];
         };
         ApplicationCommandInteractionMetadataResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -2385,13 +2635,13 @@ export interface components {
              * @enum {integer}
              */
             type: 2;
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
             authorizing_integration_owners: {
                 [key: string]: components["schemas"]["SnowflakeType"];
             };
-            original_response_message_id?: null | components["schemas"]["SnowflakeType"];
-            target_user?: null | components["schemas"]["UserResponse"];
-            target_message_id?: null | components["schemas"]["SnowflakeType"];
+            original_response_message_id?: components["schemas"]["SnowflakeType"];
+            target_user?: components["schemas"]["UserResponse"];
+            target_message_id?: components["schemas"]["SnowflakeType"];
         };
         ApplicationCommandMentionableOption: {
             /**
@@ -2416,16 +2666,16 @@ export interface components {
              */
             type: 9;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
+            required?: boolean;
         };
         ApplicationCommandNumberOption: {
             /**
@@ -2456,22 +2706,22 @@ export interface components {
              */
             type: 10;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
-            autocomplete?: boolean | null;
-            choices?: components["schemas"]["ApplicationCommandOptionNumberChoiceResponse"][] | null;
+            required?: boolean;
+            autocomplete?: boolean;
+            choices?: components["schemas"]["ApplicationCommandOptionNumberChoiceResponse"][];
             /** Format: double */
-            min_value?: number | null;
+            min_value?: number;
             /** Format: double */
-            max_value?: number | null;
+            max_value?: number;
         };
         ApplicationCommandOptionIntegerChoice: {
             name: string;
@@ -2482,7 +2732,7 @@ export interface components {
         };
         ApplicationCommandOptionIntegerChoiceResponse: {
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
@@ -2498,7 +2748,7 @@ export interface components {
         };
         ApplicationCommandOptionNumberChoiceResponse: {
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
@@ -2514,7 +2764,7 @@ export interface components {
         };
         ApplicationCommandOptionStringChoiceResponse: {
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
@@ -2552,21 +2802,21 @@ export interface components {
             default_member_permissions?: string | null;
             type: components["schemas"]["ApplicationCommandType"];
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            guild_id?: null | components["schemas"]["SnowflakeType"];
-            dm_permission?: boolean | null;
+            guild_id?: components["schemas"]["SnowflakeType"];
+            dm_permission?: boolean;
             contexts?: components["schemas"]["InteractionContextType"][] | null;
-            integration_types?: components["schemas"]["ApplicationIntegrationType"][] | null;
-            options?: (components["schemas"]["ApplicationCommandAttachmentOptionResponse"] | components["schemas"]["ApplicationCommandBooleanOptionResponse"] | components["schemas"]["ApplicationCommandChannelOptionResponse"] | components["schemas"]["ApplicationCommandIntegerOptionResponse"] | components["schemas"]["ApplicationCommandMentionableOptionResponse"] | components["schemas"]["ApplicationCommandNumberOptionResponse"] | components["schemas"]["ApplicationCommandRoleOptionResponse"] | components["schemas"]["ApplicationCommandStringOptionResponse"] | components["schemas"]["ApplicationCommandSubcommandGroupOptionResponse"] | components["schemas"]["ApplicationCommandSubcommandOptionResponse"] | components["schemas"]["ApplicationCommandUserOptionResponse"])[] | null;
-            nsfw?: boolean | null;
+            integration_types?: components["schemas"]["ApplicationIntegrationType"][];
+            options?: (components["schemas"]["ApplicationCommandAttachmentOptionResponse"] | components["schemas"]["ApplicationCommandBooleanOptionResponse"] | components["schemas"]["ApplicationCommandChannelOptionResponse"] | components["schemas"]["ApplicationCommandIntegerOptionResponse"] | components["schemas"]["ApplicationCommandMentionableOptionResponse"] | components["schemas"]["ApplicationCommandNumberOptionResponse"] | components["schemas"]["ApplicationCommandRoleOptionResponse"] | components["schemas"]["ApplicationCommandStringOptionResponse"] | components["schemas"]["ApplicationCommandSubcommandGroupOptionResponse"] | components["schemas"]["ApplicationCommandSubcommandOptionResponse"] | components["schemas"]["ApplicationCommandUserOptionResponse"])[];
+            nsfw?: boolean;
         };
         ApplicationCommandRoleOption: {
             /**
@@ -2591,16 +2841,16 @@ export interface components {
              */
             type: 8;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
+            required?: boolean;
         };
         ApplicationCommandStringOption: {
             /**
@@ -2629,22 +2879,22 @@ export interface components {
              */
             type: 3;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
-            autocomplete?: boolean | null;
-            choices?: components["schemas"]["ApplicationCommandOptionStringChoiceResponse"][] | null;
+            required?: boolean;
+            autocomplete?: boolean;
+            choices?: components["schemas"]["ApplicationCommandOptionStringChoiceResponse"][];
             /** Format: int32 */
-            min_length?: number | null;
+            min_length?: number;
             /** Format: int32 */
-            max_length?: number | null;
+            max_length?: number;
         };
         ApplicationCommandSubcommandGroupOption: {
             /**
@@ -2670,17 +2920,17 @@ export interface components {
              */
             type: 2;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
-            options?: components["schemas"]["ApplicationCommandSubcommandOptionResponse"][] | null;
+            required?: boolean;
+            options?: components["schemas"]["ApplicationCommandSubcommandOptionResponse"][];
         };
         ApplicationCommandSubcommandOption: {
             /**
@@ -2706,17 +2956,17 @@ export interface components {
              */
             type: 1;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
-            options?: (components["schemas"]["ApplicationCommandAttachmentOptionResponse"] | components["schemas"]["ApplicationCommandBooleanOptionResponse"] | components["schemas"]["ApplicationCommandChannelOptionResponse"] | components["schemas"]["ApplicationCommandIntegerOptionResponse"] | components["schemas"]["ApplicationCommandMentionableOptionResponse"] | components["schemas"]["ApplicationCommandNumberOptionResponse"] | components["schemas"]["ApplicationCommandRoleOptionResponse"] | components["schemas"]["ApplicationCommandStringOptionResponse"] | components["schemas"]["ApplicationCommandUserOptionResponse"])[] | null;
+            required?: boolean;
+            options?: (components["schemas"]["ApplicationCommandAttachmentOptionResponse"] | components["schemas"]["ApplicationCommandBooleanOptionResponse"] | components["schemas"]["ApplicationCommandChannelOptionResponse"] | components["schemas"]["ApplicationCommandIntegerOptionResponse"] | components["schemas"]["ApplicationCommandMentionableOptionResponse"] | components["schemas"]["ApplicationCommandNumberOptionResponse"] | components["schemas"]["ApplicationCommandRoleOptionResponse"] | components["schemas"]["ApplicationCommandStringOptionResponse"] | components["schemas"]["ApplicationCommandUserOptionResponse"])[];
         };
         /** Format: int32 */
         ApplicationCommandType: number & (1 | 2 | 3 | 4);
@@ -2761,16 +3011,16 @@ export interface components {
              */
             type: 6;
             name: string;
-            name_localized?: string | null;
+            name_localized?: string;
             name_localizations?: {
                 [key: string]: string;
             } | null;
             description: string;
-            description_localized?: string | null;
+            description_localized?: string;
             description_localizations?: {
                 [key: string]: string;
             } | null;
-            required?: boolean | null;
+            required?: boolean;
         };
         /** Format: int32 */
         ApplicationExplicitContentFilterTypes: number & (0 | 1);
@@ -2801,6 +3051,7 @@ export interface components {
                 [key: string]: null | components["schemas"]["ApplicationIntegrationTypeConfiguration"];
             } | null;
         };
+        ApplicationIdentityProviderAuthType: string & ("OIDC" | "EPIC_ONLINE_SERVICES_ACCESS_TOKEN" | "EPIC_ONLINE_SERVICES_ID_TOKEN" | "STEAM_SESSION_TICKET" | "UNITY_SERVICES_ID_TOKEN" | "DISCORD_BOT_ISSUED_ACCESS_TOKEN" | "APPLE_ID_TOKEN" | "PLAYSTATION_NETWORK_ID_TOKEN");
         ApplicationIncomingWebhookResponse: {
             application_id?: null | components["schemas"]["SnowflakeType"];
             avatar?: string | null;
@@ -2813,7 +3064,7 @@ export interface components {
              * @enum {integer}
              */
             type: 3;
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
         };
         /** Format: int32 */
         ApplicationIntegrationType: number & (0 | 1);
@@ -2821,7 +3072,7 @@ export interface components {
             oauth2_install_params?: null | components["schemas"]["ApplicationOAuth2InstallParams"];
         };
         ApplicationIntegrationTypeConfigurationResponse: {
-            oauth2_install_params?: null | components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
+            oauth2_install_params?: components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
         };
         ApplicationOAuth2InstallParams: {
             scopes?: ("applications.commands" | "bot")[] | null;
@@ -2837,30 +3088,30 @@ export interface components {
             icon?: string | null;
             description: string;
             type?: null | components["schemas"]["ApplicationTypes"];
-            cover_image?: string | null;
-            primary_sku_id?: null | components["schemas"]["SnowflakeType"];
-            bot?: null | components["schemas"]["UserResponse"];
-            slug?: string | null;
-            guild_id?: null | components["schemas"]["SnowflakeType"];
-            rpc_origins?: (string | null)[] | null;
-            bot_public?: boolean | null;
-            bot_require_code_grant?: boolean | null;
+            cover_image?: string;
+            primary_sku_id?: components["schemas"]["SnowflakeType"];
+            bot?: components["schemas"]["UserResponse"];
+            slug?: string;
+            guild_id?: components["schemas"]["SnowflakeType"];
+            rpc_origins?: (string | null)[];
+            bot_public?: boolean;
+            bot_require_code_grant?: boolean;
             /** Format: uri */
-            terms_of_service_url?: string | null;
+            terms_of_service_url?: string;
             /** Format: uri */
-            privacy_policy_url?: string | null;
+            privacy_policy_url?: string;
             /** Format: uri */
-            custom_install_url?: string | null;
-            install_params?: null | components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
+            custom_install_url?: string;
+            install_params?: components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
             integration_types_config?: {
                 [key: string]: components["schemas"]["ApplicationIntegrationTypeConfigurationResponse"];
-            } | null;
+            };
             verify_key: string;
             /** Format: int32 */
             flags: number;
             /** Format: int32 */
             max_participants?: number | null;
-            tags?: string[] | null;
+            tags?: string[];
         };
         ApplicationRoleConnectionsMetadataItemRequest: {
             type: components["schemas"]["MetadataItemTypes"];
@@ -2893,7 +3144,7 @@ export interface components {
             platform_username?: string | null;
             metadata?: {
                 [key: string]: string;
-            } | null;
+            };
         };
         AttachmentResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -2905,33 +3156,33 @@ export interface components {
             /** Format: uri */
             proxy_url: string;
             /** Format: int32 */
-            width?: number | null;
+            width?: number;
             /** Format: int32 */
-            height?: number | null;
+            height?: number;
             /** Format: double */
-            duration_secs?: number | null;
-            waveform?: string | null;
-            description?: string | null;
-            content_type?: string | null;
-            ephemeral?: boolean | null;
+            duration_secs?: number;
+            waveform?: string;
+            description?: string;
+            content_type?: string;
+            ephemeral?: boolean;
             title?: string | null;
-            application?: null | components["schemas"]["ApplicationResponse"];
+            application?: components["schemas"]["ApplicationResponse"];
             /** Format: date-time */
-            clip_created_at?: string | null;
-            clip_participants?: components["schemas"]["UserResponse"][] | null;
+            clip_created_at?: string;
+            clip_participants?: components["schemas"]["UserResponse"][];
         };
         /** Format: int32 */
-        AuditLogActionTypes: number & (1 | 10 | 11 | 12 | 13 | 14 | 15 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 30 | 31 | 32 | 40 | 41 | 42 | 50 | 51 | 52 | 60 | 61 | 62 | 72 | 73 | 74 | 75 | 80 | 81 | 82 | 83 | 84 | 85 | 90 | 91 | 92 | 100 | 101 | 102 | 110 | 111 | 112 | 121 | 130 | 131 | 132 | 140 | 141 | 142 | 143 | 144 | 145 | 146 | 150 | 151 | 163 | 164 | 165 | 166 | 167 | 171 | 172 | 180 | 190 | 191 | 192 | 193);
+        AuditLogActionTypes: number & (1 | 10 | 11 | 12 | 13 | 14 | 15 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 30 | 31 | 32 | 40 | 41 | 42 | 50 | 51 | 52 | 60 | 61 | 62 | 72 | 73 | 74 | 75 | 80 | 81 | 82 | 83 | 84 | 85 | 90 | 91 | 92 | 100 | 101 | 102 | 110 | 111 | 112 | 121 | 130 | 131 | 132 | 140 | 141 | 142 | 143 | 144 | 145 | 146 | 150 | 151 | 163 | 164 | 165 | 166 | 167 | 171 | 172 | 180 | 190 | 191 | 192 | 193 | 211);
         AuditLogEntryResponse: {
             id: components["schemas"]["SnowflakeType"];
             action_type: components["schemas"]["AuditLogActionTypes"];
             user_id?: null | components["schemas"]["SnowflakeType"];
             target_id?: null | components["schemas"]["SnowflakeType"];
-            changes?: components["schemas"]["AuditLogObjectChangeResponse"][] | null;
+            changes?: components["schemas"]["AuditLogObjectChangeResponse"][];
             options?: {
                 [key: string]: string;
-            } | null;
-            reason?: string | null;
+            };
+            reason?: string;
         };
         AuditLogObjectChangeResponse: {
             key?: string | null;
@@ -2947,15 +3198,20 @@ export interface components {
         /** Format: int32 */
         AutomodTriggerType: number & (1 | 2 | 3 | 4 | 5);
         AvailableLocalesEnum: string & ("ar" | "bg" | "cs" | "da" | "de" | "el" | "en-GB" | "en-US" | "es-419" | "es-ES" | "fi" | "fr" | "he" | "hi" | "hr" | "hu" | "id" | "it" | "ja" | "ko" | "lt" | "nl" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "sv-SE" | "th" | "tr" | "uk" | "vi" | "zh-CN" | "zh-TW");
+        BanUserFromGuildRequest: {
+            delete_message_seconds?: number | null;
+            delete_message_days?: number | null;
+        };
         BaseCreateMessageCreateRequest: {
             content?: string | null;
             embeds?: components["schemas"]["RichEmbed"][] | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
             sticker_ids?: components["schemas"]["SnowflakeType"][] | null;
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             flags?: number | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
             poll?: null | components["schemas"]["PollCreateRequest"];
+            shared_client_theme?: null | components["schemas"]["CustomClientThemeShareRequest"];
             confetti_potion?: null | components["schemas"]["ConfettiPotionCreateRequest"];
         };
         BasicApplicationResponse: {
@@ -2964,9 +3220,26 @@ export interface components {
             icon?: string | null;
             description: string;
             type?: null | components["schemas"]["ApplicationTypes"];
-            cover_image?: string | null;
-            primary_sku_id?: null | components["schemas"]["SnowflakeType"];
-            bot?: null | components["schemas"]["UserResponse"];
+            cover_image?: string;
+            primary_sku_id?: components["schemas"]["SnowflakeType"];
+            bot?: components["schemas"]["UserResponse"];
+        };
+        BasicGuildMemberResponse: {
+            avatar?: string | null;
+            avatar_decoration_data?: null | components["schemas"]["UserAvatarDecorationResponse"];
+            banner?: string | null;
+            /** Format: date-time */
+            communication_disabled_until?: string | null;
+            /** Format: int32 */
+            flags: number;
+            /** Format: date-time */
+            joined_at: string;
+            nick?: string | null;
+            pending: boolean;
+            /** Format: date-time */
+            premium_since?: string | null;
+            roles: components["schemas"]["SnowflakeType"][];
+            collectibles?: null | components["schemas"]["UserCollectiblesResponse"];
         };
         BasicMessageResponse: {
             type: components["schemas"]["MessageType"];
@@ -2981,33 +3254,34 @@ export interface components {
             edited_timestamp?: string | null;
             /** Format: int32 */
             flags: number;
-            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["ButtonComponentResponse"] | components["schemas"]["ChannelSelectComponentResponse"] | components["schemas"]["MentionableSelectComponentResponse"] | components["schemas"]["RoleSelectComponentResponse"] | components["schemas"]["StringSelectComponentResponse"] | components["schemas"]["TextInputComponentResponse"] | components["schemas"]["UserSelectComponentResponse"])[];
-            resolved?: null | components["schemas"]["ResolvedObjectsResponse"];
-            stickers?: (components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"])[] | null;
-            sticker_items?: components["schemas"]["MessageStickerItemResponse"][] | null;
+            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["ContainerComponentResponse"] | components["schemas"]["FileComponentResponse"] | components["schemas"]["MediaGalleryComponentResponse"] | components["schemas"]["SectionComponentResponse"] | components["schemas"]["SeparatorComponentResponse"] | components["schemas"]["TextDisplayComponentResponse"])[];
+            stickers?: (components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"])[];
+            sticker_items?: components["schemas"]["MessageStickerItemResponse"][];
             id: components["schemas"]["SnowflakeType"];
             channel_id: components["schemas"]["SnowflakeType"];
             author: components["schemas"]["UserResponse"];
             pinned: boolean;
             mention_everyone: boolean;
             tts: boolean;
-            call?: null | components["schemas"]["MessageCallResponse"];
-            activity?: null | components["schemas"]["MessageActivityResponse"];
-            application?: null | components["schemas"]["BasicApplicationResponse"];
-            application_id?: null | components["schemas"]["SnowflakeType"];
-            interaction?: null | components["schemas"]["MessageInteractionResponse"];
+            call?: components["schemas"]["MessageCallResponse"];
+            activity?: components["schemas"]["MessageActivityResponse"];
+            application?: components["schemas"]["BasicApplicationResponse"];
+            application_id?: components["schemas"]["SnowflakeType"];
+            interaction?: components["schemas"]["MessageInteractionResponse"];
             nonce?: number | string | null;
-            webhook_id?: null | components["schemas"]["SnowflakeType"];
-            message_reference?: null | components["schemas"]["MessageReferenceResponse"];
-            thread?: null | components["schemas"]["ThreadResponse"];
-            mention_channels?: (null | components["schemas"]["MessageMentionChannelResponse"])[] | null;
-            role_subscription_data?: null | components["schemas"]["MessageRoleSubscriptionDataResponse"];
-            purchase_notification?: null | components["schemas"]["PurchaseNotificationResponse"];
+            webhook_id?: components["schemas"]["SnowflakeType"];
+            message_reference?: components["schemas"]["MessageReferenceResponse"];
+            thread?: components["schemas"]["ThreadResponse"];
+            mention_channels?: (null | components["schemas"]["MessageMentionChannelResponse"])[];
+            role_subscription_data?: components["schemas"]["MessageRoleSubscriptionDataResponse"];
+            purchase_notification?: components["schemas"]["PurchaseNotificationResponse"];
             /** Format: int32 */
-            position?: number | null;
-            poll?: null | components["schemas"]["PollResponse"];
-            interaction_metadata?: components["schemas"]["ApplicationCommandInteractionMetadataResponse"] | components["schemas"]["MessageComponentInteractionMetadataResponse"] | components["schemas"]["ModalSubmitInteractionMetadataResponse"] | null;
-            message_snapshots?: components["schemas"]["MessageSnapshotResponse"][] | null;
+            position?: number;
+            resolved?: components["schemas"]["ResolvedObjectsResponse"];
+            poll?: components["schemas"]["PollResponse"];
+            shared_client_theme?: null | components["schemas"]["CustomClientThemeResponse"];
+            interaction_metadata?: components["schemas"]["ApplicationCommandInteractionMetadataResponse"] | components["schemas"]["MessageComponentInteractionMetadataResponse"] | components["schemas"]["ModalSubmitInteractionMetadataResponse"];
+            message_snapshots?: components["schemas"]["MessageSnapshotResponse"][];
         };
         BlockMessageAction: {
             /**
@@ -3021,7 +3295,7 @@ export interface components {
             custom_message?: string | null;
         };
         BlockMessageActionMetadataResponse: {
-            custom_message?: string | null;
+            custom_message?: string;
         };
         BlockMessageActionResponse: {
             /**
@@ -3036,9 +3310,29 @@ export interface components {
             avatar?: string | null;
             banner?: string | null;
         };
+        BotAddGuildMemberRequest: {
+            nick?: string | null;
+            roles?: components["schemas"]["SnowflakeType"][] | null;
+            mute?: boolean | null;
+            deaf?: boolean | null;
+            access_token: string;
+            flags?: number | null;
+        };
+        BulkBanUsersRequest: {
+            user_ids: components["schemas"]["SnowflakeType"][];
+            delete_message_seconds?: number | null;
+        };
         BulkBanUsersResponse: {
             banned_users: components["schemas"]["SnowflakeType"][];
             failed_users: components["schemas"]["SnowflakeType"][];
+        };
+        BulkLobbyMemberRequest: {
+            id: components["schemas"]["SnowflakeType"];
+            metadata?: {
+                [key: string]: string;
+            } | null;
+            flags?: null | 1;
+            remove_member?: boolean | null;
         };
         ButtonComponentForMessageRequest: {
             /**
@@ -3046,6 +3340,8 @@ export interface components {
              * @enum {integer}
              */
             type: 2;
+            /** Format: int32 */
+            id?: number | null;
             custom_id?: string | null;
             style: components["schemas"]["ButtonStyleTypes"];
             label?: string | null;
@@ -3053,7 +3349,7 @@ export interface components {
             /** Format: uri */
             url?: string | null;
             sku_id?: null | components["schemas"]["SnowflakeType"];
-            emoji?: null | components["schemas"]["ComponentEmojiForMessageRequest"];
+            emoji?: null | components["schemas"]["ComponentEmojiForRequest"];
         };
         ButtonComponentResponse: {
             /**
@@ -3063,14 +3359,14 @@ export interface components {
             type: 2;
             /** Format: int32 */
             id: number;
-            custom_id?: string | null;
+            custom_id?: string;
             style: components["schemas"]["ButtonStyleTypes"];
-            label?: string | null;
-            disabled?: boolean | null;
-            emoji?: null | components["schemas"]["ComponentEmojiResponse"];
+            label?: string;
+            disabled?: boolean;
+            emoji?: components["schemas"]["ComponentEmojiResponse"];
             /** Format: uri */
             url?: string | null;
-            sku_id?: null | components["schemas"]["SnowflakeType"];
+            sku_id?: components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
         ButtonStyleTypes: number & (1 | 2 | 3 | 4 | 5 | 6);
@@ -3090,9 +3386,9 @@ export interface components {
              * @enum {integer}
              */
             type: 2;
-            user?: null | components["schemas"]["UserResponse"];
-            source_guild?: null | components["schemas"]["WebhookSourceGuildResponse"];
-            source_channel?: null | components["schemas"]["WebhookSourceChannelResponse"];
+            user?: components["schemas"]["UserResponse"];
+            source_guild?: components["schemas"]["WebhookSourceGuildResponse"];
+            source_channel?: components["schemas"]["WebhookSourceChannelResponse"];
         };
         ChannelPermissionOverwriteRequest: {
             id: components["schemas"]["SnowflakeType"];
@@ -3114,11 +3410,31 @@ export interface components {
              * @enum {integer}
              */
             type: 8;
+            /** Format: int32 */
+            id?: number | null;
             custom_id: string;
             placeholder?: string | null;
             min_values?: number | null;
             max_values?: number | null;
             disabled?: boolean | null;
+            required?: boolean | null;
+            default_values?: components["schemas"]["ChannelSelectDefaultValue"][] | null;
+            channel_types?: components["schemas"]["ChannelTypes"][] | null;
+        };
+        ChannelSelectComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 8;
+            /** Format: int32 */
+            id?: number | null;
+            custom_id: string;
+            placeholder?: string | null;
+            min_values?: number | null;
+            max_values?: number | null;
+            disabled?: boolean | null;
+            required?: boolean | null;
             default_values?: components["schemas"]["ChannelSelectDefaultValue"][] | null;
             channel_types?: components["schemas"]["ChannelTypes"][] | null;
         };
@@ -3131,14 +3447,14 @@ export interface components {
             /** Format: int32 */
             id: number;
             custom_id: string;
-            placeholder?: string | null;
+            placeholder?: string;
             /** Format: int32 */
             min_values?: number | null;
             /** Format: int32 */
             max_values?: number | null;
-            disabled?: boolean | null;
-            channel_types?: components["schemas"]["ChannelTypes"][] | null;
-            default_values?: components["schemas"]["ChannelSelectDefaultValueResponse"][] | null;
+            disabled?: boolean;
+            channel_types?: components["schemas"]["ChannelTypes"][];
+            default_values?: components["schemas"]["ChannelSelectDefaultValueResponse"][];
         };
         ChannelSelectDefaultValue: {
             /** @enum {string} */
@@ -3163,14 +3479,14 @@ export interface components {
             guild_id: components["schemas"]["SnowflakeType"];
             permissions: components["schemas"]["CommandPermissionResponse"][];
         };
-        ComponentEmojiForMessageRequest: {
+        ComponentEmojiForRequest: {
             id?: null | components["schemas"]["SnowflakeType"];
             name: string;
         };
         ComponentEmojiResponse: {
-            id?: null | components["schemas"]["SnowflakeType"];
+            id?: components["schemas"]["SnowflakeType"];
             name: string;
-            animated?: boolean | null;
+            animated?: boolean;
         };
         ConfettiPotionCreateRequest: Record<string, never>;
         ConnectedAccountGuildResponse: {
@@ -3190,15 +3506,40 @@ export interface components {
             name?: string | null;
             type: components["schemas"]["ConnectedAccountProviders"];
             friend_sync: boolean;
-            integrations?: components["schemas"]["ConnectedAccountIntegrationResponse"][] | null;
+            integrations?: components["schemas"]["ConnectedAccountIntegrationResponse"][];
             show_activity: boolean;
             two_way_link: boolean;
             verified: boolean;
             visibility: components["schemas"]["ConnectedAccountVisibility"];
-            revoked?: boolean | null;
+            revoked?: boolean;
         };
         /** Format: int32 */
         ConnectedAccountVisibility: number & (0 | 1);
+        ContainerComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 17;
+            /** Format: int32 */
+            id?: number | null;
+            accent_color?: number | null;
+            components: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[];
+            spoiler?: boolean | null;
+        };
+        ContainerComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 17;
+            /** Format: int32 */
+            id: number;
+            /** Format: int32 */
+            accent_color?: number | null;
+            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["FileComponentResponse"] | components["schemas"]["MediaGalleryComponentResponse"] | components["schemas"]["SectionComponentResponse"] | components["schemas"]["SeparatorComponentResponse"] | components["schemas"]["TextDisplayComponentResponse"])[];
+            spoiler: boolean;
+        };
         CreateEntitlementRequestData: {
             sku_id: components["schemas"]["SnowflakeType"];
             owner_id: components["schemas"]["SnowflakeType"];
@@ -3235,6 +3576,7 @@ export interface components {
             default_thread_rate_limit_per_user?: number | null;
             default_sort_order?: null | components["schemas"]["ThreadSortOrder"];
             default_forum_layout?: null | components["schemas"]["ForumLayout"];
+            default_tag_setting?: null | components["schemas"]["ThreadSearchTagSetting"];
             available_tags?: (null | components["schemas"]["CreateOrUpdateThreadTagRequest"])[] | null;
         };
         CreateGuildInviteRequest: {
@@ -3245,39 +3587,6 @@ export interface components {
             target_user_id?: null | components["schemas"]["SnowflakeType"];
             target_application_id?: null | components["schemas"]["SnowflakeType"];
             target_type?: null | (1 | 2);
-        };
-        CreateGuildRequestChannelItem: {
-            type?: null | (0 | 2 | 4);
-            name: string;
-            /** Format: int32 */
-            position?: number | null;
-            topic?: string | null;
-            /** Format: int32 */
-            bitrate?: number | null;
-            /** Format: int32 */
-            user_limit?: number | null;
-            nsfw?: boolean | null;
-            rate_limit_per_user?: number | null;
-            parent_id?: null | components["schemas"]["SnowflakeType"];
-            permission_overwrites?: components["schemas"]["ChannelPermissionOverwriteRequest"][] | null;
-            rtc_region?: string | null;
-            video_quality_mode?: null | components["schemas"]["VideoQualityModes"];
-            default_auto_archive_duration?: null | components["schemas"]["ThreadAutoArchiveDuration"];
-            default_reaction_emoji?: null | components["schemas"]["UpdateDefaultReactionEmojiRequest"];
-            default_thread_rate_limit_per_user?: number | null;
-            default_sort_order?: null | components["schemas"]["ThreadSortOrder"];
-            default_forum_layout?: null | components["schemas"]["ForumLayout"];
-            id?: null | components["schemas"]["SnowflakeType"];
-            available_tags?: components["schemas"]["CreateOrUpdateThreadTagRequest"][] | null;
-        };
-        CreateGuildRequestRoleItem: {
-            id: number;
-            name?: string | null;
-            permissions?: number | null;
-            color?: number | null;
-            hoist?: boolean | null;
-            mentionable?: boolean | null;
-            unicode_emoji?: string | null;
         };
         CreateMessageInteractionCallbackRequest: {
             /**
@@ -3308,6 +3617,15 @@ export interface components {
                 [key: string]: string | null;
             } | null;
         };
+        CreateRoleRequest: {
+            name?: string | null;
+            permissions?: number | null;
+            color?: number | null;
+            hoist?: boolean | null;
+            mentionable?: boolean | null;
+            icon?: string | null;
+            unicode_emoji?: string | null;
+        };
         CreateTextThreadWithMessageRequest: {
             name: string;
             auto_archive_duration?: null | components["schemas"]["ThreadAutoArchiveDuration"];
@@ -3336,24 +3654,40 @@ export interface components {
             name: string;
             parent_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            rate_limit_per_user?: number | null;
+            rate_limit_per_user?: number;
             /** Format: int32 */
-            bitrate?: number | null;
+            bitrate?: number;
             /** Format: int32 */
-            user_limit?: number | null;
+            user_limit?: number;
             rtc_region?: string | null;
-            video_quality_mode?: null | components["schemas"]["VideoQualityModes"];
+            video_quality_mode?: components["schemas"]["VideoQualityModes"];
             permissions?: string | null;
             owner_id: components["schemas"]["SnowflakeType"];
-            thread_metadata?: null | components["schemas"]["ThreadMetadataResponse"];
+            thread_metadata: components["schemas"]["ThreadMetadataResponse"];
             /** Format: int32 */
             message_count: number;
             /** Format: int32 */
             member_count: number;
             /** Format: int32 */
             total_message_sent: number;
-            applied_tags?: components["schemas"]["SnowflakeType"][] | null;
-            member?: null | components["schemas"]["ThreadMemberResponse"];
+            applied_tags?: components["schemas"]["SnowflakeType"][];
+            member?: components["schemas"]["ThreadMemberResponse"];
+        };
+        CustomClientThemeResponse: {
+            colors: string[];
+            /** Format: int32 */
+            gradient_angle: number;
+            /** Format: int32 */
+            base_mix: number;
+            base_theme: components["schemas"]["MessageShareCustomUserThemeBaseTheme"];
+        };
+        CustomClientThemeShareRequest: {
+            colors: string[];
+            /** Format: int32 */
+            gradient_angle: number;
+            /** Format: int32 */
+            base_mix: number;
+            base_theme?: null | components["schemas"]["MessageShareCustomUserThemeBaseTheme"];
         };
         DefaultKeywordListTriggerMetadata: {
             allow_list?: string[] | null;
@@ -3403,9 +3737,9 @@ export interface components {
              * @enum {integer}
              */
             trigger_type: 4;
-            enabled?: boolean | null;
-            exempt_roles?: components["schemas"]["SnowflakeType"][] | null;
-            exempt_channels?: components["schemas"]["SnowflakeType"][] | null;
+            enabled: boolean;
+            exempt_roles: components["schemas"]["SnowflakeType"][];
+            exempt_channels: components["schemas"]["SnowflakeType"][];
             trigger_metadata: components["schemas"]["DefaultKeywordListTriggerMetadataResponse"];
         };
         DefaultReactionEmojiResponse: {
@@ -3416,24 +3750,25 @@ export interface components {
             /** @enum {string} */
             type: "discord";
             name?: string | null;
-            account?: null | components["schemas"]["AccountResponse"];
-            enabled?: boolean | null;
+            account: components["schemas"]["AccountResponse"];
+            enabled: boolean;
             id: components["schemas"]["SnowflakeType"];
             application: components["schemas"]["IntegrationApplicationResponse"];
             scopes: ("applications.commands" | "bot" | "webhook.incoming")[];
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
         };
         EmbeddedActivityInstance: {
             application_id: components["schemas"]["SnowflakeType"];
             instance_id: string;
             launch_id: string;
-            location?: components["schemas"]["GuildChannelLocation"] | components["schemas"]["PrivateChannelLocation"] | null;
+            location: components["schemas"]["GuildChannelLocation"] | components["schemas"]["PrivateChannelLocation"];
             users: components["schemas"]["SnowflakeType"][];
         };
+        EmbeddedActivityLocationKind: string & ("gc" | "pc" | "party");
         EmojiResponse: {
             id: components["schemas"]["SnowflakeType"];
             name: string;
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
             roles: components["schemas"]["SnowflakeType"][];
             require_colons: boolean;
             managed: boolean;
@@ -3458,6 +3793,7 @@ export interface components {
             fulfilled_at?: string | null;
             fulfillment_status?: null | components["schemas"]["EntitlementTenantFulfillmentStatusResponse"];
             consumed?: boolean | null;
+            gifter_user_id?: null | components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
         EntitlementTenantFulfillmentStatusResponse: number & (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7);
@@ -3477,20 +3813,20 @@ export interface components {
             /** @enum {string} */
             type: "twitch" | "youtube";
             name?: string | null;
-            account?: null | components["schemas"]["AccountResponse"];
-            enabled?: boolean | null;
+            account: components["schemas"]["AccountResponse"];
+            enabled: boolean;
             id: string;
             user: components["schemas"]["UserResponse"];
-            revoked?: boolean | null;
-            expire_behavior?: null | components["schemas"]["IntegrationExpireBehaviorTypes"];
-            expire_grace_period?: null | components["schemas"]["IntegrationExpireGracePeriodTypes"];
+            revoked?: boolean;
+            expire_behavior?: components["schemas"]["IntegrationExpireBehaviorTypes"];
+            expire_grace_period?: components["schemas"]["IntegrationExpireGracePeriodTypes"];
             /** Format: int32 */
-            subscriber_count?: number | null;
+            subscriber_count?: number;
             /** Format: date-time */
-            synced_at?: string | null;
+            synced_at?: string;
             role_id?: null | components["schemas"]["SnowflakeType"];
-            syncing?: boolean | null;
-            enable_emoticons?: boolean | null;
+            syncing?: boolean;
+            enable_emoticons?: boolean;
         };
         ExternalScheduledEventCreateRequest: {
             name: string;
@@ -3530,7 +3866,7 @@ export interface components {
             description?: string | null;
             channel_id?: null | components["schemas"]["SnowflakeType"];
             creator_id?: null | components["schemas"]["SnowflakeType"];
-            creator?: null | components["schemas"]["UserResponse"];
+            creator?: components["schemas"]["UserResponse"];
             image?: string | null;
             /** Format: date-time */
             scheduled_start_time: string;
@@ -3544,10 +3880,48 @@ export interface components {
             entity_type: 3;
             entity_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            user_count?: number | null;
+            user_count?: number;
             privacy_level: components["schemas"]["GuildScheduledEventPrivacyLevels"];
             user_rsvp?: null | components["schemas"]["ScheduledEventUserResponse"];
             entity_metadata: components["schemas"]["EntityMetadataExternalResponse"];
+        };
+        FileComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 13;
+            /** Format: int32 */
+            id?: number | null;
+            spoiler?: boolean | null;
+            file: components["schemas"]["UnfurledMediaRequestWithAttachmentReferenceRequired"];
+        };
+        FileComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 13;
+            /** Format: int32 */
+            id: number;
+            file: components["schemas"]["UnfurledMediaResponse"];
+            name?: string | null;
+            /** Format: int32 */
+            size?: number | null;
+            spoiler: boolean;
+        };
+        FileUploadComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 19;
+            /** Format: int32 */
+            id?: number | null;
+            custom_id: string;
+            min_values?: number | null;
+            max_values?: number | null;
+            required?: boolean | null;
         };
         FlagToChannelAction: {
             /**
@@ -3581,25 +3955,29 @@ export interface components {
             emoji_name?: string | null;
         };
         FriendInviteResponse: {
-            type?: null | 2;
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 2;
             code: string;
-            inviter?: null | components["schemas"]["UserResponse"];
+            inviter?: components["schemas"]["UserResponse"];
             /** Format: int32 */
-            max_age?: number | null;
+            max_age?: number;
             /** Format: date-time */
-            created_at?: string | null;
+            created_at?: string;
             /** Format: date-time */
             expires_at?: string | null;
             /** Format: int32 */
-            friends_count?: number | null;
+            friends_count?: number;
             channel?: null | components["schemas"]["InviteChannelResponse"];
-            is_contact?: boolean | null;
+            is_contact?: boolean;
             /** Format: int32 */
-            uses?: number | null;
+            uses?: number;
             /** Format: int32 */
-            max_uses?: number | null;
+            max_uses?: number;
             /** Format: int32 */
-            flags?: number | null;
+            flags?: number;
         };
         GatewayBotResponse: {
             /** Format: uri */
@@ -3742,16 +4120,20 @@ export interface components {
             answer?: null | components["schemas"]["GithubComment"];
         };
         GroupDMInviteResponse: {
-            type?: null | 1;
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 1;
             code: string;
-            inviter?: null | components["schemas"]["UserResponse"];
+            inviter?: components["schemas"]["UserResponse"];
             /** Format: int32 */
-            max_age?: number | null;
+            max_age?: number;
             /** Format: date-time */
-            created_at?: string | null;
+            created_at?: string;
             /** Format: date-time */
             expires_at?: string | null;
-            channel?: null | components["schemas"]["InviteChannelResponse"];
+            channel: components["schemas"]["InviteChannelResponse"];
             /** Format: int32 */
             approximate_member_count?: number | null;
         };
@@ -3792,45 +4174,30 @@ export interface components {
             name: string;
             parent_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            rate_limit_per_user?: number | null;
+            rate_limit_per_user?: number;
             /** Format: int32 */
-            bitrate?: number | null;
+            bitrate?: number;
             /** Format: int32 */
-            user_limit?: number | null;
+            user_limit?: number;
             rtc_region?: string | null;
-            video_quality_mode?: null | components["schemas"]["VideoQualityModes"];
+            video_quality_mode?: components["schemas"]["VideoQualityModes"];
             permissions?: string | null;
             topic?: string | null;
-            default_auto_archive_duration?: null | components["schemas"]["ThreadAutoArchiveDuration"];
+            default_auto_archive_duration?: components["schemas"]["ThreadAutoArchiveDuration"];
             /** Format: int32 */
-            default_thread_rate_limit_per_user?: number | null;
+            default_thread_rate_limit_per_user?: number;
             /** Format: int32 */
             position: number;
-            permission_overwrites?: components["schemas"]["ChannelPermissionOverwriteResponse"][] | null;
-            nsfw?: boolean | null;
-            available_tags?: components["schemas"]["ForumTagResponse"][] | null;
+            permission_overwrites?: components["schemas"]["ChannelPermissionOverwriteResponse"][];
+            nsfw?: boolean;
+            available_tags?: components["schemas"]["ForumTagResponse"][];
             default_reaction_emoji?: null | components["schemas"]["DefaultReactionEmojiResponse"];
             default_sort_order?: null | components["schemas"]["ThreadSortOrder"];
             default_forum_layout?: null | components["schemas"]["ForumLayout"];
+            default_tag_setting?: null | components["schemas"]["ThreadSearchTagSetting"];
             /** Format: date-time */
-            hd_streaming_until?: string | null;
-            hd_streaming_buyer_id?: null | components["schemas"]["SnowflakeType"];
-        };
-        GuildCreateRequest: {
-            description?: string | null;
-            name: string;
-            region?: string | null;
-            icon?: string | null;
-            verification_level?: null | components["schemas"]["VerificationLevels"];
-            default_message_notifications?: null | components["schemas"]["UserNotificationSettings"];
-            explicit_content_filter?: null | components["schemas"]["GuildExplicitContentFilterTypes"];
-            preferred_locale?: null | components["schemas"]["AvailableLocalesEnum"];
-            afk_timeout?: null | components["schemas"]["AfkTimeouts"];
-            roles?: components["schemas"]["CreateGuildRequestRoleItem"][] | null;
-            channels?: components["schemas"]["CreateGuildRequestChannelItem"][] | null;
-            afk_channel_id?: null | components["schemas"]["SnowflakeType"];
-            system_channel_id?: null | components["schemas"]["SnowflakeType"];
-            system_channel_flags?: number | null;
+            hd_streaming_until?: string;
+            hd_streaming_buyer_id?: components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
         GuildExplicitContentFilterTypes: number & (0 | 1 | 2);
@@ -3838,9 +4205,9 @@ export interface components {
         GuildHomeSettingsResponse: {
             guild_id: components["schemas"]["SnowflakeType"];
             enabled: boolean;
-            welcome_message?: null | components["schemas"]["WelcomeMessageResponse"];
-            new_member_actions?: (null | components["schemas"]["NewMemberActionResponse"])[] | null;
-            resource_channels?: (null | components["schemas"]["ResourceChannelResponse"])[] | null;
+            welcome_message?: components["schemas"]["WelcomeMessageResponse"];
+            new_member_actions: (null | components["schemas"]["NewMemberActionResponse"])[];
+            resource_channels: (null | components["schemas"]["ResourceChannelResponse"])[];
         };
         GuildIncomingWebhookResponse: {
             application_id?: null | components["schemas"]["SnowflakeType"];
@@ -3854,48 +4221,48 @@ export interface components {
              * @enum {integer}
              */
             type: 1;
-            user?: null | components["schemas"]["UserResponse"];
-            token?: string | null;
+            user?: components["schemas"]["UserResponse"];
+            token?: string;
             /** Format: uri */
-            url?: string | null;
+            url?: string;
         };
         GuildInviteResponse: {
-            type?: null | 0;
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 0;
             code: string;
-            inviter?: null | components["schemas"]["UserResponse"];
+            inviter?: components["schemas"]["UserResponse"];
             /** Format: int32 */
-            max_age?: number | null;
+            max_age?: number;
             /** Format: date-time */
-            created_at?: string | null;
+            created_at?: string;
             /** Format: date-time */
             expires_at?: string | null;
-            is_contact?: boolean | null;
+            is_contact?: boolean;
             /** Format: int32 */
-            flags?: number | null;
-            guild?: null | components["schemas"]["InviteGuildResponse"];
-            guild_id?: null | components["schemas"]["SnowflakeType"];
-            channel?: null | components["schemas"]["InviteChannelResponse"];
-            stage_instance?: null | components["schemas"]["InviteStageInstanceResponse"];
-            target_type?: null | components["schemas"]["InviteTargetTypes"];
-            target_user?: null | components["schemas"]["UserResponse"];
-            target_application?: null | components["schemas"]["InviteApplicationResponse"];
-            guild_scheduled_event?: null | components["schemas"]["ScheduledEventResponse"];
+            flags?: number;
+            guild: components["schemas"]["InviteGuildResponse"];
+            guild_id: components["schemas"]["SnowflakeType"];
+            channel: components["schemas"]["InviteChannelResponse"];
+            target_type?: components["schemas"]["InviteTargetTypes"];
+            target_user?: components["schemas"]["UserResponse"];
+            target_application?: components["schemas"]["InviteApplicationResponse"];
+            guild_scheduled_event?: components["schemas"]["ScheduledEventResponse"];
             /** Format: int32 */
-            uses?: number | null;
+            uses?: number;
             /** Format: int32 */
-            max_uses?: number | null;
-            temporary?: boolean | null;
+            max_uses?: number;
+            temporary?: boolean;
             /** Format: int32 */
             approximate_member_count?: number | null;
             /** Format: int32 */
             approximate_presence_count?: number | null;
-            is_nickname_changeable?: boolean | null;
+            is_nickname_changeable?: boolean;
         };
         /** Format: int32 */
         GuildMFALevel: number & (0 | 1);
-        GuildMFALevelResponse: {
-            level: components["schemas"]["GuildMFALevel"];
-        };
         GuildMemberResponse: {
             avatar?: string | null;
             avatar_decoration_data?: null | components["schemas"]["UserAvatarDecorationResponse"];
@@ -3911,6 +4278,7 @@ export interface components {
             /** Format: date-time */
             premium_since?: string | null;
             roles: components["schemas"]["SnowflakeType"][];
+            collectibles?: null | components["schemas"]["UserCollectiblesResponse"];
             user: components["schemas"]["UserResponse"];
             mute: boolean;
             deaf: boolean;
@@ -3937,7 +4305,6 @@ export interface components {
             afk_timeout?: null | components["schemas"]["AfkTimeouts"];
             afk_channel_id?: null | components["schemas"]["SnowflakeType"];
             system_channel_id?: null | components["schemas"]["SnowflakeType"];
-            owner_id?: components["schemas"]["SnowflakeType"];
             splash?: string | null;
             banner?: string | null;
             system_channel_flags?: number | null;
@@ -4001,11 +4368,11 @@ export interface components {
             /** Format: int32 */
             max_presences?: number | null;
             /** Format: int32 */
-            max_members?: number | null;
+            max_members: number;
             /** Format: int32 */
-            max_stage_video_channel_users?: number | null;
+            max_stage_video_channel_users: number;
             /** Format: int32 */
-            max_video_channel_users?: number | null;
+            max_video_channel_users: number;
             vanity_url_code?: string | null;
             premium_tier: components["schemas"]["PremiumGuildTiers"];
             /** Format: int32 */
@@ -4020,6 +4387,14 @@ export interface components {
             emojis: components["schemas"]["EmojiResponse"][];
             stickers: components["schemas"]["GuildStickerResponse"][];
         };
+        GuildRoleColorsResponse: {
+            /** Format: int32 */
+            primary_color: number;
+            /** Format: int32 */
+            secondary_color?: number | null;
+            /** Format: int32 */
+            tertiary_color?: number | null;
+        };
         GuildRoleResponse: {
             id: components["schemas"]["SnowflakeType"];
             name: string;
@@ -4029,18 +4404,21 @@ export interface components {
             position: number;
             /** Format: int32 */
             color: number;
+            colors: components["schemas"]["GuildRoleColorsResponse"];
             hoist: boolean;
             managed: boolean;
             mentionable: boolean;
             icon?: string | null;
             unicode_emoji?: string | null;
-            tags?: null | components["schemas"]["GuildRoleTagsResponse"];
+            tags?: components["schemas"]["GuildRoleTagsResponse"];
+            /** Format: int32 */
+            flags: number;
         };
         GuildRoleTagsResponse: {
             premium_subscriber?: null;
-            bot_id?: null | components["schemas"]["SnowflakeType"];
-            integration_id?: null | components["schemas"]["SnowflakeType"];
-            subscription_listing_id?: null | components["schemas"]["SnowflakeType"];
+            bot_id?: components["schemas"]["SnowflakeType"];
+            integration_id?: components["schemas"]["SnowflakeType"];
+            subscription_listing_id?: components["schemas"]["SnowflakeType"];
             available_for_purchase?: null;
             guild_connections?: null;
         };
@@ -4063,14 +4441,14 @@ export interface components {
             description?: string | null;
             available: boolean;
             guild_id: components["schemas"]["SnowflakeType"];
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
         };
         GuildSubscriptionIntegrationResponse: {
             /** @enum {string} */
             type: "guild_subscription";
             name?: string | null;
-            account?: null | components["schemas"]["AccountResponse"];
-            enabled?: boolean | null;
+            account: components["schemas"]["AccountResponse"];
+            enabled: boolean;
             id: components["schemas"]["SnowflakeType"];
         };
         GuildTemplateChannelResponse: {
@@ -4080,7 +4458,7 @@ export interface components {
              * Format: int32
              * @enum {integer}
              */
-            type: 0 | 2 | 4;
+            type: 0 | 2 | 4 | 15;
             name?: string | null;
             /** Format: int32 */
             position?: number | null;
@@ -4102,11 +4480,14 @@ export interface components {
             default_thread_rate_limit_per_user?: number | null;
             default_sort_order?: null | components["schemas"]["ThreadSortOrder"];
             default_forum_layout?: null | components["schemas"]["ForumLayout"];
+            default_tag_setting?: null | components["schemas"]["ThreadSearchTagSetting"];
             icon_emoji?: null | components["schemas"]["IconEmojiResponse"];
             /** Format: int32 */
             theme_color?: number | null;
         };
         GuildTemplateChannelTags: {
+            /** Format: int32 */
+            id?: number | null;
             name: string;
             emoji_id?: null | components["schemas"]["SnowflakeType"];
             emoji_name?: string | null;
@@ -4128,6 +4509,14 @@ export interface components {
             serialized_source_guild: components["schemas"]["GuildTemplateSnapshotResponse"];
             is_dirty?: boolean | null;
         };
+        GuildTemplateRoleColorsResponse: {
+            /** Format: int32 */
+            primary_color: number;
+            /** Format: int32 */
+            secondary_color?: number | null;
+            /** Format: int32 */
+            tertiary_color?: number | null;
+        };
         GuildTemplateRoleResponse: {
             /** Format: int32 */
             id: number;
@@ -4135,6 +4524,7 @@ export interface components {
             permissions: string;
             /** Format: int32 */
             color: number;
+            colors?: null | components["schemas"]["GuildTemplateRoleColorsResponse"];
             hoist: boolean;
             mentionable: boolean;
             icon?: string | null;
@@ -4200,11 +4590,11 @@ export interface components {
             /** Format: int32 */
             max_presences?: number | null;
             /** Format: int32 */
-            max_members?: number | null;
+            max_members: number;
             /** Format: int32 */
-            max_stage_video_channel_users?: number | null;
+            max_stage_video_channel_users: number;
             /** Format: int32 */
-            max_video_channel_users?: number | null;
+            max_video_channel_users: number;
             vanity_url_code?: string | null;
             premium_tier: components["schemas"]["PremiumGuildTiers"];
             /** Format: int32 */
@@ -4228,7 +4618,7 @@ export interface components {
             content?: string | null;
             embeds?: components["schemas"]["RichEmbed"][] | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
             poll?: null | components["schemas"]["PollCreateRequest"];
             tts?: boolean | null;
@@ -4238,7 +4628,7 @@ export interface components {
             content?: string | null;
             embeds?: components["schemas"]["RichEmbed"][] | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
             poll?: null | components["schemas"]["PollCreateRequest"];
             tts?: boolean | null;
@@ -4253,7 +4643,7 @@ export interface components {
             content?: string | null;
             embeds?: components["schemas"]["RichEmbed"][] | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
             flags?: number | null;
         };
@@ -4261,7 +4651,7 @@ export interface components {
             content?: string | null;
             embeds?: components["schemas"]["RichEmbed"][] | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
             poll?: null | components["schemas"]["PollCreateRequest"];
             flags?: number | null;
@@ -4274,9 +4664,9 @@ export interface components {
             icon?: string | null;
             description: string;
             type?: null | components["schemas"]["ApplicationTypes"];
-            cover_image?: string | null;
-            primary_sku_id?: null | components["schemas"]["SnowflakeType"];
-            bot?: null | components["schemas"]["UserResponse"];
+            cover_image?: string;
+            primary_sku_id?: components["schemas"]["SnowflakeType"];
+            bot?: components["schemas"]["UserResponse"];
         };
         /** Format: int32 */
         IntegrationExpireBehaviorTypes: number & (0 | 1);
@@ -4294,7 +4684,7 @@ export interface components {
         };
         InteractionCallbackResponse: {
             interaction: components["schemas"]["InteractionResponse"];
-            resource?: components["schemas"]["CreateMessageInteractionCallbackResponse"] | components["schemas"]["LaunchActivityInteractionCallbackResponse"] | components["schemas"]["UpdateMessageInteractionCallbackResponse"] | null;
+            resource?: components["schemas"]["CreateMessageInteractionCallbackResponse"] | components["schemas"]["LaunchActivityInteractionCallbackResponse"] | components["schemas"]["UpdateMessageInteractionCallbackResponse"];
         };
         /** Format: int32 */
         InteractionCallbackTypes: number & (1 | 4 | 5 | 6 | 7 | 8 | 9 | 12);
@@ -4303,11 +4693,11 @@ export interface components {
         InteractionResponse: {
             id: components["schemas"]["SnowflakeType"];
             type: components["schemas"]["InteractionTypes"];
-            response_message_id?: null | components["schemas"]["SnowflakeType"];
-            response_message_loading?: boolean | null;
-            response_message_ephemeral?: boolean | null;
-            channel_id?: null | components["schemas"]["SnowflakeType"];
-            guild_id?: null | components["schemas"]["SnowflakeType"];
+            response_message_id?: components["schemas"]["SnowflakeType"];
+            response_message_loading?: boolean;
+            response_message_ephemeral?: boolean;
+            channel_id?: components["schemas"]["SnowflakeType"];
+            guild_id?: components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
         InteractionTypes: number & (1 | 2 | 3 | 4 | 5);
@@ -4317,30 +4707,30 @@ export interface components {
             icon?: string | null;
             description: string;
             type?: null | components["schemas"]["ApplicationTypes"];
-            cover_image?: string | null;
-            primary_sku_id?: null | components["schemas"]["SnowflakeType"];
-            bot?: null | components["schemas"]["UserResponse"];
-            slug?: string | null;
-            guild_id?: null | components["schemas"]["SnowflakeType"];
-            rpc_origins?: (string | null)[] | null;
-            bot_public?: boolean | null;
-            bot_require_code_grant?: boolean | null;
+            cover_image?: string;
+            primary_sku_id?: components["schemas"]["SnowflakeType"];
+            bot?: components["schemas"]["UserResponse"];
+            slug?: string;
+            guild_id?: components["schemas"]["SnowflakeType"];
+            rpc_origins?: (string | null)[];
+            bot_public?: boolean;
+            bot_require_code_grant?: boolean;
             /** Format: uri */
-            terms_of_service_url?: string | null;
+            terms_of_service_url?: string;
             /** Format: uri */
-            privacy_policy_url?: string | null;
+            privacy_policy_url?: string;
             /** Format: uri */
-            custom_install_url?: string | null;
-            install_params?: null | components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
+            custom_install_url?: string;
+            install_params?: components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
             integration_types_config?: {
                 [key: string]: components["schemas"]["ApplicationIntegrationTypeConfigurationResponse"];
-            } | null;
+            };
             verify_key: string;
             /** Format: int32 */
             flags: number;
             /** Format: int32 */
             max_participants?: number | null;
-            tags?: string[] | null;
+            tags?: string[];
         };
         InviteChannelRecipientResponse: {
             username: string;
@@ -4349,8 +4739,8 @@ export interface components {
             id: components["schemas"]["SnowflakeType"];
             type: components["schemas"]["ChannelTypes"];
             name?: string | null;
-            icon?: string | null;
-            recipients?: components["schemas"]["InviteChannelRecipientResponse"][] | null;
+            icon?: string;
+            recipients?: components["schemas"]["InviteChannelRecipientResponse"][];
         };
         InviteGuildResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -4365,15 +4755,7 @@ export interface components {
             nsfw_level?: null | components["schemas"]["GuildNSFWContentLevel"];
             nsfw?: boolean | null;
             /** Format: int32 */
-            premium_subscription_count?: number | null;
-        };
-        InviteStageInstanceResponse: {
-            topic: string;
-            /** Format: int32 */
-            participant_count?: number | null;
-            /** Format: int32 */
-            speaker_count?: number | null;
-            members?: components["schemas"]["GuildMemberResponse"][] | null;
+            premium_subscription_count: number;
         };
         /** Format: int32 */
         InviteTargetTypes: number & (1 | 2 | 3);
@@ -4391,9 +4773,9 @@ export interface components {
              * @enum {integer}
              */
             trigger_type: 1;
-            enabled?: boolean | null;
-            exempt_roles?: components["schemas"]["SnowflakeType"][] | null;
-            exempt_channels?: components["schemas"]["SnowflakeType"][] | null;
+            enabled: boolean;
+            exempt_roles: components["schemas"]["SnowflakeType"][];
+            exempt_channels: components["schemas"]["SnowflakeType"][];
             trigger_metadata: components["schemas"]["KeywordTriggerMetadataResponse"];
         };
         KeywordTriggerMetadata: {
@@ -4434,6 +4816,18 @@ export interface components {
             trigger_type?: 1;
             trigger_metadata?: null | components["schemas"]["KeywordTriggerMetadata"];
         };
+        LabelComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 18;
+            /** Format: int32 */
+            id?: number | null;
+            label: string;
+            description?: string | null;
+            component: components["schemas"]["ChannelSelectComponentForModalRequest"] | components["schemas"]["FileUploadComponentForModalRequest"] | components["schemas"]["MentionableSelectComponentForModalRequest"] | components["schemas"]["RoleSelectComponentForModalRequest"] | components["schemas"]["StringSelectComponentForModalRequest"] | components["schemas"]["TextInputComponentForModalRequest"] | components["schemas"]["UserSelectComponentForModalRequest"];
+        };
         LaunchActivityInteractionCallbackRequest: {
             /**
              * Format: int32
@@ -4454,6 +4848,49 @@ export interface components {
         ListGuildSoundboardSoundsResponse: {
             items: components["schemas"]["SoundboardSoundResponse"][];
         };
+        LobbyGuildInviteResponse: {
+            code: string;
+        };
+        LobbyMemberRequest: {
+            id: components["schemas"]["SnowflakeType"];
+            metadata?: {
+                [key: string]: string;
+            } | null;
+            flags?: null | 1;
+        };
+        LobbyMemberResponse: {
+            id: components["schemas"]["SnowflakeType"];
+            metadata?: {
+                [key: string]: string;
+            } | null;
+            /** Format: int32 */
+            flags: number;
+        };
+        LobbyMessageResponse: {
+            id: components["schemas"]["SnowflakeType"];
+            type: components["schemas"]["MessageType"];
+            content: string;
+            lobby_id: components["schemas"]["SnowflakeType"];
+            channel_id: components["schemas"]["SnowflakeType"];
+            author: components["schemas"]["UserResponse"];
+            metadata?: {
+                [key: string]: string;
+            };
+            /** Format: int32 */
+            flags: number;
+            application_id?: components["schemas"]["SnowflakeType"];
+        };
+        LobbyResponse: {
+            id: components["schemas"]["SnowflakeType"];
+            application_id: components["schemas"]["SnowflakeType"];
+            metadata?: {
+                [key: string]: string;
+            } | null;
+            members: components["schemas"]["LobbyMemberResponse"][];
+            linked_channel?: components["schemas"]["GuildChannelResponse"];
+            flags: components["schemas"]["UInt32Type"];
+            override_event_webhooks_url?: string | null;
+        };
         MLSpamRuleResponse: {
             id: components["schemas"]["SnowflakeType"];
             guild_id: components["schemas"]["SnowflakeType"];
@@ -4466,9 +4903,9 @@ export interface components {
              * @enum {integer}
              */
             trigger_type: 3;
-            enabled?: boolean | null;
-            exempt_roles?: components["schemas"]["SnowflakeType"][] | null;
-            exempt_channels?: components["schemas"]["SnowflakeType"][] | null;
+            enabled: boolean;
+            exempt_roles: components["schemas"]["SnowflakeType"][];
+            exempt_channels: components["schemas"]["SnowflakeType"][];
             trigger_metadata: components["schemas"]["MLSpamTriggerMetadataResponse"];
         };
         MLSpamTriggerMetadata: Record<string, never>;
@@ -4501,6 +4938,36 @@ export interface components {
             trigger_type?: 3;
             trigger_metadata?: null | components["schemas"]["MLSpamTriggerMetadata"];
         };
+        MediaGalleryComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 12;
+            /** Format: int32 */
+            id?: number | null;
+            items: components["schemas"]["MediaGalleryItemRequest"][];
+        };
+        MediaGalleryComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 12;
+            /** Format: int32 */
+            id: number;
+            items: components["schemas"]["MediaGalleryItemResponse"][];
+        };
+        MediaGalleryItemRequest: {
+            description?: string | null;
+            spoiler?: boolean | null;
+            media: components["schemas"]["UnfurledMediaRequest"];
+        };
+        MediaGalleryItemResponse: {
+            media: components["schemas"]["UnfurledMediaResponse"];
+            description?: string | null;
+            spoiler: boolean;
+        };
         MentionSpamRuleResponse: {
             id: components["schemas"]["SnowflakeType"];
             guild_id: components["schemas"]["SnowflakeType"];
@@ -4513,19 +4980,19 @@ export interface components {
              * @enum {integer}
              */
             trigger_type: 5;
-            enabled?: boolean | null;
-            exempt_roles?: components["schemas"]["SnowflakeType"][] | null;
-            exempt_channels?: components["schemas"]["SnowflakeType"][] | null;
+            enabled: boolean;
+            exempt_roles: components["schemas"]["SnowflakeType"][];
+            exempt_channels: components["schemas"]["SnowflakeType"][];
             trigger_metadata: components["schemas"]["MentionSpamTriggerMetadataResponse"];
         };
         MentionSpamTriggerMetadata: {
-            mention_total_limit: number;
+            mention_total_limit?: number | null;
             mention_raid_protection_enabled?: boolean | null;
         };
         MentionSpamTriggerMetadataResponse: {
             /** Format: int32 */
             mention_total_limit: number;
-            mention_raid_protection_enabled?: boolean | null;
+            mention_raid_protection_enabled: boolean;
         };
         MentionSpamUpsertRequest: {
             name: string;
@@ -4561,11 +5028,30 @@ export interface components {
              * @enum {integer}
              */
             type: 7;
+            /** Format: int32 */
+            id?: number | null;
             custom_id: string;
             placeholder?: string | null;
             min_values?: number | null;
             max_values?: number | null;
             disabled?: boolean | null;
+            required?: boolean | null;
+            default_values?: (components["schemas"]["RoleSelectDefaultValue"] | components["schemas"]["UserSelectDefaultValue"])[] | null;
+        };
+        MentionableSelectComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 7;
+            /** Format: int32 */
+            id?: number | null;
+            custom_id: string;
+            placeholder?: string | null;
+            min_values?: number | null;
+            max_values?: number | null;
+            disabled?: boolean | null;
+            required?: boolean | null;
             default_values?: (components["schemas"]["RoleSelectDefaultValue"] | components["schemas"]["UserSelectDefaultValue"])[] | null;
         };
         MentionableSelectComponentResponse: {
@@ -4577,13 +5063,13 @@ export interface components {
             /** Format: int32 */
             id: number;
             custom_id: string;
-            placeholder?: string | null;
+            placeholder?: string;
             /** Format: int32 */
             min_values?: number | null;
             /** Format: int32 */
             max_values?: number | null;
-            disabled?: boolean | null;
-            default_values?: (components["schemas"]["RoleSelectDefaultValueResponse"] | components["schemas"]["UserSelectDefaultValueResponse"])[] | null;
+            disabled?: boolean;
+            default_values?: (components["schemas"]["RoleSelectDefaultValueResponse"] | components["schemas"]["UserSelectDefaultValueResponse"])[];
         };
         MessageActivityResponse: Record<string, never>;
         MessageAllowedMentionsRequest: {
@@ -4612,20 +5098,20 @@ export interface components {
             /** Format: uri */
             proxy_url: string;
             /** Format: int32 */
-            width?: number | null;
+            width?: number;
             /** Format: int32 */
-            height?: number | null;
+            height?: number;
             /** Format: double */
-            duration_secs?: number | null;
-            waveform?: string | null;
-            description?: string | null;
-            content_type?: string | null;
-            ephemeral?: boolean | null;
+            duration_secs?: number;
+            waveform?: string;
+            description?: string;
+            content_type?: string;
+            ephemeral?: boolean;
             title?: string | null;
-            application?: null | components["schemas"]["ApplicationResponse"];
+            application?: components["schemas"]["ApplicationResponse"];
             /** Format: date-time */
-            clip_created_at?: string | null;
-            clip_participants?: components["schemas"]["UserResponse"][] | null;
+            clip_created_at?: string;
+            clip_participants?: components["schemas"]["UserResponse"][];
         };
         MessageCallResponse: {
             /** Format: date-time */
@@ -4639,24 +5125,27 @@ export interface components {
              * @enum {integer}
              */
             type: 3;
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
             authorizing_integration_owners: {
                 [key: string]: components["schemas"]["SnowflakeType"];
             };
-            original_response_message_id?: null | components["schemas"]["SnowflakeType"];
+            original_response_message_id?: components["schemas"]["SnowflakeType"];
             interacted_message_id: components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
-        MessageComponentTypes: number & (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8);
+        MessageComponentSeparatorSpacingSize: number & (1 | 2);
+        /** Format: int32 */
+        MessageComponentTypes: number & (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 17 | 18 | 19);
         MessageCreateRequest: {
             content?: string | null;
             embeds?: components["schemas"]["RichEmbed"][] | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
             sticker_ids?: components["schemas"]["SnowflakeType"][] | null;
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             flags?: number | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
             poll?: null | components["schemas"]["PollCreateRequest"];
+            shared_client_theme?: null | components["schemas"]["CustomClientThemeShareRequest"];
             confetti_potion?: null | components["schemas"]["ConfettiPotionCreateRequest"];
             message_reference?: null | components["schemas"]["MessageReferenceRequest"];
             nonce?: number | string | null;
@@ -4669,15 +5158,15 @@ export interface components {
             flags?: number | null;
             allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
             sticker_ids?: components["schemas"]["SnowflakeType"][] | null;
-            components?: components["schemas"]["ActionRowComponentForMessageRequest"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
             attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
         };
         MessageEmbedAuthorResponse: {
             name: string;
-            url?: string | null;
-            icon_url?: string | null;
+            url?: string;
+            icon_url?: string;
             /** Format: uri */
-            proxy_icon_url?: string | null;
+            proxy_icon_url?: string;
         };
         MessageEmbedFieldResponse: {
             name: string;
@@ -4686,59 +5175,63 @@ export interface components {
         };
         MessageEmbedFooterResponse: {
             text: string;
-            icon_url?: string | null;
+            icon_url?: string;
             /** Format: uri */
-            proxy_icon_url?: string | null;
+            proxy_icon_url?: string;
         };
         MessageEmbedImageResponse: {
-            url?: string | null;
+            url?: string;
             /** Format: uri */
-            proxy_url?: string | null;
-            width?: null | components["schemas"]["UInt32Type"];
-            height?: null | components["schemas"]["UInt32Type"];
-            placeholder?: string | null;
-            placeholder_version?: null | components["schemas"]["UInt32Type"];
-            flags?: null | components["schemas"]["UInt32Type"];
+            proxy_url?: string;
+            width?: components["schemas"]["UInt32Type"];
+            height?: components["schemas"]["UInt32Type"];
+            content_type?: string;
+            placeholder?: string;
+            placeholder_version?: components["schemas"]["UInt32Type"];
+            description?: string;
+            flags?: components["schemas"]["UInt32Type"];
         };
         MessageEmbedProviderResponse: {
             name: string;
             /** Format: uri */
-            url?: string | null;
+            url?: string;
         };
         MessageEmbedResponse: {
             type: string;
             /** Format: uri */
-            url?: string | null;
-            title?: string | null;
-            description?: string | null;
+            url?: string;
+            title?: string;
+            description?: string;
             /** Format: int32 */
-            color?: number | null;
+            color?: number;
             /** Format: date-time */
-            timestamp?: string | null;
-            fields?: components["schemas"]["MessageEmbedFieldResponse"][] | null;
-            author?: null | components["schemas"]["MessageEmbedAuthorResponse"];
-            provider?: null | components["schemas"]["MessageEmbedProviderResponse"];
-            image?: null | components["schemas"]["MessageEmbedImageResponse"];
-            thumbnail?: null | components["schemas"]["MessageEmbedImageResponse"];
-            video?: null | components["schemas"]["MessageEmbedVideoResponse"];
-            footer?: null | components["schemas"]["MessageEmbedFooterResponse"];
+            timestamp?: string;
+            fields?: components["schemas"]["MessageEmbedFieldResponse"][];
+            author?: components["schemas"]["MessageEmbedAuthorResponse"];
+            provider?: components["schemas"]["MessageEmbedProviderResponse"];
+            image?: components["schemas"]["MessageEmbedImageResponse"];
+            thumbnail?: components["schemas"]["MessageEmbedImageResponse"];
+            video?: components["schemas"]["MessageEmbedVideoResponse"];
+            footer?: components["schemas"]["MessageEmbedFooterResponse"];
         };
         MessageEmbedVideoResponse: {
-            url?: string | null;
+            url?: string;
             /** Format: uri */
-            proxy_url?: string | null;
-            width?: null | components["schemas"]["UInt32Type"];
-            height?: null | components["schemas"]["UInt32Type"];
-            placeholder?: string | null;
-            placeholder_version?: null | components["schemas"]["UInt32Type"];
-            flags?: null | components["schemas"]["UInt32Type"];
+            proxy_url?: string;
+            width?: components["schemas"]["UInt32Type"];
+            height?: components["schemas"]["UInt32Type"];
+            content_type?: string;
+            placeholder?: string;
+            placeholder_version?: components["schemas"]["UInt32Type"];
+            description?: string;
+            flags?: components["schemas"]["UInt32Type"];
         };
         MessageInteractionResponse: {
             id: components["schemas"]["SnowflakeType"];
             type: components["schemas"]["InteractionTypes"];
             name: string;
-            user?: null | components["schemas"]["UserResponse"];
-            name_localized?: string | null;
+            user?: components["schemas"]["UserResponse"];
+            name_localized?: string;
         };
         MessageMentionChannelResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -4755,7 +5248,7 @@ export interface components {
         MessageReactionEmojiResponse: {
             id?: null | components["schemas"]["SnowflakeType"];
             name?: string | null;
-            animated?: boolean | null;
+            animated?: boolean;
         };
         MessageReactionResponse: {
             emoji: components["schemas"]["MessageReactionEmojiResponse"];
@@ -4774,10 +5267,10 @@ export interface components {
             type?: null | components["schemas"]["MessageReferenceType"];
         };
         MessageReferenceResponse: {
-            type?: null | components["schemas"]["MessageReferenceType"];
+            type: components["schemas"]["MessageReferenceType"];
             channel_id: components["schemas"]["SnowflakeType"];
-            message_id?: null | components["schemas"]["SnowflakeType"];
-            guild_id?: null | components["schemas"]["SnowflakeType"];
+            message_id?: components["schemas"]["SnowflakeType"];
+            guild_id?: components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
         MessageReferenceType: number & 0;
@@ -4794,34 +5287,35 @@ export interface components {
             edited_timestamp?: string | null;
             /** Format: int32 */
             flags: number;
-            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["ButtonComponentResponse"] | components["schemas"]["ChannelSelectComponentResponse"] | components["schemas"]["MentionableSelectComponentResponse"] | components["schemas"]["RoleSelectComponentResponse"] | components["schemas"]["StringSelectComponentResponse"] | components["schemas"]["TextInputComponentResponse"] | components["schemas"]["UserSelectComponentResponse"])[];
-            resolved?: null | components["schemas"]["ResolvedObjectsResponse"];
-            stickers?: (components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"])[] | null;
-            sticker_items?: components["schemas"]["MessageStickerItemResponse"][] | null;
+            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["ContainerComponentResponse"] | components["schemas"]["FileComponentResponse"] | components["schemas"]["MediaGalleryComponentResponse"] | components["schemas"]["SectionComponentResponse"] | components["schemas"]["SeparatorComponentResponse"] | components["schemas"]["TextDisplayComponentResponse"])[];
+            stickers?: (components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"])[];
+            sticker_items?: components["schemas"]["MessageStickerItemResponse"][];
             id: components["schemas"]["SnowflakeType"];
             channel_id: components["schemas"]["SnowflakeType"];
             author: components["schemas"]["UserResponse"];
             pinned: boolean;
             mention_everyone: boolean;
             tts: boolean;
-            call?: null | components["schemas"]["MessageCallResponse"];
-            activity?: null | components["schemas"]["MessageActivityResponse"];
-            application?: null | components["schemas"]["BasicApplicationResponse"];
-            application_id?: null | components["schemas"]["SnowflakeType"];
-            interaction?: null | components["schemas"]["MessageInteractionResponse"];
+            call?: components["schemas"]["MessageCallResponse"];
+            activity?: components["schemas"]["MessageActivityResponse"];
+            application?: components["schemas"]["BasicApplicationResponse"];
+            application_id?: components["schemas"]["SnowflakeType"];
+            interaction?: components["schemas"]["MessageInteractionResponse"];
             nonce?: number | string | null;
-            webhook_id?: null | components["schemas"]["SnowflakeType"];
-            message_reference?: null | components["schemas"]["MessageReferenceResponse"];
-            thread?: null | components["schemas"]["ThreadResponse"];
-            mention_channels?: (null | components["schemas"]["MessageMentionChannelResponse"])[] | null;
-            role_subscription_data?: null | components["schemas"]["MessageRoleSubscriptionDataResponse"];
-            purchase_notification?: null | components["schemas"]["PurchaseNotificationResponse"];
+            webhook_id?: components["schemas"]["SnowflakeType"];
+            message_reference?: components["schemas"]["MessageReferenceResponse"];
+            thread?: components["schemas"]["ThreadResponse"];
+            mention_channels?: (null | components["schemas"]["MessageMentionChannelResponse"])[];
+            role_subscription_data?: components["schemas"]["MessageRoleSubscriptionDataResponse"];
+            purchase_notification?: components["schemas"]["PurchaseNotificationResponse"];
             /** Format: int32 */
-            position?: number | null;
-            poll?: null | components["schemas"]["PollResponse"];
-            interaction_metadata?: components["schemas"]["ApplicationCommandInteractionMetadataResponse"] | components["schemas"]["MessageComponentInteractionMetadataResponse"] | components["schemas"]["ModalSubmitInteractionMetadataResponse"] | null;
-            message_snapshots?: components["schemas"]["MessageSnapshotResponse"][] | null;
-            reactions?: components["schemas"]["MessageReactionResponse"][] | null;
+            position?: number;
+            resolved?: components["schemas"]["ResolvedObjectsResponse"];
+            poll?: components["schemas"]["PollResponse"];
+            shared_client_theme?: null | components["schemas"]["CustomClientThemeResponse"];
+            interaction_metadata?: components["schemas"]["ApplicationCommandInteractionMetadataResponse"] | components["schemas"]["MessageComponentInteractionMetadataResponse"] | components["schemas"]["ModalSubmitInteractionMetadataResponse"];
+            message_snapshots?: components["schemas"]["MessageSnapshotResponse"][];
+            reactions?: components["schemas"]["MessageReactionResponse"][];
             referenced_message?: null | components["schemas"]["BasicMessageResponse"];
         };
         MessageRoleSubscriptionDataResponse: {
@@ -4831,8 +5325,10 @@ export interface components {
             total_months_subscribed: number;
             is_renewal: boolean;
         };
+        /** Format: int32 */
+        MessageShareCustomUserThemeBaseTheme: number & (0 | 1 | 2 | 3 | 4);
         MessageSnapshotResponse: {
-            message?: null | components["schemas"]["MinimalContentMessageResponse"];
+            message: components["schemas"]["MinimalContentMessageResponse"];
         };
         MessageStickerItemResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -4840,7 +5336,7 @@ export interface components {
             format_type: components["schemas"]["StickerFormatTypes"];
         };
         /** Format: int32 */
-        MessageType: number & (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 31 | 32 | 36 | 37 | 38 | 39 | 55);
+        MessageType: number & (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 31 | 32 | 36 | 37 | 38 | 39 | 46 | 55);
         /** Format: int32 */
         MetadataItemTypes: number & (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8);
         MinimalContentMessageResponse: {
@@ -4856,10 +5352,9 @@ export interface components {
             edited_timestamp?: string | null;
             /** Format: int32 */
             flags: number;
-            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["ButtonComponentResponse"] | components["schemas"]["ChannelSelectComponentResponse"] | components["schemas"]["MentionableSelectComponentResponse"] | components["schemas"]["RoleSelectComponentResponse"] | components["schemas"]["StringSelectComponentResponse"] | components["schemas"]["TextInputComponentResponse"] | components["schemas"]["UserSelectComponentResponse"])[];
-            resolved?: null | components["schemas"]["ResolvedObjectsResponse"];
-            stickers?: (components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"])[] | null;
-            sticker_items?: components["schemas"]["MessageStickerItemResponse"][] | null;
+            components: (components["schemas"]["ActionRowComponentResponse"] | components["schemas"]["ContainerComponentResponse"] | components["schemas"]["FileComponentResponse"] | components["schemas"]["MediaGalleryComponentResponse"] | components["schemas"]["SectionComponentResponse"] | components["schemas"]["SeparatorComponentResponse"] | components["schemas"]["TextDisplayComponentResponse"])[];
+            stickers?: (components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"])[];
+            sticker_items?: components["schemas"]["MessageStickerItemResponse"][];
         };
         ModalInteractionCallbackRequest: {
             /**
@@ -4872,7 +5367,7 @@ export interface components {
         ModalInteractionCallbackRequestData: {
             custom_id: string;
             title: string;
-            components: components["schemas"]["ActionRowComponentForModalRequest"][];
+            components: (components["schemas"]["ActionRowComponentForModalRequest"] | components["schemas"]["LabelComponentForModalRequest"] | components["schemas"]["TextDisplayComponentForModalRequest"])[];
         };
         ModalSubmitInteractionMetadataResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -4881,11 +5376,11 @@ export interface components {
              * @enum {integer}
              */
             type: 5;
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
             authorizing_integration_owners: {
                 [key: string]: components["schemas"]["SnowflakeType"];
             };
-            original_response_message_id?: null | components["schemas"]["SnowflakeType"];
+            original_response_message_id?: components["schemas"]["SnowflakeType"];
             triggering_interaction_metadata: components["schemas"]["ApplicationCommandInteractionMetadataResponse"] | components["schemas"]["MessageComponentInteractionMetadataResponse"];
         };
         MyGuildResponse: {
@@ -4901,13 +5396,14 @@ export interface components {
             /** Format: int32 */
             approximate_presence_count?: number | null;
         };
+        NameplatePalette: string;
         NewMemberActionResponse: {
             channel_id: components["schemas"]["SnowflakeType"];
             action_type: components["schemas"]["NewMemberActionType"];
             title: string;
             description: string;
-            emoji?: null | components["schemas"]["SettingsEmojiResponse"];
-            icon?: string | null;
+            emoji?: components["schemas"]["SettingsEmojiResponse"];
+            icon?: string;
         };
         /** Format: int32 */
         NewMemberActionType: number & (0 | 1);
@@ -4916,7 +5412,7 @@ export interface components {
             /** Format: date-time */
             expires: string;
             scopes: components["schemas"]["OAuth2Scopes"][];
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
         };
         OAuth2GetKeys: {
             keys: components["schemas"]["OAuth2Key"][];
@@ -4924,11 +5420,11 @@ export interface components {
         OAuth2GetOpenIDConnectUserInfoResponse: {
             sub: string;
             email?: string | null;
-            email_verified?: boolean | null;
-            preferred_username?: string | null;
+            email_verified?: boolean;
+            preferred_username?: string;
             nickname?: string | null;
-            picture?: string | null;
-            locale?: string | null;
+            picture?: string;
+            locale?: string;
         };
         OAuth2Key: {
             kty: string;
@@ -4973,7 +5469,7 @@ export interface components {
             /** @enum {string} */
             type: "discord";
             name?: string | null;
-            account?: null | components["schemas"]["AccountResponse"];
+            account: components["schemas"]["AccountResponse"];
             application_id: components["schemas"]["SnowflakeType"];
         };
         PartialExternalConnectionIntegrationResponse: {
@@ -4981,20 +5477,29 @@ export interface components {
             /** @enum {string} */
             type: "twitch" | "youtube";
             name?: string | null;
-            account?: null | components["schemas"]["AccountResponse"];
+            account: components["schemas"]["AccountResponse"];
         };
         PartialGuildSubscriptionIntegrationResponse: {
             id: components["schemas"]["SnowflakeType"];
             /** @enum {string} */
             type: "guild_subscription";
             name?: string | null;
-            account?: null | components["schemas"]["AccountResponse"];
+            account: components["schemas"]["AccountResponse"];
+        };
+        PinnedMessageResponse: {
+            /** Format: date-time */
+            pinned_at: string;
+            message: components["schemas"]["MessageResponse"];
+        };
+        PinnedMessagesResponse: {
+            items: components["schemas"]["PinnedMessageResponse"][];
+            has_more: boolean;
         };
         PollAnswerCreateRequest: {
             poll_media: components["schemas"]["PollMediaCreateRequest"];
         };
         PollAnswerDetailsResponse: {
-            users?: components["schemas"]["UserResponse"][] | null;
+            users: components["schemas"]["UserResponse"][];
         };
         PollAnswerResponse: {
             /** Format: int32 */
@@ -5030,8 +5535,8 @@ export interface components {
             emoji?: null | components["schemas"]["PollEmojiCreateRequest"];
         };
         PollMediaResponse: {
-            text?: string | null;
-            emoji?: null | components["schemas"]["MessageReactionEmojiResponse"];
+            text?: string;
+            emoji?: components["schemas"]["MessageReactionEmojiResponse"];
         };
         PollResponse: {
             question: components["schemas"]["PollMediaResponse"];
@@ -5047,10 +5552,10 @@ export interface components {
             id: number;
             /** Format: int32 */
             count: number;
-            me_voted?: boolean | null;
+            me_voted: boolean;
         };
         PollResultsResponse: {
-            answer_counts?: components["schemas"]["PollResultsEntryResponse"][] | null;
+            answer_counts: components["schemas"]["PollResultsEntryResponse"][];
             is_finalized: boolean;
         };
         PongInteractionCallbackRequest: {
@@ -5070,30 +5575,30 @@ export interface components {
             icon?: string | null;
             description: string;
             type?: null | components["schemas"]["ApplicationTypes"];
-            cover_image?: string | null;
-            primary_sku_id?: null | components["schemas"]["SnowflakeType"];
-            bot?: null | components["schemas"]["UserResponse"];
-            slug?: string | null;
-            guild_id?: null | components["schemas"]["SnowflakeType"];
-            rpc_origins?: (string | null)[] | null;
-            bot_public?: boolean | null;
-            bot_require_code_grant?: boolean | null;
+            cover_image?: string;
+            primary_sku_id?: components["schemas"]["SnowflakeType"];
+            bot?: components["schemas"]["UserResponse"];
+            slug?: string;
+            guild_id?: components["schemas"]["SnowflakeType"];
+            rpc_origins?: (string | null)[];
+            bot_public?: boolean;
+            bot_require_code_grant?: boolean;
             /** Format: uri */
-            terms_of_service_url?: string | null;
+            terms_of_service_url?: string;
             /** Format: uri */
-            privacy_policy_url?: string | null;
+            privacy_policy_url?: string;
             /** Format: uri */
-            custom_install_url?: string | null;
-            install_params?: null | components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
+            custom_install_url?: string;
+            install_params?: components["schemas"]["ApplicationOAuth2InstallParamsResponse"];
             integration_types_config?: {
                 [key: string]: components["schemas"]["ApplicationIntegrationTypeConfigurationResponse"];
-            } | null;
+            };
             verify_key: string;
             /** Format: int32 */
             flags: number;
             /** Format: int32 */
             max_participants?: number | null;
-            tags?: string[] | null;
+            tags?: string[];
             redirect_uris: (string | null)[];
             /** Format: uri */
             interactions_endpoint_url?: string | null;
@@ -5104,6 +5609,8 @@ export interface components {
             approximate_guild_count?: number | null;
             /** Format: int32 */
             approximate_user_install_count: number;
+            /** Format: int32 */
+            approximate_user_authorization_count: number;
             explicit_content_filter: components["schemas"]["ApplicationExplicitContentFilterTypes"];
             team?: null | components["schemas"]["TeamResponse"];
         };
@@ -5112,10 +5619,6 @@ export interface components {
             /** @enum {string} */
             kind: "pc";
             channel_id: components["schemas"]["SnowflakeType"];
-        };
-        PrivateChannelRequestPartial: {
-            name?: string | null;
-            icon?: string | null;
         };
         PrivateChannelResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -5146,9 +5649,9 @@ export interface components {
             recipients: components["schemas"]["UserResponse"][];
             name?: string | null;
             icon?: string | null;
-            owner_id?: null | components["schemas"]["SnowflakeType"];
-            managed?: boolean | null;
-            application_id?: null | components["schemas"]["SnowflakeType"];
+            owner_id: components["schemas"]["SnowflakeType"];
+            managed?: boolean;
+            application_id?: components["schemas"]["SnowflakeType"];
         };
         PrivateGuildMemberResponse: {
             avatar?: string | null;
@@ -5165,13 +5668,32 @@ export interface components {
             /** Format: date-time */
             premium_since?: string | null;
             roles: components["schemas"]["SnowflakeType"][];
+            collectibles?: null | components["schemas"]["UserCollectiblesResponse"];
             user: components["schemas"]["UserResponse"];
             mute: boolean;
             deaf: boolean;
+            permissions?: string;
+        };
+        ProvisionalTokenResponse: {
+            token_type: string;
+            access_token: string;
+            /** Format: int32 */
+            expires_in: number;
+            scope: string;
+            id_token: string;
+            refresh_token?: string | null;
+            scopes?: string[] | null;
+            /** Format: int32 */
+            expires_at_s?: number | null;
+        };
+        PruneGuildRequest: {
+            days?: number | null;
+            compute_prune_count?: boolean | null;
+            include_roles?: string | components["schemas"]["SnowflakeType"][] | null;
         };
         PurchaseNotificationResponse: {
             type: components["schemas"]["PurchaseType"];
-            guild_product_purchase?: null | components["schemas"]["GuildProductPurchaseResponse"];
+            guild_product_purchase?: components["schemas"]["GuildProductPurchaseResponse"];
         };
         /** Format: int32 */
         PurchaseType: number & 0;
@@ -5196,24 +5718,24 @@ export interface components {
         /** Format: int32 */
         ReactionTypes: number & (0 | 1);
         ResolvedObjectsResponse: {
-            users: {
+            users?: {
                 [key: string]: components["schemas"]["UserResponse"];
-            };
-            members: {
-                [key: string]: components["schemas"]["GuildMemberResponse"];
-            };
-            channels: {
+            } | null;
+            members?: {
+                [key: string]: components["schemas"]["BasicGuildMemberResponse"];
+            } | null;
+            channels?: {
                 [key: string]: components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
-            };
-            roles: {
+            } | null;
+            roles?: {
                 [key: string]: components["schemas"]["GuildRoleResponse"];
-            };
+            } | null;
         };
         ResourceChannelResponse: {
             channel_id: components["schemas"]["SnowflakeType"];
             title: string;
-            emoji?: null | components["schemas"]["SettingsEmojiResponse"];
-            icon?: string | null;
+            emoji?: components["schemas"]["SettingsEmojiResponse"];
+            icon?: string;
             description: string;
         };
         RichEmbed: {
@@ -5258,6 +5780,7 @@ export interface components {
             placeholder?: string | null;
             placeholder_version?: number | null;
             is_animated?: boolean | null;
+            description?: string | null;
         };
         RichEmbedProvider: {
             name?: string | null;
@@ -5272,6 +5795,7 @@ export interface components {
             placeholder?: string | null;
             placeholder_version?: number | null;
             is_animated?: boolean | null;
+            description?: string | null;
         };
         RichEmbedVideo: {
             /** Format: uri */
@@ -5281,6 +5805,7 @@ export interface components {
             placeholder?: string | null;
             placeholder_version?: number | null;
             is_animated?: boolean | null;
+            description?: string | null;
         };
         RoleSelectComponentForMessageRequest: {
             /**
@@ -5288,11 +5813,30 @@ export interface components {
              * @enum {integer}
              */
             type: 6;
+            /** Format: int32 */
+            id?: number | null;
             custom_id: string;
             placeholder?: string | null;
             min_values?: number | null;
             max_values?: number | null;
             disabled?: boolean | null;
+            required?: boolean | null;
+            default_values?: components["schemas"]["RoleSelectDefaultValue"][] | null;
+        };
+        RoleSelectComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 6;
+            /** Format: int32 */
+            id?: number | null;
+            custom_id: string;
+            placeholder?: string | null;
+            min_values?: number | null;
+            max_values?: number | null;
+            disabled?: boolean | null;
+            required?: boolean | null;
             default_values?: components["schemas"]["RoleSelectDefaultValue"][] | null;
         };
         RoleSelectComponentResponse: {
@@ -5304,13 +5848,13 @@ export interface components {
             /** Format: int32 */
             id: number;
             custom_id: string;
-            placeholder?: string | null;
+            placeholder?: string;
             /** Format: int32 */
             min_values?: number | null;
             /** Format: int32 */
             max_values?: number | null;
-            disabled?: boolean | null;
-            default_values?: components["schemas"]["RoleSelectDefaultValueResponse"][] | null;
+            disabled?: boolean;
+            default_values?: components["schemas"]["RoleSelectDefaultValueResponse"][];
         };
         RoleSelectDefaultValue: {
             /** @enum {string} */
@@ -5322,6 +5866,22 @@ export interface components {
             type: "role";
             id: components["schemas"]["SnowflakeType"];
         };
+        SDKMessageRequest: {
+            content?: string | null;
+            embeds?: components["schemas"]["RichEmbed"][] | null;
+            allowed_mentions?: null | components["schemas"]["MessageAllowedMentionsRequest"];
+            sticker_ids?: components["schemas"]["SnowflakeType"][] | null;
+            components?: (components["schemas"]["ActionRowComponentForMessageRequest"] | components["schemas"]["ContainerComponentForMessageRequest"] | components["schemas"]["FileComponentForMessageRequest"] | components["schemas"]["MediaGalleryComponentForMessageRequest"] | components["schemas"]["SectionComponentForMessageRequest"] | components["schemas"]["SeparatorComponentForMessageRequest"] | components["schemas"]["TextDisplayComponentForMessageRequest"])[] | null;
+            flags?: number | null;
+            attachments?: components["schemas"]["MessageAttachmentRequest"][] | null;
+            poll?: null | components["schemas"]["PollCreateRequest"];
+            shared_client_theme?: null | components["schemas"]["CustomClientThemeShareRequest"];
+            confetti_potion?: null | components["schemas"]["ConfettiPotionCreateRequest"];
+            message_reference?: null | components["schemas"]["MessageReferenceRequest"];
+            nonce?: number | string | null;
+            enforce_nonce?: boolean | null;
+            tts?: boolean | null;
+        };
         ScheduledEventResponse: {
             id: components["schemas"]["SnowflakeType"];
             guild_id: components["schemas"]["SnowflakeType"];
@@ -5329,7 +5889,7 @@ export interface components {
             description?: string | null;
             channel_id?: null | components["schemas"]["SnowflakeType"];
             creator_id?: null | components["schemas"]["SnowflakeType"];
-            creator?: null | components["schemas"]["UserResponse"];
+            creator?: components["schemas"]["UserResponse"];
             image?: string | null;
             /** Format: date-time */
             scheduled_start_time: string;
@@ -5339,20 +5899,64 @@ export interface components {
             entity_type: components["schemas"]["GuildScheduledEventEntityTypes"];
             entity_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            user_count?: number | null;
+            user_count?: number;
             privacy_level: components["schemas"]["GuildScheduledEventPrivacyLevels"];
             user_rsvp?: null | components["schemas"]["ScheduledEventUserResponse"];
         };
         ScheduledEventUserResponse: {
             guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
             user_id: components["schemas"]["SnowflakeType"];
-            user?: null | components["schemas"]["UserResponse"];
-            member?: null | components["schemas"]["GuildMemberResponse"];
+            user?: components["schemas"]["UserResponse"];
+            member?: components["schemas"]["GuildMemberResponse"];
+        };
+        SectionComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 9;
+            /** Format: int32 */
+            id?: number | null;
+            components: components["schemas"]["TextDisplayComponentForMessageRequest"][];
+            accessory: components["schemas"]["ButtonComponentForMessageRequest"] | components["schemas"]["ThumbnailComponentForMessageRequest"];
+        };
+        SectionComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 9;
+            /** Format: int32 */
+            id: number;
+            components: components["schemas"]["TextDisplayComponentResponse"][];
+            accessory: components["schemas"]["ButtonComponentResponse"] | components["schemas"]["ThumbnailComponentResponse"];
+        };
+        SeparatorComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 14;
+            /** Format: int32 */
+            id?: number | null;
+            spacing?: null | components["schemas"]["MessageComponentSeparatorSpacingSize"];
+            divider?: boolean | null;
+        };
+        SeparatorComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 14;
+            /** Format: int32 */
+            id: number;
+            spacing: components["schemas"]["MessageComponentSeparatorSpacingSize"];
+            divider: boolean;
         };
         SettingsEmojiResponse: {
             id?: null | components["schemas"]["SnowflakeType"];
             name?: string | null;
-            animated?: boolean | null;
+            animated: boolean;
         };
         SlackWebhook: {
             text?: string | null;
@@ -5364,6 +5968,7 @@ export interface components {
         SnowflakeSelectDefaultValueTypes: string & ("user" | "role" | "channel");
         /** Format: snowflake */
         SnowflakeType: string;
+        SortingOrder: string & ("asc" | "desc");
         SoundboardCreateRequest: {
             name: string;
             /** Format: double */
@@ -5386,9 +5991,9 @@ export interface components {
             volume: number;
             emoji_id?: null | components["schemas"]["SnowflakeType"];
             emoji_name?: string | null;
-            guild_id?: null | components["schemas"]["SnowflakeType"];
+            guild_id?: components["schemas"]["SnowflakeType"];
             available: boolean;
-            user?: null | components["schemas"]["UserResponse"];
+            user?: components["schemas"]["UserResponse"];
         };
         SoundboardSoundSendRequest: {
             sound_id: components["schemas"]["SnowflakeType"];
@@ -5406,9 +6011,9 @@ export interface components {
              * @enum {integer}
              */
             trigger_type: 2;
-            enabled?: boolean | null;
-            exempt_roles?: components["schemas"]["SnowflakeType"][] | null;
-            exempt_channels?: components["schemas"]["SnowflakeType"][] | null;
+            enabled: boolean;
+            exempt_roles: components["schemas"]["SnowflakeType"][];
+            exempt_channels: components["schemas"]["SnowflakeType"][];
             trigger_metadata: components["schemas"]["SpamLinkTriggerMetadataResponse"];
         };
         SpamLinkTriggerMetadataResponse: Record<string, never>;
@@ -5418,7 +6023,7 @@ export interface components {
             topic: string;
             privacy_level: components["schemas"]["StageInstancesPrivacyLevels"];
             id: components["schemas"]["SnowflakeType"];
-            discoverable_disabled?: boolean | null;
+            discoverable_disabled: boolean;
             guild_scheduled_event_id?: null | components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
@@ -5461,7 +6066,7 @@ export interface components {
             description?: string | null;
             channel_id?: null | components["schemas"]["SnowflakeType"];
             creator_id?: null | components["schemas"]["SnowflakeType"];
-            creator?: null | components["schemas"]["UserResponse"];
+            creator?: components["schemas"]["UserResponse"];
             image?: string | null;
             /** Format: date-time */
             scheduled_start_time: string;
@@ -5475,7 +6080,7 @@ export interface components {
             entity_type: 1;
             entity_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            user_count?: number | null;
+            user_count?: number;
             privacy_level: components["schemas"]["GuildScheduledEventPrivacyLevels"];
             user_rsvp?: null | components["schemas"]["ScheduledEventUserResponse"];
             entity_metadata?: null | components["schemas"]["EntityMetadataStageInstanceResponse"];
@@ -5506,8 +6111,8 @@ export interface components {
             name: string;
             description?: string | null;
             stickers: components["schemas"]["StandardStickerResponse"][];
-            cover_sticker_id?: null | components["schemas"]["SnowflakeType"];
-            banner_asset_id?: null | components["schemas"]["SnowflakeType"];
+            cover_sticker_id?: components["schemas"]["SnowflakeType"];
+            banner_asset_id?: components["schemas"]["SnowflakeType"];
         };
         /** Format: int32 */
         StickerTypes: number & (1 | 2);
@@ -5517,12 +6122,31 @@ export interface components {
              * @enum {integer}
              */
             type: 3;
+            /** Format: int32 */
+            id?: number | null;
             custom_id: string;
             placeholder?: string | null;
             min_values?: number | null;
             max_values?: number | null;
             disabled?: boolean | null;
-            options: components["schemas"]["StringSelectOptionForMessageRequest"][];
+            required?: boolean | null;
+            options: components["schemas"]["StringSelectOptionForRequest"][];
+        };
+        StringSelectComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 3;
+            /** Format: int32 */
+            id?: number | null;
+            custom_id: string;
+            placeholder?: string | null;
+            min_values?: number | null;
+            max_values?: number | null;
+            disabled?: boolean | null;
+            required?: boolean | null;
+            options: components["schemas"]["StringSelectOptionForRequest"][];
         };
         StringSelectComponentResponse: {
             /**
@@ -5533,27 +6157,27 @@ export interface components {
             /** Format: int32 */
             id: number;
             custom_id: string;
-            placeholder?: string | null;
+            placeholder?: string;
             /** Format: int32 */
             min_values?: number | null;
             /** Format: int32 */
             max_values?: number | null;
-            disabled?: boolean | null;
+            disabled?: boolean;
             options: components["schemas"]["StringSelectOptionResponse"][];
         };
-        StringSelectOptionForMessageRequest: {
+        StringSelectOptionForRequest: {
             label: string;
             value: string;
             description?: string | null;
             default?: boolean | null;
-            emoji?: null | components["schemas"]["ComponentEmojiForMessageRequest"];
+            emoji?: null | components["schemas"]["ComponentEmojiForRequest"];
         };
         StringSelectOptionResponse: {
             label: string;
             value: string;
-            description?: string | null;
-            emoji?: null | components["schemas"]["ComponentEmojiResponse"];
-            default?: boolean | null;
+            description?: string;
+            emoji?: components["schemas"]["ComponentEmojiResponse"];
+            default?: boolean;
         };
         TeamMemberResponse: {
             user: components["schemas"]["UserResponse"];
@@ -5569,15 +6193,47 @@ export interface components {
             owner_user_id: components["schemas"]["SnowflakeType"];
             members: components["schemas"]["TeamMemberResponse"][];
         };
+        TextDisplayComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 10;
+            /** Format: int32 */
+            id?: number | null;
+            content: string;
+        };
+        TextDisplayComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 10;
+            /** Format: int32 */
+            id?: number | null;
+            content: string;
+        };
+        TextDisplayComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 10;
+            /** Format: int32 */
+            id: number;
+            content: string;
+        };
         TextInputComponentForModalRequest: {
             /**
              * Format: int32
              * @enum {integer}
              */
             type: 4;
+            /** Format: int32 */
+            id?: number | null;
             custom_id: string;
             style: components["schemas"]["TextInputStyleTypes"];
-            label: string;
+            label?: string | null;
             value?: string | null;
             placeholder?: string | null;
             required?: boolean | null;
@@ -5595,9 +6251,9 @@ export interface components {
             custom_id: string;
             style: components["schemas"]["TextInputStyleTypes"];
             label?: string | null;
-            value?: string | null;
-            placeholder?: string | null;
-            required?: boolean | null;
+            value?: string;
+            placeholder?: string;
+            required?: boolean;
             /** Format: int32 */
             min_length?: number | null;
             /** Format: int32 */
@@ -5614,7 +6270,7 @@ export interface components {
             join_timestamp: string;
             /** Format: int32 */
             flags: number;
-            member?: null | components["schemas"]["GuildMemberResponse"];
+            member?: components["schemas"]["GuildMemberResponse"];
         };
         ThreadMetadataResponse: {
             archived: boolean;
@@ -5623,8 +6279,8 @@ export interface components {
             auto_archive_duration: components["schemas"]["ThreadAutoArchiveDuration"];
             locked: boolean;
             /** Format: date-time */
-            create_timestamp?: string | null;
-            invitable?: boolean | null;
+            create_timestamp?: string;
+            invitable?: boolean;
         };
         ThreadResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -5642,38 +6298,107 @@ export interface components {
             name: string;
             parent_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            rate_limit_per_user?: number | null;
+            rate_limit_per_user?: number;
             /** Format: int32 */
-            bitrate?: number | null;
+            bitrate?: number;
             /** Format: int32 */
-            user_limit?: number | null;
+            user_limit?: number;
             rtc_region?: string | null;
-            video_quality_mode?: null | components["schemas"]["VideoQualityModes"];
+            video_quality_mode?: components["schemas"]["VideoQualityModes"];
             permissions?: string | null;
             owner_id: components["schemas"]["SnowflakeType"];
-            thread_metadata?: null | components["schemas"]["ThreadMetadataResponse"];
+            thread_metadata: components["schemas"]["ThreadMetadataResponse"];
             /** Format: int32 */
             message_count: number;
             /** Format: int32 */
             member_count: number;
             /** Format: int32 */
             total_message_sent: number;
-            applied_tags?: components["schemas"]["SnowflakeType"][] | null;
-            member?: null | components["schemas"]["ThreadMemberResponse"];
+            applied_tags?: components["schemas"]["SnowflakeType"][];
+            member?: components["schemas"]["ThreadMemberResponse"];
         };
+        ThreadSearchResponse: {
+            threads: components["schemas"]["ThreadResponse"][];
+            members: components["schemas"]["ThreadMemberResponse"][];
+            has_more: boolean;
+            first_messages?: components["schemas"]["MessageResponse"][];
+            /** Format: int32 */
+            total_results: number;
+        };
+        ThreadSearchTagSetting: string & ("match_all" | "match_some");
         /** Format: int32 */
         ThreadSortOrder: number & (0 | 1);
+        ThreadSortingMode: string & ("relevance" | "creation_time" | "last_message_time" | "archive_time");
         ThreadsResponse: {
             threads: components["schemas"]["ThreadResponse"][];
             members: components["schemas"]["ThreadMemberResponse"][];
-            has_more?: boolean | null;
+            has_more: boolean;
+            first_messages?: components["schemas"]["MessageResponse"][];
+        };
+        ThumbnailComponentForMessageRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 11;
+            /** Format: int32 */
+            id?: number | null;
+            description?: string | null;
+            spoiler?: boolean | null;
+            media: components["schemas"]["UnfurledMediaRequest"];
+        };
+        ThumbnailComponentResponse: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 11;
+            /** Format: int32 */
+            id: number;
+            media: components["schemas"]["UnfurledMediaResponse"];
+            description?: string | null;
+            spoiler: boolean;
         };
         TypingIndicatorResponse: Record<string, never>;
         /** Format: int64 */
         UInt32Type: number;
+        UnbanUserFromGuildRequest: Record<string, never>;
+        UnfurledMediaRequest: {
+            /** Format: uri */
+            url: string;
+        };
+        UnfurledMediaRequestWithAttachmentReferenceRequired: {
+            /** Format: uri */
+            url: string;
+        };
+        UnfurledMediaResponse: {
+            id: components["schemas"]["SnowflakeType"];
+            url: string;
+            proxy_url: string;
+            /** Format: int32 */
+            width?: number | null;
+            /** Format: int32 */
+            height?: number | null;
+            content_type?: string | null;
+            attachment_id?: components["schemas"]["SnowflakeType"];
+        };
+        UpdateApplicationUserRoleConnectionRequest: {
+            platform_name?: string | null;
+            platform_username?: string | null;
+            metadata?: {
+                [key: string]: string;
+            } | null;
+        };
+        UpdateDMRequestPartial: {
+            name?: string | null;
+        };
         UpdateDefaultReactionEmojiRequest: {
             emoji_id?: null | components["schemas"]["SnowflakeType"];
             emoji_name?: string | null;
+        };
+        UpdateGroupDMRequestPartial: {
+            name?: string | null;
+            icon?: string | null;
         };
         UpdateGuildChannelRequestPartial: {
             type?: null | (0 | 2 | 4 | 5 | 13 | 14 | 15);
@@ -5696,6 +6421,7 @@ export interface components {
             default_thread_rate_limit_per_user?: number | null;
             default_sort_order?: null | components["schemas"]["ThreadSortOrder"];
             default_forum_layout?: null | components["schemas"]["ForumLayout"];
+            default_tag_setting?: null | components["schemas"]["ThreadSearchTagSetting"];
             flags?: number | null;
             available_tags?: components["schemas"]["UpdateThreadTagRequest"][] | null;
         };
@@ -5730,6 +6456,26 @@ export interface components {
             type?: null | components["schemas"]["OnboardingPromptType"];
             id: components["schemas"]["SnowflakeType"];
         };
+        UpdateRolePositionsRequest: {
+            id?: null | components["schemas"]["SnowflakeType"];
+            /** Format: int32 */
+            position?: number | null;
+        };
+        UpdateRoleRequestPartial: {
+            name?: string | null;
+            permissions?: number | null;
+            color?: number | null;
+            hoist?: boolean | null;
+            mentionable?: boolean | null;
+            icon?: string | null;
+            unicode_emoji?: string | null;
+        };
+        UpdateSelfVoiceStateRequestPartial: {
+            /** Format: date-time */
+            request_to_speak_timestamp?: string | null;
+            suppress?: boolean | null;
+            channel_id?: null | components["schemas"]["SnowflakeType"];
+        };
         UpdateThreadRequestPartial: {
             name?: string | null;
             archived?: boolean | null;
@@ -5752,9 +6498,16 @@ export interface components {
             moderated?: boolean | null;
             id?: null | components["schemas"]["SnowflakeType"];
         };
+        UpdateVoiceStateRequestPartial: {
+            suppress?: boolean | null;
+            channel_id?: null | components["schemas"]["SnowflakeType"];
+        };
         UserAvatarDecorationResponse: {
             asset: string;
             sku_id?: null | components["schemas"]["SnowflakeType"];
+        };
+        UserCollectiblesResponse: {
+            nameplate?: null | components["schemas"]["UserNameplateResponse"];
         };
         UserCommunicationDisabledAction: {
             /**
@@ -5785,6 +6538,12 @@ export interface components {
             default_channel_ids: components["schemas"]["SnowflakeType"][];
             enabled: boolean;
         };
+        UserNameplateResponse: {
+            sku_id?: null | components["schemas"]["SnowflakeType"];
+            asset: string;
+            label: string;
+            palette: components["schemas"]["NameplatePalette"];
+        };
         /** Format: int32 */
         UserNotificationSettings: number & (0 | 1);
         UserPIIResponse: {
@@ -5795,21 +6554,27 @@ export interface components {
             /** Format: int32 */
             public_flags: number;
             flags: components["schemas"]["Int53Type"];
-            bot?: boolean | null;
-            system?: boolean | null;
+            bot?: boolean;
+            system?: boolean;
             banner?: string | null;
             /** Format: int32 */
             accent_color?: number | null;
             global_name?: string | null;
             avatar_decoration_data?: null | components["schemas"]["UserAvatarDecorationResponse"];
-            clan?: null | components["schemas"]["UserPrimaryGuildResponse"];
+            collectibles?: null | components["schemas"]["UserCollectiblesResponse"];
+            primary_guild?: null | components["schemas"]["UserPrimaryGuildResponse"];
             mfa_enabled: boolean;
             locale: components["schemas"]["AvailableLocalesEnum"];
-            premium_type?: null | components["schemas"]["PremiumTypes"];
+            premium_type?: components["schemas"]["PremiumTypes"];
             email?: string | null;
-            verified?: boolean | null;
+            verified?: boolean;
         };
-        UserPrimaryGuildResponse: Record<string, never>;
+        UserPrimaryGuildResponse: {
+            identity_guild_id?: null | components["schemas"]["SnowflakeType"];
+            identity_enabled?: boolean | null;
+            tag?: string | null;
+            badge?: string | null;
+        };
         UserResponse: {
             id: components["schemas"]["SnowflakeType"];
             username: string;
@@ -5818,14 +6583,15 @@ export interface components {
             /** Format: int32 */
             public_flags: number;
             flags: components["schemas"]["Int53Type"];
-            bot?: boolean | null;
-            system?: boolean | null;
+            bot?: boolean;
+            system?: boolean;
             banner?: string | null;
             /** Format: int32 */
             accent_color?: number | null;
             global_name?: string | null;
             avatar_decoration_data?: null | components["schemas"]["UserAvatarDecorationResponse"];
-            clan?: null | components["schemas"]["UserPrimaryGuildResponse"];
+            collectibles?: null | components["schemas"]["UserCollectiblesResponse"];
+            primary_guild?: null | components["schemas"]["UserPrimaryGuildResponse"];
         };
         UserSelectComponentForMessageRequest: {
             /**
@@ -5833,11 +6599,30 @@ export interface components {
              * @enum {integer}
              */
             type: 5;
+            /** Format: int32 */
+            id?: number | null;
             custom_id: string;
             placeholder?: string | null;
             min_values?: number | null;
             max_values?: number | null;
             disabled?: boolean | null;
+            required?: boolean | null;
+            default_values?: components["schemas"]["UserSelectDefaultValue"][] | null;
+        };
+        UserSelectComponentForModalRequest: {
+            /**
+             * Format: int32
+             * @enum {integer}
+             */
+            type: 5;
+            /** Format: int32 */
+            id?: number | null;
+            custom_id: string;
+            placeholder?: string | null;
+            min_values?: number | null;
+            max_values?: number | null;
+            disabled?: boolean | null;
+            required?: boolean | null;
             default_values?: components["schemas"]["UserSelectDefaultValue"][] | null;
         };
         UserSelectComponentResponse: {
@@ -5849,13 +6634,13 @@ export interface components {
             /** Format: int32 */
             id: number;
             custom_id: string;
-            placeholder?: string | null;
+            placeholder?: string;
             /** Format: int32 */
             min_values?: number | null;
             /** Format: int32 */
             max_values?: number | null;
-            disabled?: boolean | null;
-            default_values?: components["schemas"]["UserSelectDefaultValueResponse"][] | null;
+            disabled?: boolean;
+            default_values?: components["schemas"]["UserSelectDefaultValueResponse"][];
         };
         UserSelectDefaultValue: {
             /** @enum {string} */
@@ -5927,7 +6712,7 @@ export interface components {
             description?: string | null;
             channel_id?: null | components["schemas"]["SnowflakeType"];
             creator_id?: null | components["schemas"]["SnowflakeType"];
-            creator?: null | components["schemas"]["UserResponse"];
+            creator?: components["schemas"]["UserResponse"];
             image?: string | null;
             /** Format: date-time */
             scheduled_start_time: string;
@@ -5941,7 +6726,7 @@ export interface components {
             entity_type: 2;
             entity_id?: null | components["schemas"]["SnowflakeType"];
             /** Format: int32 */
-            user_count?: number | null;
+            user_count?: number;
             privacy_level: components["schemas"]["GuildScheduledEventPrivacyLevels"];
             user_rsvp?: null | components["schemas"]["ScheduledEventUserResponse"];
             entity_metadata?: null | components["schemas"]["EntityMetadataVoiceResponse"];
@@ -5950,7 +6735,7 @@ export interface components {
             channel_id?: null | components["schemas"]["SnowflakeType"];
             deaf: boolean;
             guild_id?: null | components["schemas"]["SnowflakeType"];
-            member?: null | components["schemas"]["GuildMemberResponse"];
+            member?: components["schemas"]["GuildMemberResponse"];
             mute: boolean;
             /** Format: date-time */
             request_to_speak_timestamp?: string | null;
@@ -6027,13 +6812,13 @@ export interface components {
             status: string;
             /** Format: uri */
             avatar_url: string;
-            activity?: null | components["schemas"]["WidgetActivity"];
-            deaf?: boolean | null;
-            mute?: boolean | null;
-            self_deaf?: boolean | null;
-            self_mute?: boolean | null;
-            suppress?: boolean | null;
-            channel_id?: null | components["schemas"]["SnowflakeType"];
+            activity?: components["schemas"]["WidgetActivity"];
+            deaf?: boolean;
+            mute?: boolean;
+            self_deaf?: boolean;
+            self_mute?: boolean;
+            suppress?: boolean;
+            channel_id?: components["schemas"]["SnowflakeType"];
         };
         WidgetResponse: {
             id: components["schemas"]["SnowflakeType"];
@@ -6067,118 +6852,62 @@ export interface components {
         ErrorResponse: components["schemas"]["Error"] & {
             errors?: components["schemas"]["ErrorDetails"];
         };
+        /** @description Ratelimit error object returned by the Discord API */
+        RatelimitedResponse: components["schemas"]["Error"] & {
+            /** @description The number of seconds to wait before retrying your request */
+            retry_after: number;
+            /** @description Whether you are being ratelimited by the global ratelimit or a per-endpoint ratelimit */
+            global: boolean;
+        };
     };
     responses: {
         /** @description Client error response */
         ClientErrorResponse: {
             headers: {
+                "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                 [name: string]: unknown;
             };
             content: {
                 "application/json": components["schemas"]["ErrorResponse"];
             };
         };
+        /** @description Client ratelimited response */
+        ClientRatelimitedResponse: {
+            headers: {
+                "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["RatelimitedResponse"];
+            };
+        };
     };
     parameters: never;
     requestBodies: never;
-    headers: never;
+    headers: {
+        /** @description The maximum number of requests that can be made in the current ratelimit window */
+        "X-RateLimit-Limit": number;
+        /** @description The number of requests remaining in the current ratelimit window */
+        "X-RateLimit-Remaining": number;
+        /** @description A unix timestamp in seconds at which the current ratelimit window resets */
+        "X-RateLimit-Reset": number;
+        /** @description The duration in seconds until the current ratelimit window resets */
+        "X-RateLimit-Reset-After": number;
+        /** @description The bucket that the request belongs to */
+        "X-RateLimit-Bucket": string;
+    };
     pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    get_my_oauth2_application: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_my_oauth2_application */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateApplicationResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_my_connections: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_my_connections */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ConnectedAccountResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_dm: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreatePrivateChannelRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_dm */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_my_guilds: {
-        parameters: {
-            query?: {
-                before?: components["schemas"]["SnowflakeType"];
-                after?: components["schemas"]["SnowflakeType"];
-                limit?: number;
-                with_counts?: boolean;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_my_guilds */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MyGuildResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
     get_my_application: {
         parameters: {
             query?: never;
@@ -6191,12 +6920,18 @@ export interface operations {
             /** @description 200 response for get_my_application */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["PrivateApplicationResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -6216,308 +6951,779 @@ export interface operations {
             /** @description 200 response for update_my_application */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["PrivateApplicationResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    get_bot_gateway: {
+    get_application: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 200 response for get_bot_gateway */
+            /** @description 200 response for get_application */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["GatewayBotResponse"];
+                    "application/json": components["schemas"]["PrivateApplicationResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    get_openid_connect_userinfo: {
+    update_application: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_openid_connect_userinfo */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["OAuth2GetOpenIDConnectUserInfoResponse"];
-                };
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
             };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_public_keys: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_public_keys */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["OAuth2GetKeys"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_my_oauth2_authorization: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_my_oauth2_authorization */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["OAuth2GetAuthorizationResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_voice_regions: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_voice_regions */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["VoiceRegionResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_my_user: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_my_user */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserPIIResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_my_user: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
             cookie?: never;
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["BotAccountPatchRequest"];
+                "application/json": components["schemas"]["ApplicationFormPartial"];
             };
         };
         responses: {
-            /** @description 200 response for update_my_user */
+            /** @description 200 response for update_application */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["UserPIIResponse"];
+                    "application/json": components["schemas"]["PrivateApplicationResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    get_soundboard_default_sounds: {
+    applications_get_activity_instance: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                instance_id: string;
+            };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 200 response for get_soundboard_default_sounds */
+            /** @description 200 response for applications_get_activity_instance */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["SoundboardSoundResponse"][];
+                    "application/json": components["schemas"]["EmbeddedActivityInstance"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    create_stage_instance: {
+    upload_application_attachment: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for upload_application_attachment */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ActivitiesAttachmentResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_application_commands: {
+        parameters: {
+            query?: {
+                with_localizations?: boolean;
+            };
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_application_commands */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bulk_set_application_commands: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandUpdateRequest"][] | null;
+            };
+        };
+        responses: {
+            /** @description 200 response for bulk_set_application_commands */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_application_command */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            /** @description 201 response for create_application_command */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_application_command */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_application_command */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandPatchRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_application_command */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_application_emojis: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_application_emojis */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListApplicationEmojisResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_application_emoji: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
             cookie?: never;
         };
         requestBody: {
             content: {
                 "application/json": {
-                    topic: string;
-                    channel_id: components["schemas"]["SnowflakeType"];
-                    privacy_level?: null | components["schemas"]["StageInstancesPrivacyLevels"];
-                    guild_scheduled_event_id?: null | components["schemas"]["SnowflakeType"];
-                    send_start_notification?: boolean | null;
+                    name: string;
+                    image: string;
                 };
             };
         };
         responses: {
-            /** @description 200 response for create_stage_instance */
-            200: {
+            /** @description 201 response for create_application_emoji */
+            201: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["StageInstanceResponse"];
+                    "application/json": components["schemas"]["EmojiResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    list_sticker_packs: {
+    get_application_emoji: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 200 response for list_sticker_packs */
+            /** @description 200 response for get_application_emoji */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["StickerPackCollectionResponse"];
+                    "application/json": components["schemas"]["EmojiResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    get_gateway: {
+    delete_application_emoji: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 200 response for get_gateway */
-            200: {
+            /** @description 204 response for delete_application_emoji */
+            204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": components["schemas"]["GatewayResponse"];
-                };
+                content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    create_guild: {
+    update_application_emoji: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
             cookie?: never;
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["GuildCreateRequest"];
+                "application/json": {
+                    name?: string;
+                };
             };
         };
         responses: {
-            /** @description 201 response for create_guild */
-            201: {
+            /** @description 200 response for update_application_emoji */
+            200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["GuildResponse"];
+                    "application/json": components["schemas"]["EmojiResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    list_my_private_archived_threads: {
+    get_entitlements: {
         parameters: {
             query?: {
+                user_id?: components["schemas"]["SnowflakeType"];
+                sku_ids?: string | (null | components["schemas"]["SnowflakeType"])[];
+                guild_id?: components["schemas"]["SnowflakeType"];
                 before?: components["schemas"]["SnowflakeType"];
+                after?: components["schemas"]["SnowflakeType"];
                 limit?: number;
+                exclude_ended?: boolean;
+                exclude_deleted?: boolean;
+                only_active?: boolean;
             };
             header?: never;
             path: {
-                channel_id: components["schemas"]["SnowflakeType"];
+                application_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 200 response for list_my_private_archived_threads */
+            /** @description 200 response for get_entitlements */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ThreadsResponse"];
+                    "application/json": (null | components["schemas"]["EntitlementResponse"])[];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_entitlement: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateEntitlementRequestData"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_entitlement */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EntitlementResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_entitlement: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                entitlement_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_entitlement */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EntitlementResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_entitlement: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                entitlement_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_entitlement */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    consume_entitlement: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                entitlement_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for consume_entitlement */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_application_commands: {
+        parameters: {
+            query?: {
+                with_localizations?: boolean;
+            };
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_application_commands */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bulk_set_guild_application_commands: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandUpdateRequest"][] | null;
+            };
+        };
+        responses: {
+            /** @description 200 response for bulk_set_guild_application_commands */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_guild_application_command */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            /** @description 201 response for create_guild_application_command */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -6536,12 +7742,113 @@ export interface operations {
             /** @description 200 response for list_guild_application_command_permissions */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["CommandPermissionsResponse"][];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_application_command */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_application_command */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_application_command: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+                guild_id: components["schemas"]["SnowflakeType"];
+                command_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandPatchRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_application_command */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -6561,12 +7868,18 @@ export interface operations {
             /** @description 200 response for get_guild_application_command_permissions */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["CommandPermissionsResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -6592,210 +7905,18 @@ export interface operations {
             /** @description 200 response for set_guild_application_command_permissions */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["CommandPermissionsResponse"];
                 };
             };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    add_my_message_reaction: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-                emoji_name: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for add_my_message_reaction */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_my_message_reaction: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-                emoji_name: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_my_message_reaction */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_private_archived_threads: {
-        parameters: {
-            query?: {
-                before?: string;
-                limit?: number;
-            };
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_private_archived_threads */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ThreadsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_public_archived_threads: {
-        parameters: {
-            query?: {
-                before?: string;
-                limit?: number;
-            };
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_public_archived_threads */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ThreadsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_application_user_role_connection: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_application_user_role_connection */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationUserRoleConnectionResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_application_user_role_connection: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    platform_name?: string | null;
-                    platform_username?: string | null;
-                    metadata?: {
-                        [key: string]: string;
-                    } | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_application_user_role_connection */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationUserRoleConnectionResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_application_user_role_connection: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_application_user_role_connection */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_my_guild_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_my_guild_member */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateGuildMemberResponse"];
-                };
-            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -6813,12 +7934,18 @@ export interface operations {
             /** @description 200 response for get_application_role_connections_metadata */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["ApplicationRoleConnectionsMetadataItemResponse"][] | null;
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -6840,208 +7967,233 @@ export interface operations {
             /** @description 200 response for update_application_role_connections_metadata */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["ApplicationRoleConnectionsMetadataItemResponse"][] | null;
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    consume_entitlement: {
+    get_channel: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                entitlement_id: components["schemas"]["SnowflakeType"];
+                channel_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 204 response for consume_entitlement */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_application_command: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_application_command */
+            /** @description 200 response for get_channel */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                    "application/json": components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    delete_guild_application_command: {
+    delete_channel: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
+                channel_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 204 response for delete_guild_application_command */
-            204: {
+            /** @description 200 response for delete_channel */
+            200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
+                };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    update_guild_application_command: {
+    update_channel: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
+                channel_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["ApplicationCommandPatchRequestPartial"];
+                "application/json": components["schemas"]["UpdateDMRequestPartial"] | components["schemas"]["UpdateGroupDMRequestPartial"] | components["schemas"]["UpdateGuildChannelRequestPartial"] | components["schemas"]["UpdateThreadRequestPartial"];
             };
         };
         responses: {
-            /** @description 200 response for update_guild_application_command */
+            /** @description 200 response for update_channel */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
+                    "application/json": components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    list_guild_application_commands: {
+    follow_channel: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    webhook_channel_id: components["schemas"]["SnowflakeType"];
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for follow_channel */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChannelFollowerResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_channel_invites: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_channel_invites */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"] | null)[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_channel_invite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateGroupDMInviteRequest"] | components["schemas"]["CreateGuildInviteRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["CreateGroupDMInviteRequest"] | components["schemas"]["CreateGuildInviteRequest"];
+                "multipart/form-data": (components["schemas"]["CreateGroupDMInviteRequest"] | components["schemas"]["CreateGuildInviteRequest"]) & {
+                    target_users_file?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for create_channel_invite */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"];
+                };
+            };
+            /** @description 204 response for create_channel_invite */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_messages: {
         parameters: {
             query?: {
-                with_localizations?: boolean;
+                around?: components["schemas"]["SnowflakeType"];
+                before?: components["schemas"]["SnowflakeType"];
+                after?: components["schemas"]["SnowflakeType"];
+                limit?: number;
             };
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_application_commands */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    bulk_set_guild_application_commands: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationCommandUpdateRequest"][] | null;
-            };
-        };
-        responses: {
-            /** @description 200 response for bulk_set_guild_application_commands */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_application_command: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationCommandCreateRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_guild_application_command */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
-                };
-            };
-            /** @description 201 response for create_guild_application_command */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    join_thread: {
-        parameters: {
-            query?: never;
             header?: never;
             path: {
                 channel_id: components["schemas"]["SnowflakeType"];
@@ -7050,17 +8202,25 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description 204 response for join_thread */
-            204: {
+            /** @description 200 response for list_messages */
+            200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"][] | null;
+                };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    leave_thread: {
+    create_message: {
         parameters: {
             query?: never;
             header?: never;
@@ -7069,15 +8229,40 @@ export interface operations {
             };
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MessageCreateRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["MessageCreateRequest"];
+                "multipart/form-data": components["schemas"]["MessageCreateRequest"] & {
+                    "files[0]"?: string;
+                    "files[1]"?: string;
+                    "files[2]"?: string;
+                    "files[3]"?: string;
+                    "files[4]"?: string;
+                    "files[5]"?: string;
+                    "files[6]"?: string;
+                    "files[7]"?: string;
+                    "files[8]"?: string;
+                    "files[9]"?: string;
+                };
+            };
+        };
         responses: {
-            /** @description 204 response for leave_thread */
-            204: {
+            /** @description 200 response for create_message */
+            200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"];
+                };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7101,34 +8286,267 @@ export interface operations {
             /** @description 204 response for bulk_delete_messages */
             204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    delete_user_message_reaction: {
+    list_pins: {
+        parameters: {
+            query?: {
+                before?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_pins */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PinnedMessagesResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_pin: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 channel_id: components["schemas"]["SnowflakeType"];
                 message_id: components["schemas"]["SnowflakeType"];
-                emoji_name: string;
-                user_id: components["schemas"]["SnowflakeType"];
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 204 response for delete_user_message_reaction */
+            /** @description 204 response for create_pin */
             204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_pin: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_pin */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_message: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_message */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_message: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_message */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_message: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MessageEditRequestPartial"];
+                "application/x-www-form-urlencoded": components["schemas"]["MessageEditRequestPartial"];
+                "multipart/form-data": components["schemas"]["MessageEditRequestPartial"] & {
+                    "files[0]"?: string;
+                    "files[1]"?: string;
+                    "files[2]"?: string;
+                    "files[3]"?: string;
+                    "files[4]"?: string;
+                    "files[5]"?: string;
+                    "files[6]"?: string;
+                    "files[7]"?: string;
+                    "files[8]"?: string;
+                    "files[9]"?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_message */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    crosspost_message: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for crosspost_message */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_all_message_reactions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_all_message_reactions */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7152,12 +8570,18 @@ export interface operations {
             /** @description 200 response for list_message_reactions_by_emoji */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["UserResponse"][];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7177,56 +8601,104 @@ export interface operations {
             /** @description 204 response for delete_all_message_reactions_by_emoji */
             204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    delete_all_message_reactions: {
+    add_my_message_reaction: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 channel_id: components["schemas"]["SnowflakeType"];
                 message_id: components["schemas"]["SnowflakeType"];
+                emoji_name: string;
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 204 response for delete_all_message_reactions */
+            /** @description 204 response for add_my_message_reaction */
             204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
-    crosspost_message: {
+    delete_my_message_reaction: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 channel_id: components["schemas"]["SnowflakeType"];
                 message_id: components["schemas"]["SnowflakeType"];
+                emoji_name: string;
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
-            /** @description 200 response for crosspost_message */
-            200: {
+            /** @description 204 response for delete_my_message_reaction */
+            204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"];
-                };
+                content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_user_message_reaction: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+                emoji_name: string;
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_user_message_reaction */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7249,12 +8721,167 @@ export interface operations {
             /** @description 201 response for create_thread_from_message */
             201: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["ThreadResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    set_channel_permission_overwrite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                overwrite_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    type?: null | components["schemas"]["ChannelPermissionOverwrites"];
+                    allow?: number | null;
+                    deny?: number | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 204 response for set_channel_permission_overwrite */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_channel_permission_overwrite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                overwrite_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_channel_permission_overwrite */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    deprecated_list_pins: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for deprecated_list_pins */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    deprecated_create_pin: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for deprecated_create_pin */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    deprecated_delete_pin: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                message_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for deprecated_delete_pin */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7277,12 +8904,18 @@ export interface operations {
             /** @description 200 response for get_answer_voters */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["PollAnswerDetailsResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7301,12 +8934,4880 @@ export interface operations {
             /** @description 200 response for poll_expire */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["MessageResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    add_group_dm_user: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    access_token?: string | null;
+                    nick?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 201 response for add_group_dm_user */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"];
+                };
+            };
+            /** @description 204 response for add_group_dm_user */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_group_dm_user: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_group_dm_user */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    send_soundboard_sound: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SoundboardSoundSendRequest"];
+            };
+        };
+        responses: {
+            /** @description 204 response for send_soundboard_sound */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_thread_members: {
+        parameters: {
+            query?: {
+                with_member?: boolean;
+                limit?: number;
+                after?: components["schemas"]["SnowflakeType"];
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_thread_members */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadMemberResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    join_thread: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for join_thread */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    leave_thread: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for leave_thread */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_thread_member: {
+        parameters: {
+            query?: {
+                with_member?: boolean;
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_thread_member */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadMemberResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    add_thread_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for add_thread_member */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_thread_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_thread_member */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_thread: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateForumThreadRequest"] | components["schemas"]["CreateTextThreadWithoutMessageRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["CreateForumThreadRequest"] | components["schemas"]["CreateTextThreadWithoutMessageRequest"];
+                "multipart/form-data": components["schemas"]["CreateForumThreadRequest"] | components["schemas"]["CreateTextThreadWithoutMessageRequest"];
+            };
+        };
+        responses: {
+            /** @description 201 response for create_thread */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreatedThreadResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_private_archived_threads: {
+        parameters: {
+            query?: {
+                before?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_private_archived_threads */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_public_archived_threads: {
+        parameters: {
+            query?: {
+                before?: string;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_public_archived_threads */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    thread_search: {
+        parameters: {
+            query?: {
+                name?: string;
+                slop?: number;
+                min_id?: components["schemas"]["SnowflakeType"];
+                max_id?: components["schemas"]["SnowflakeType"];
+                tag?: string | components["schemas"]["SnowflakeType"][];
+                tag_setting?: components["schemas"]["ThreadSearchTagSetting"];
+                archived?: boolean;
+                sort_by?: components["schemas"]["ThreadSortingMode"];
+                sort_order?: components["schemas"]["SortingOrder"];
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for thread_search */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadSearchResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    trigger_typing_indicator: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for trigger_typing_indicator */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TypingIndicatorResponse"];
+                };
+            };
+            /** @description 204 response for trigger_typing_indicator */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_my_private_archived_threads: {
+        parameters: {
+            query?: {
+                before?: components["schemas"]["SnowflakeType"];
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_my_private_archived_threads */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_channel_webhooks: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_channel_webhooks */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"])[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_webhook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    avatar?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for create_webhook */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildIncomingWebhookResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_gateway: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_gateway */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_bot_gateway: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_bot_gateway */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayBotResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_template: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_template */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildTemplateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild: {
+        parameters: {
+            query?: {
+                with_counts?: boolean;
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildWithCountsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GuildPatchRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_audit_log_entries: {
+        parameters: {
+            query?: {
+                user_id?: components["schemas"]["SnowflakeType"];
+                target_id?: components["schemas"]["SnowflakeType"];
+                action_type?: components["schemas"]["AuditLogActionTypes"];
+                before?: components["schemas"]["SnowflakeType"];
+                after?: components["schemas"]["SnowflakeType"];
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_audit_log_entries */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildAuditLogResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_auto_moderation_rules: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_auto_moderation_rules */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"] | null)[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_auto_moderation_rule: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DefaultKeywordListUpsertRequest"] | components["schemas"]["KeywordUpsertRequest"] | components["schemas"]["MLSpamUpsertRequest"] | components["schemas"]["MentionSpamUpsertRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_auto_moderation_rule */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_auto_moderation_rule: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                rule_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_auto_moderation_rule */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_auto_moderation_rule: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                rule_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_auto_moderation_rule */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_auto_moderation_rule: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                rule_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DefaultKeywordListUpsertRequestPartial"] | components["schemas"]["KeywordUpsertRequestPartial"] | components["schemas"]["MLSpamUpsertRequestPartial"] | components["schemas"]["MentionSpamUpsertRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_auto_moderation_rule */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_bans: {
+        parameters: {
+            query?: {
+                limit?: number;
+                before?: components["schemas"]["SnowflakeType"];
+                after?: components["schemas"]["SnowflakeType"];
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_bans */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildBanResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_ban: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_ban */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildBanResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    ban_user_from_guild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BanUserFromGuildRequest"];
+            };
+        };
+        responses: {
+            /** @description 204 response for ban_user_from_guild */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    unban_user_from_guild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UnbanUserFromGuildRequest"];
+            };
+        };
+        responses: {
+            /** @description 204 response for unban_user_from_guild */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bulk_ban_users_from_guild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BulkBanUsersRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for bulk_ban_users_from_guild */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BulkBanUsersResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_channels: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_channels */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"])[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_channel: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateGuildChannelRequest"];
+            };
+        };
+        responses: {
+            /** @description 201 response for create_guild_channel */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildChannelResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bulk_update_guild_channels: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    id?: null | components["schemas"]["SnowflakeType"];
+                    /** Format: int32 */
+                    position?: number | null;
+                    parent_id?: null | components["schemas"]["SnowflakeType"];
+                    lock_permissions?: boolean | null;
+                }[];
+            };
+        };
+        responses: {
+            /** @description 204 response for bulk_update_guild_channels */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_emojis: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_emojis */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmojiResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_emoji: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    image: string;
+                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 201 response for create_guild_emoji */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmojiResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_emoji: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_emoji */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmojiResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_emoji: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_emoji */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_emoji: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                emoji_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_emoji */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmojiResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_integrations: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_integrations */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["DiscordIntegrationResponse"] | components["schemas"]["ExternalConnectionIntegrationResponse"] | components["schemas"]["GuildSubscriptionIntegrationResponse"])[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_integration: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                integration_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_integration */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_invites: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_invites */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"] | null)[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_members: {
+        parameters: {
+            query?: {
+                limit?: number;
+                after?: number;
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_members */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildMemberResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_my_guild_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    nick?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_my_guild_member */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrivateGuildMemberResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    search_guild_members: {
+        parameters: {
+            query: {
+                limit?: number;
+                query: string;
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for search_guild_members */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildMemberResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_member */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildMemberResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    add_guild_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BotAddGuildMemberRequest"];
+            };
+        };
+        responses: {
+            /** @description 201 response for add_guild_member */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildMemberResponse"];
+                };
+            };
+            /** @description 204 response for add_guild_member */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_member */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    nick?: string | null;
+                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
+                    mute?: boolean | null;
+                    deaf?: boolean | null;
+                    channel_id?: null | components["schemas"]["SnowflakeType"];
+                    /** Format: date-time */
+                    communication_disabled_until?: string | null;
+                    flags?: number | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_member */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildMemberResponse"];
+                };
+            };
+            /** @description 204 response for update_guild_member */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    add_guild_member_role: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+                role_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for add_guild_member_role */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_member_role: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+                role_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_member_role */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_new_member_welcome: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_new_member_welcome */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildHomeSettingsResponse"];
+                };
+            };
+            /** @description 204 response for get_guild_new_member_welcome */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guilds_onboarding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guilds_onboarding */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserGuildOnboardingResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    put_guilds_onboarding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateGuildOnboardingRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for put_guilds_onboarding */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildOnboardingResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_preview: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_preview */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildPreviewResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    preview_prune_guild: {
+        parameters: {
+            query?: {
+                days?: number;
+                include_roles?: string | (null | components["schemas"]["SnowflakeType"])[];
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for preview_prune_guild */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildPruneResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    prune_guild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PruneGuildRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for prune_guild */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildPruneResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_voice_regions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_voice_regions */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VoiceRegionResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_roles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_roles */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildRoleResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_role: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateRoleRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_guild_role */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildRoleResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bulk_update_guild_roles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateRolePositionsRequest"][];
+            };
+        };
+        responses: {
+            /** @description 200 response for bulk_update_guild_roles */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildRoleResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_role: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                role_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_role */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildRoleResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_role: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                role_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_role */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_role: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                role_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateRoleRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_role */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildRoleResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_scheduled_events: {
+        parameters: {
+            query?: {
+                with_user_count?: boolean;
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_scheduled_events */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"])[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_scheduled_event: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExternalScheduledEventCreateRequest"] | components["schemas"]["StageScheduledEventCreateRequest"] | components["schemas"]["VoiceScheduledEventCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_guild_scheduled_event */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_scheduled_event: {
+        parameters: {
+            query?: {
+                with_user_count?: boolean;
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_scheduled_event */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_scheduled_event: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_scheduled_event */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_scheduled_event: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExternalScheduledEventPatchRequestPartial"] | components["schemas"]["StageScheduledEventPatchRequestPartial"] | components["schemas"]["VoiceScheduledEventPatchRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_scheduled_event */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_scheduled_event_users: {
+        parameters: {
+            query?: {
+                with_member?: boolean;
+                limit?: number;
+                before?: components["schemas"]["SnowflakeType"];
+                after?: components["schemas"]["SnowflakeType"];
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_scheduled_event_users */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScheduledEventUserResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_soundboard_sounds: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_soundboard_sounds */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListGuildSoundboardSoundsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_soundboard_sound: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SoundboardCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description 201 response for create_guild_soundboard_sound */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SoundboardSoundResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_soundboard_sound: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sound_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_soundboard_sound */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SoundboardSoundResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_soundboard_sound: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sound_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_soundboard_sound */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_soundboard_sound: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sound_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SoundboardPatchRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_soundboard_sound */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SoundboardSoundResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_stickers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_stickers */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildStickerResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_sticker: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    name: string;
+                    tags: string;
+                    description?: string | null;
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            /** @description 201 response for create_guild_sticker */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildStickerResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_sticker: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sticker_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_sticker */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildStickerResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_sticker: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sticker_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_guild_sticker */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_sticker: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                sticker_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    tags?: string;
+                    description?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_sticker */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildStickerResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_guild_templates: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_guild_templates */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildTemplateResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_guild_template: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    description?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for create_guild_template */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildTemplateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    sync_guild_template: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for sync_guild_template */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildTemplateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_guild_template: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for delete_guild_template */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildTemplateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_template: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    description?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_template */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildTemplateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_active_guild_threads: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_active_guild_threads */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_vanity_url: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_vanity_url */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VanityURLResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_self_voice_state: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_self_voice_state */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VoiceStateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_self_voice_state: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateSelfVoiceStateRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 204 response for update_self_voice_state */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_voice_state: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_voice_state */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VoiceStateResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_voice_state: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateVoiceStateRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 204 response for update_voice_state */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_webhooks: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_webhooks */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"])[] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_welcome_screen: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_welcome_screen */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildWelcomeScreenResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_welcome_screen: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WelcomeScreenPatchRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_welcome_screen */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildWelcomeScreenResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_widget_settings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_widget_settings */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WidgetSettingsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_guild_widget_settings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    channel_id?: null | components["schemas"]["SnowflakeType"];
+                    enabled?: boolean | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_guild_widget_settings */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WidgetSettingsResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_widget: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_widget */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WidgetResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_guild_widget_png: {
+        parameters: {
+            query?: {
+                style?: components["schemas"]["WidgetImageStyles"];
+            };
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_guild_widget_png */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_interaction_response: {
+        parameters: {
+            query?: {
+                with_response?: boolean;
+            };
+            header?: never;
+            path: {
+                interaction_id: components["schemas"]["SnowflakeType"];
+                interaction_token: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCommandAutocompleteCallbackRequest"] | components["schemas"]["CreateMessageInteractionCallbackRequest"] | components["schemas"]["LaunchActivityInteractionCallbackRequest"] | components["schemas"]["ModalInteractionCallbackRequest"] | components["schemas"]["PongInteractionCallbackRequest"] | components["schemas"]["UpdateMessageInteractionCallbackRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["ApplicationCommandAutocompleteCallbackRequest"] | components["schemas"]["CreateMessageInteractionCallbackRequest"] | components["schemas"]["LaunchActivityInteractionCallbackRequest"] | components["schemas"]["ModalInteractionCallbackRequest"] | components["schemas"]["PongInteractionCallbackRequest"] | components["schemas"]["UpdateMessageInteractionCallbackRequest"];
+                "multipart/form-data": components["schemas"]["ApplicationCommandAutocompleteCallbackRequest"] | components["schemas"]["CreateMessageInteractionCallbackRequest"] | components["schemas"]["LaunchActivityInteractionCallbackRequest"] | components["schemas"]["ModalInteractionCallbackRequest"] | components["schemas"]["PongInteractionCallbackRequest"] | components["schemas"]["UpdateMessageInteractionCallbackRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_interaction_response */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InteractionCallbackResponse"];
+                };
+            };
+            /** @description 204 response for create_interaction_response */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    invite_resolve: {
+        parameters: {
+            query?: {
+                with_counts?: boolean;
+                guild_scheduled_event_id?: components["schemas"]["SnowflakeType"];
+            };
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for invite_resolve */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    invite_revoke: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for invite_revoke */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_or_join_lobby: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: int32 */
+                    idle_timeout_seconds?: number | null;
+                    lobby_metadata?: {
+                        [key: string]: string;
+                    } | null;
+                    member_metadata?: {
+                        [key: string]: string;
+                    } | null;
+                    secret: string;
+                    flags?: null | 1;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for create_or_join_lobby */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_lobby: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: int32 */
+                    idle_timeout_seconds?: number | null;
+                    members?: components["schemas"]["LobbyMemberRequest"][] | null;
+                    metadata?: {
+                        [key: string]: string;
+                    } | null;
+                    flags?: null | 1;
+                    /** Format: uri */
+                    override_event_webhooks_url?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 201 response for create_lobby */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_lobby: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_lobby */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    edit_lobby: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: int32 */
+                    idle_timeout_seconds?: number | null;
+                    metadata?: {
+                        [key: string]: string;
+                    } | null;
+                    members?: components["schemas"]["LobbyMemberRequest"][] | null;
+                    flags?: null | 1;
+                    /** Format: uri */
+                    override_event_webhooks_url?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for edit_lobby */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    edit_lobby_channel_link: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    channel_id?: null | components["schemas"]["SnowflakeType"];
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for edit_lobby_channel_link */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    leave_lobby: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for leave_lobby */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_linked_lobby_guild_invite_for_self: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for create_linked_lobby_guild_invite_for_self */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyGuildInviteResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bulk_update_lobby_members: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BulkLobbyMemberRequest"][] | null;
+            };
+        };
+        responses: {
+            /** @description 200 response for bulk_update_lobby_members */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyMemberResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    add_lobby_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    metadata?: {
+                        [key: string]: string;
+                    } | null;
+                    flags?: null | 1;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for add_lobby_member */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyMemberResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_lobby_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_lobby_member */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_linked_lobby_guild_invite_for_user: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for create_linked_lobby_guild_invite_for_user */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyGuildInviteResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_lobby_messages: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_lobby_messages */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyMessageResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_lobby_message: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                lobby_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SDKMessageRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["SDKMessageRequest"];
+                "multipart/form-data": components["schemas"]["SDKMessageRequest"];
+            };
+        };
+        responses: {
+            /** @description 201 response for create_lobby_message */
+            201: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LobbyMessageResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_my_oauth2_authorization: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_my_oauth2_authorization */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OAuth2GetAuthorizationResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_my_oauth2_application: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_my_oauth2_application */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrivateApplicationResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_public_keys: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_public_keys */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OAuth2GetKeys"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_openid_connect_userinfo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_openid_connect_userinfo */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OAuth2GetOpenIDConnectUserInfoResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    partner_sdk_unmerge_provisional_account: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    client_id: components["schemas"]["SnowflakeType"];
+                    client_secret?: string | null;
+                    external_auth_token: string;
+                    external_auth_type: components["schemas"]["ApplicationIdentityProviderAuthType"];
+                };
+            };
+        };
+        responses: {
+            /** @description 204 response for partner_sdk_unmerge_provisional_account */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bot_partner_sdk_unmerge_provisional_account: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    external_user_id: string;
+                };
+            };
+        };
+        responses: {
+            /** @description 204 response for bot_partner_sdk_unmerge_provisional_account */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    partner_sdk_token: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    client_id: components["schemas"]["SnowflakeType"];
+                    client_secret?: string | null;
+                    external_auth_token: string;
+                    external_auth_type: components["schemas"]["ApplicationIdentityProviderAuthType"];
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for partner_sdk_token */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProvisionalTokenResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    bot_partner_sdk_token: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    external_user_id: string;
+                    preferred_global_name?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for bot_partner_sdk_token */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProvisionalTokenResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_soundboard_default_sounds: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_soundboard_default_sounds */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SoundboardSoundResponse"][];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_stage_instance: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    topic: string;
+                    channel_id: components["schemas"]["SnowflakeType"];
+                    privacy_level?: null | components["schemas"]["StageInstancesPrivacyLevels"];
+                    guild_scheduled_event_id?: null | components["schemas"]["SnowflakeType"];
+                    send_start_notification?: boolean | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for create_stage_instance */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StageInstanceResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_stage_instance: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_stage_instance */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StageInstanceResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_stage_instance: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_stage_instance */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_stage_instance: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                channel_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    topic?: string;
+                    privacy_level?: components["schemas"]["StageInstancesPrivacyLevels"];
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_stage_instance */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StageInstanceResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_sticker_packs: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_sticker_packs */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StickerPackCollectionResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_sticker_pack: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                pack_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_sticker_pack */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StickerPackResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_sticker: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                sticker_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_sticker */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_my_user: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_my_user */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserPIIResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_my_user: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BotAccountPatchRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_my_user */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserPIIResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_application_user_role_connection: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_application_user_role_connection */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationUserRoleConnectionResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_application_user_role_connection: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateApplicationUserRoleConnectionRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for update_application_user_role_connection */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationUserRoleConnectionResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_application_user_role_connection: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                application_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_application_user_role_connection */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    create_dm: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreatePrivateChannelRequest"];
+            };
+        };
+        responses: {
+            /** @description 200 response for create_dm */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_my_connections: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_my_connections */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConnectedAccountResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_my_guilds: {
+        parameters: {
+            query?: {
+                before?: components["schemas"]["SnowflakeType"];
+                after?: components["schemas"]["SnowflakeType"];
+                limit?: number;
+                with_counts?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_my_guilds */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MyGuildResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    leave_guild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for leave_guild */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_my_guild_member: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                guild_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_my_guild_member */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PrivateGuildMemberResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_user: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_user */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    list_voice_regions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for list_voice_regions */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VoiceRegionResponse"][] | null;
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_webhook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_webhook */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_webhook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_webhook */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_webhook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    avatar?: string | null;
+                    channel_id?: null | components["schemas"]["SnowflakeType"];
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_webhook */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    get_webhook_by_token: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 200 response for get_webhook_by_token */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    execute_webhook: {
+        parameters: {
+            query?: {
+                wait?: boolean;
+                thread_id?: components["schemas"]["SnowflakeType"];
+                with_components?: boolean;
+            };
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["IncomingWebhookRequestPartial"] | components["schemas"]["IncomingWebhookUpdateRequestPartial"];
+                "application/x-www-form-urlencoded": components["schemas"]["IncomingWebhookRequestPartial"] | components["schemas"]["IncomingWebhookUpdateRequestPartial"];
+                "multipart/form-data": components["schemas"]["IncomingWebhookRequestPartial"] | components["schemas"]["IncomingWebhookUpdateRequestPartial"];
+            };
+        };
+        responses: {
+            /** @description 200 response for execute_webhook */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageResponse"];
+                };
+            };
+            /** @description 204 response for execute_webhook */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    delete_webhook_by_token: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 204 response for delete_webhook_by_token */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    update_webhook_by_token: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    avatar?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description 200 response for update_webhook_by_token */
+            200: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
+                };
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
+            "4XX": components["responses"]["ClientErrorResponse"];
+        };
+    };
+    execute_github_compatible_webhook: {
+        parameters: {
+            query?: {
+                wait?: boolean;
+                thread_id?: components["schemas"]["SnowflakeType"];
+            };
+            header?: never;
+            path: {
+                webhook_id: components["schemas"]["SnowflakeType"];
+                webhook_token: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GithubWebhook"];
+            };
+        };
+        responses: {
+            /** @description 204 response for execute_github_compatible_webhook */
+            204: {
+                headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7327,12 +13828,18 @@ export interface operations {
             /** @description 200 response for get_original_webhook_message */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["MessageResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7353,10 +13860,16 @@ export interface operations {
             /** @description 204 response for delete_original_webhook_message */
             204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -7395,1506 +13908,18 @@ export interface operations {
             /** @description 200 response for update_original_webhook_message */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["MessageResponse"];
                 };
             };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_scheduled_event_users: {
-        parameters: {
-            query?: {
-                with_member?: boolean;
-                limit?: number;
-                before?: components["schemas"]["SnowflakeType"];
-                after?: components["schemas"]["SnowflakeType"];
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_scheduled_event_users */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ScheduledEventUserResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_auto_moderation_rule: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                rule_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_auto_moderation_rule */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_auto_moderation_rule: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                rule_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_auto_moderation_rule */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_auto_moderation_rule: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                rule_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DefaultKeywordListUpsertRequestPartial"] | components["schemas"]["KeywordUpsertRequestPartial"] | components["schemas"]["MLSpamUpsertRequestPartial"] | components["schemas"]["MentionSpamUpsertRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_auto_moderation_rule */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_auto_moderation_rules: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_auto_moderation_rules */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"] | null)[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_auto_moderation_rule: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DefaultKeywordListUpsertRequest"] | components["schemas"]["KeywordUpsertRequest"] | components["schemas"]["MLSpamUpsertRequest"] | components["schemas"]["MentionSpamUpsertRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_auto_moderation_rule */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DefaultKeywordRuleResponse"] | components["schemas"]["KeywordRuleResponse"] | components["schemas"]["MLSpamRuleResponse"] | components["schemas"]["MentionSpamRuleResponse"] | components["schemas"]["SpamLinkRuleResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_self_voice_state: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_self_voice_state */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["VoiceStateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_self_voice_state: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    /** Format: date-time */
-                    request_to_speak_timestamp?: string | null;
-                    suppress?: boolean | null;
-                    channel_id?: null | components["schemas"]["SnowflakeType"];
-                };
-            };
-        };
-        responses: {
-            /** @description 204 response for update_self_voice_state */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    search_guild_members: {
-        parameters: {
-            query: {
-                limit: number;
-                query: string;
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for search_guild_members */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildMemberResponse"][];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_active_guild_threads: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_active_guild_threads */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ThreadsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_my_guild_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    nick?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_my_guild_member */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateGuildMemberResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    add_guild_member_role: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-                role_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for add_guild_member_role */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_member_role: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-                role_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_member_role */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    leave_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for leave_guild */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    applications_get_activity_instance: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                instance_id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for applications_get_activity_instance */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmbeddedActivityInstance"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_entitlement: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                entitlement_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_entitlement */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EntitlementResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_entitlement: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                entitlement_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_entitlement */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_entitlements: {
-        parameters: {
-            query: {
-                user_id?: components["schemas"]["SnowflakeType"];
-                sku_ids: string | (null | components["schemas"]["SnowflakeType"])[];
-                guild_id?: components["schemas"]["SnowflakeType"];
-                before?: components["schemas"]["SnowflakeType"];
-                after?: components["schemas"]["SnowflakeType"];
-                limit?: number;
-                exclude_ended?: boolean;
-                exclude_deleted?: boolean;
-                only_active?: boolean;
-            };
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_entitlements */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (null | components["schemas"]["EntitlementResponse"])[];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_entitlement: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreateEntitlementRequestData"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_entitlement */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EntitlementResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    upload_application_attachment: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": {
-                    file: string;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for upload_application_attachment */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ActivitiesAttachmentResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_application_command: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_application_command */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_application_command: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_application_command */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_application_command: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                command_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationCommandPatchRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_application_command */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_application_commands: {
-        parameters: {
-            query?: {
-                with_localizations?: boolean;
-            };
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_application_commands */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    bulk_set_application_commands: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationCommandUpdateRequest"][] | null;
-            };
-        };
-        responses: {
-            /** @description 200 response for bulk_set_application_commands */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_application_command: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationCommandCreateRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_application_command */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
-                };
-            };
-            /** @description 201 response for create_application_command */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationCommandResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_application_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_application_emoji */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_application_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_application_emoji */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_application_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_application_emoji */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_application_emojis: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_application_emojis */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ListApplicationEmojisResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_application_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name: string;
-                    image: string;
-                };
-            };
-        };
-        responses: {
-            /** @description 201 response for create_application_emoji */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_interaction_response: {
-        parameters: {
-            query?: {
-                with_response?: boolean;
-            };
-            header?: never;
-            path: {
-                interaction_id: components["schemas"]["SnowflakeType"];
-                interaction_token: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationCommandAutocompleteCallbackRequest"] | components["schemas"]["CreateMessageInteractionCallbackRequest"] | components["schemas"]["LaunchActivityInteractionCallbackRequest"] | components["schemas"]["ModalInteractionCallbackRequest"] | components["schemas"]["PongInteractionCallbackRequest"] | components["schemas"]["UpdateMessageInteractionCallbackRequest"];
-                "application/x-www-form-urlencoded": components["schemas"]["ApplicationCommandAutocompleteCallbackRequest"] | components["schemas"]["CreateMessageInteractionCallbackRequest"] | components["schemas"]["LaunchActivityInteractionCallbackRequest"] | components["schemas"]["ModalInteractionCallbackRequest"] | components["schemas"]["PongInteractionCallbackRequest"] | components["schemas"]["UpdateMessageInteractionCallbackRequest"];
-                "multipart/form-data": components["schemas"]["ApplicationCommandAutocompleteCallbackRequest"] | components["schemas"]["CreateMessageInteractionCallbackRequest"] | components["schemas"]["LaunchActivityInteractionCallbackRequest"] | components["schemas"]["ModalInteractionCallbackRequest"] | components["schemas"]["PongInteractionCallbackRequest"] | components["schemas"]["UpdateMessageInteractionCallbackRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_interaction_response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["InteractionCallbackResponse"];
-                };
-            };
-            /** @description 204 response for create_interaction_response */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    send_soundboard_sound: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["SoundboardSoundSendRequest"];
-            };
-        };
-        responses: {
-            /** @description 204 response for send_soundboard_sound */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_thread_member: {
-        parameters: {
-            query?: {
-                with_member?: boolean;
-            };
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_thread_member */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ThreadMemberResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    add_thread_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for add_thread_member */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_thread_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_thread_member */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_thread_members: {
-        parameters: {
-            query?: {
-                with_member?: boolean;
-                limit?: number;
-                after?: components["schemas"]["SnowflakeType"];
-            };
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_thread_members */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ThreadMemberResponse"][];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    set_channel_permission_overwrite: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                overwrite_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    type?: null | components["schemas"]["ChannelPermissionOverwrites"];
-                    allow?: number | null;
-                    deny?: number | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 204 response for set_channel_permission_overwrite */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_channel_permission_overwrite: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                overwrite_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_channel_permission_overwrite */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    add_group_dm_user: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    access_token?: string | null;
-                    nick?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 201 response for add_group_dm_user */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"];
-                };
-            };
-            /** @description 204 response for add_group_dm_user */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_group_dm_user: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_group_dm_user */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    follow_channel: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    webhook_channel_id: components["schemas"]["SnowflakeType"];
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for follow_channel */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ChannelFollowerResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_message: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_message */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_message: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_message */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_message: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["MessageEditRequestPartial"];
-                "application/x-www-form-urlencoded": components["schemas"]["MessageEditRequestPartial"];
-                "multipart/form-data": components["schemas"]["MessageEditRequestPartial"] & {
-                    "files[0]"?: string;
-                    "files[1]"?: string;
-                    "files[2]"?: string;
-                    "files[3]"?: string;
-                    "files[4]"?: string;
-                    "files[5]"?: string;
-                    "files[6]"?: string;
-                    "files[7]"?: string;
-                    "files[8]"?: string;
-                    "files[9]"?: string;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_message */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_messages: {
-        parameters: {
-            query?: {
-                around?: components["schemas"]["SnowflakeType"];
-                before?: components["schemas"]["SnowflakeType"];
-                after?: components["schemas"]["SnowflakeType"];
-                limit?: number;
-            };
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_messages */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_message: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["MessageCreateRequest"];
-                "application/x-www-form-urlencoded": components["schemas"]["MessageCreateRequest"];
-                "multipart/form-data": components["schemas"]["MessageCreateRequest"] & {
-                    "files[0]"?: string;
-                    "files[1]"?: string;
-                    "files[2]"?: string;
-                    "files[3]"?: string;
-                    "files[4]"?: string;
-                    "files[5]"?: string;
-                    "files[6]"?: string;
-                    "files[7]"?: string;
-                    "files[8]"?: string;
-                    "files[9]"?: string;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for create_message */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_channel_webhooks: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_channel_webhooks */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_webhook: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name: string;
-                    avatar?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for create_webhook */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildIncomingWebhookResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_channel_invites: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_channel_invites */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_channel_invite: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreateGroupDMInviteRequest"] | components["schemas"]["CreateGuildInviteRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_channel_invite */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"];
-                };
-            };
-            /** @description 204 response for create_channel_invite */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_thread: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreateForumThreadRequest"] | components["schemas"]["CreateTextThreadWithoutMessageRequest"];
-                "application/x-www-form-urlencoded": components["schemas"]["CreateForumThreadRequest"] | components["schemas"]["CreateTextThreadWithoutMessageRequest"];
-                "multipart/form-data": components["schemas"]["CreateForumThreadRequest"] | components["schemas"]["CreateTextThreadWithoutMessageRequest"];
-            };
-        };
-        responses: {
-            /** @description 201 response for create_thread */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["CreatedThreadResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    trigger_typing_indicator: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for trigger_typing_indicator */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["TypingIndicatorResponse"];
-                };
-            };
-            /** @description 204 response for trigger_typing_indicator */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    pin_message: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for pin_message */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    unpin_message: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-                message_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for unpin_message */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_pinned_messages: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_pinned_messages */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"][] | null;
-                };
-            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -8916,12 +13941,18 @@ export interface operations {
             /** @description 200 response for get_webhook_message */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["MessageResponse"];
                 };
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -8943,10 +13974,16 @@ export interface operations {
             /** @description 204 response for delete_webhook_message */
             204: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content?: never;
             };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -8986,41 +14023,18 @@ export interface operations {
             /** @description 200 response for update_webhook_message */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["MessageResponse"];
                 };
             };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    execute_github_compatible_webhook: {
-        parameters: {
-            query?: {
-                wait?: boolean;
-                thread_id?: components["schemas"]["SnowflakeType"];
-            };
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["GithubWebhook"];
-            };
-        };
-        responses: {
-            /** @description 204 response for execute_github_compatible_webhook */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
@@ -9048,2396 +14062,18 @@ export interface operations {
             /** @description 200 response for execute_slack_compatible_webhook */
             200: {
                 headers: {
+                    "X-RateLimit-Limit": components["headers"]["X-RateLimit-Limit"];
+                    "X-RateLimit-Remaining": components["headers"]["X-RateLimit-Remaining"];
+                    "X-RateLimit-Reset": components["headers"]["X-RateLimit-Reset"];
+                    "X-RateLimit-Reset-After": components["headers"]["X-RateLimit-Reset-After"];
+                    "X-RateLimit-Bucket": components["headers"]["X-RateLimit-Bucket"];
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": string | null;
                 };
             };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_template: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_template */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildTemplateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_from_template: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name: string;
-                    icon?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 201 response for create_guild_from_template */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_new_member_welcome: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_new_member_welcome */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildHomeSettingsResponse"];
-                };
-            };
-            /** @description 204 response for get_guild_new_member_welcome */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_soundboard_sound: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sound_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_soundboard_sound */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SoundboardSoundResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_soundboard_sound: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sound_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_soundboard_sound */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_soundboard_sound: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sound_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["SoundboardPatchRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_soundboard_sound */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SoundboardSoundResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_soundboard_sounds: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_soundboard_sounds */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ListGuildSoundboardSoundsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_soundboard_sound: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["SoundboardCreateRequest"];
-            };
-        };
-        responses: {
-            /** @description 201 response for create_guild_soundboard_sound */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SoundboardSoundResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_scheduled_event: {
-        parameters: {
-            query?: {
-                with_user_count?: boolean;
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_scheduled_event */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_scheduled_event: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_scheduled_event */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_scheduled_event: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                guild_scheduled_event_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ExternalScheduledEventPatchRequestPartial"] | components["schemas"]["StageScheduledEventPatchRequestPartial"] | components["schemas"]["VoiceScheduledEventPatchRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_scheduled_event */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_scheduled_events: {
-        parameters: {
-            query?: {
-                with_user_count?: boolean;
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_scheduled_events */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_scheduled_event: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ExternalScheduledEventCreateRequest"] | components["schemas"]["StageScheduledEventCreateRequest"] | components["schemas"]["VoiceScheduledEventCreateRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for create_guild_scheduled_event */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ExternalScheduledEventResponse"] | components["schemas"]["StageScheduledEventResponse"] | components["schemas"]["VoiceScheduledEventResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_welcome_screen: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_welcome_screen */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildWelcomeScreenResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_welcome_screen: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["WelcomeScreenPatchRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_welcome_screen */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildWelcomeScreenResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_voice_state: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_voice_state */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["VoiceStateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_voice_state: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    suppress?: boolean | null;
-                    channel_id?: null | components["schemas"]["SnowflakeType"];
-                };
-            };
-        };
-        responses: {
-            /** @description 204 response for update_voice_state */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_integration: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                integration_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_integration */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_integrations: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_integrations */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["DiscordIntegrationResponse"] | components["schemas"]["ExternalConnectionIntegrationResponse"] | components["schemas"]["GuildSubscriptionIntegrationResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_widget: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_widget */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["WidgetResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guilds_onboarding: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guilds_onboarding */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserGuildOnboardingResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    put_guilds_onboarding: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["UpdateGuildOnboardingRequest"];
-            };
-        };
-        responses: {
-            /** @description 200 response for put_guilds_onboarding */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildOnboardingResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_vanity_url: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_vanity_url */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["VanityURLResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_audit_log_entries: {
-        parameters: {
-            query?: {
-                user_id?: components["schemas"]["SnowflakeType"];
-                target_id?: components["schemas"]["SnowflakeType"];
-                action_type?: number;
-                before?: components["schemas"]["SnowflakeType"];
-                after?: components["schemas"]["SnowflakeType"];
-                limit?: number;
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_audit_log_entries */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildAuditLogResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_widget_png: {
-        parameters: {
-            query?: {
-                style?: components["schemas"]["WidgetImageStyles"];
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_widget_png */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "image/png": string;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    sync_guild_template: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for sync_guild_template */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildTemplateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_template: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for delete_guild_template */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildTemplateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_template: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string;
-                    description?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_template */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildTemplateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_templates: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_templates */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildTemplateResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_template: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name: string;
-                    description?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for create_guild_template */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildTemplateResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_sticker: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sticker_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_sticker */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildStickerResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_sticker: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sticker_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_sticker */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_sticker: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                sticker_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string;
-                    tags?: string;
-                    description?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_sticker */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildStickerResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    bulk_ban_users_from_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    user_ids: components["schemas"]["SnowflakeType"][];
-                    delete_message_seconds?: number | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for bulk_ban_users_from_guild */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["BulkBanUsersResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_stickers: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_stickers */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildStickerResponse"][];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_sticker: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": {
-                    name: string;
-                    tags: string;
-                    description?: string | null;
-                    file: string;
-                };
-            };
-        };
-        responses: {
-            /** @description 201 response for create_guild_sticker */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildStickerResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_webhooks: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_webhooks */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_channels: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_channels */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_channel: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["CreateGuildChannelRequest"];
-            };
-        };
-        responses: {
-            /** @description 201 response for create_guild_channel */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildChannelResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    bulk_update_guild_channels: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    id?: components["schemas"]["SnowflakeType"];
-                    /** Format: int32 */
-                    position?: number | null;
-                    parent_id?: null | components["schemas"]["SnowflakeType"];
-                    lock_permissions?: boolean | null;
-                }[];
-            };
-        };
-        responses: {
-            /** @description 204 response for bulk_update_guild_channels */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_member */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildMemberResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    add_guild_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    nick?: string | null;
-                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
-                    mute?: boolean | null;
-                    deaf?: boolean | null;
-                    access_token: string;
-                    flags?: number | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 201 response for add_guild_member */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildMemberResponse"];
-                };
-            };
-            /** @description 204 response for add_guild_member */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_member */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_member: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    nick?: string | null;
-                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
-                    mute?: boolean | null;
-                    deaf?: boolean | null;
-                    channel_id?: null | components["schemas"]["SnowflakeType"];
-                    /** Format: date-time */
-                    communication_disabled_until?: string | null;
-                    flags?: number | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_member */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildMemberResponse"];
-                };
-            };
-            /** @description 204 response for update_guild_member */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_members: {
-        parameters: {
-            query?: {
-                limit?: number;
-                after?: number;
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_members */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildMemberResponse"][];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_preview: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_preview */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildPreviewResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_invites: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_invites */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": (components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"])[] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_voice_regions: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_voice_regions */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["VoiceRegionResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_emoji */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_emoji */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                emoji_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string;
-                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_emoji */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_emojis: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_emojis */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_emoji: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name: string;
-                    image: string;
-                    roles?: (null | components["schemas"]["SnowflakeType"])[] | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 201 response for create_guild_emoji */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EmojiResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_widget_settings: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_widget_settings */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["WidgetSettingsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_widget_settings: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    channel_id?: null | components["schemas"]["SnowflakeType"];
-                    enabled?: boolean | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_widget_settings */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["WidgetSettingsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_role: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                role_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_role */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildRoleResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild_role: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                role_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild_role */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild_role: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                role_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string | null;
-                    permissions?: number | null;
-                    color?: number | null;
-                    hoist?: boolean | null;
-                    mentionable?: boolean | null;
-                    icon?: string | null;
-                    unicode_emoji?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild_role */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildRoleResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_roles: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_roles */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildRoleResponse"][];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    create_guild_role: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string | null;
-                    permissions?: number | null;
-                    color?: number | null;
-                    hoist?: boolean | null;
-                    mentionable?: boolean | null;
-                    icon?: string | null;
-                    unicode_emoji?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for create_guild_role */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildRoleResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    bulk_update_guild_roles: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    id?: null | components["schemas"]["SnowflakeType"];
-                    /** Format: int32 */
-                    position?: number | null;
-                }[];
-            };
-        };
-        responses: {
-            /** @description 200 response for bulk_update_guild_roles */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildRoleResponse"][];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    preview_prune_guild: {
-        parameters: {
-            query?: {
-                days?: number;
-                include_roles?: string | (null | components["schemas"]["SnowflakeType"])[];
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for preview_prune_guild */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildPruneResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    prune_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    days?: number | null;
-                    compute_prune_count?: boolean | null;
-                    include_roles?: string | (null | components["schemas"]["SnowflakeType"])[] | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for prune_guild */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildPruneResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild_ban: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild_ban */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildBanResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    ban_user_from_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    delete_message_seconds?: number | null;
-                    delete_message_days?: number | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 204 response for ban_user_from_guild */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    unban_user_from_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for unban_user_from_guild */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    list_guild_bans: {
-        parameters: {
-            query?: {
-                limit?: number;
-                before?: components["schemas"]["SnowflakeType"];
-                after?: components["schemas"]["SnowflakeType"];
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for list_guild_bans */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildBanResponse"][] | null;
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    set_guild_mfa_level: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    level: components["schemas"]["GuildMFALevel"];
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for set_guild_mfa_level */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildMFALevelResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_stage_instance: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_stage_instance */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["StageInstanceResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_stage_instance: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_stage_instance */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_stage_instance: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    topic?: string;
-                    privacy_level?: components["schemas"]["StageInstancesPrivacyLevels"];
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_stage_instance */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["StageInstanceResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_sticker_pack: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                pack_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_sticker_pack */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["StickerPackResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_application: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_application */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateApplicationResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_application: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                application_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ApplicationFormPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_application */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PrivateApplicationResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_webhook_by_token: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_webhook_by_token */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    execute_webhook: {
-        parameters: {
-            query?: {
-                wait?: boolean;
-                thread_id?: components["schemas"]["SnowflakeType"];
-                with_components?: boolean;
-            };
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["IncomingWebhookRequestPartial"] | components["schemas"]["IncomingWebhookUpdateRequestPartial"];
-                "application/x-www-form-urlencoded": components["schemas"]["IncomingWebhookRequestPartial"] | components["schemas"]["IncomingWebhookUpdateRequestPartial"];
-                "multipart/form-data": components["schemas"]["IncomingWebhookRequestPartial"] | components["schemas"]["IncomingWebhookUpdateRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for execute_webhook */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MessageResponse"];
-                };
-            };
-            /** @description 204 response for execute_webhook */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_webhook_by_token: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_webhook_by_token */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_webhook_by_token: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-                webhook_token: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string;
-                    avatar?: string | null;
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_webhook_by_token */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_sticker: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                sticker_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_sticker */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildStickerResponse"] | components["schemas"]["StandardStickerResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_webhook: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_webhook */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_webhook: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_webhook */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_webhook: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                webhook_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    name?: string;
-                    avatar?: string | null;
-                    channel_id?: null | components["schemas"]["SnowflakeType"];
-                };
-            };
-        };
-        responses: {
-            /** @description 200 response for update_webhook */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ApplicationIncomingWebhookResponse"] | components["schemas"]["ChannelFollowerWebhookResponse"] | components["schemas"]["GuildIncomingWebhookResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_channel: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_channel */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_channel: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for delete_channel */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_channel: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                channel_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["PrivateChannelRequestPartial"] | components["schemas"]["UpdateGuildChannelRequestPartial"] | components["schemas"]["UpdateThreadRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_channel */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildChannelResponse"] | components["schemas"]["PrivateChannelResponse"] | components["schemas"]["PrivateGroupChannelResponse"] | components["schemas"]["ThreadResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    invite_resolve: {
-        parameters: {
-            query?: {
-                with_counts?: boolean;
-                guild_scheduled_event_id?: components["schemas"]["SnowflakeType"];
-            };
-            header?: never;
-            path: {
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for invite_resolve */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    invite_revoke: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                code: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for invite_revoke */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["FriendInviteResponse"] | components["schemas"]["GroupDMInviteResponse"] | components["schemas"]["GuildInviteResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_guild: {
-        parameters: {
-            query?: {
-                with_counts?: boolean;
-            };
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_guild */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildWithCountsResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    delete_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 204 response for delete_guild */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    update_guild: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                guild_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["GuildPatchRequestPartial"];
-            };
-        };
-        responses: {
-            /** @description 200 response for update_guild */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["GuildResponse"];
-                };
-            };
-            "4XX": components["responses"]["ClientErrorResponse"];
-        };
-    };
-    get_user: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                user_id: components["schemas"]["SnowflakeType"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description 200 response for get_user */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserResponse"];
-                };
-            };
+            429: components["responses"]["ClientRatelimitedResponse"];
             "4XX": components["responses"]["ClientErrorResponse"];
         };
     };
