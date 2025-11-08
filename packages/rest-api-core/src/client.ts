@@ -3,49 +3,49 @@ import { Client } from "openapi-fetch";
 import { mergeShortcuts, Shortcut } from "./shortcut";
 
 type Method =
-    | "GET"
-    | "PUT"
-    | "POST"
-    | "DELETE"
-    | "OPTIONS"
-    | "HEAD"
-    | "PATCH"
-    | "TRACE";
+  | "GET"
+  | "PUT"
+  | "POST"
+  | "DELETE"
+  | "OPTIONS"
+  | "HEAD"
+  | "PATCH"
+  | "TRACE";
 
 type ToLowerKeys<T> = {
-    [K in keyof T as Lowercase<string & K>]: T[K];
+  [K in keyof T as Lowercase<string & K>]: T[K];
 };
 
 export type FetchClient<paths extends {}> = ToLowerKeys<
-    Pick<Client<paths>, Method>
+  Pick<Client<paths>, Method>
 >;
 
 type ClientInit<paths extends {}> = Parameters<
-    typeof createOpenApiClient<paths>
+  typeof createOpenApiClient<paths>
 >;
 
 export const createClient = <paths extends {}>(
-    init: ClientOptions,
-    ...shortcuts: Shortcut<paths, object>[]
+  init: ClientOptions,
+  ...shortcuts: Shortcut<paths, object>[]
 ) => {
-    const client = createOpenApiClient<paths>(init);
+  const client = createOpenApiClient<paths>(init);
 
-    const fetchClient = {
-        get: client.GET,
-        put: client.PUT,
-        post: client.POST,
-        delete: client.DELETE,
-        options: client.OPTIONS,
-        head: client.HEAD,
-        patch: client.PATCH,
-        trace: client.TRACE,
-    };
+  const fetchClient = {
+    get: client.GET,
+    put: client.PUT,
+    post: client.POST,
+    delete: client.DELETE,
+    options: client.OPTIONS,
+    head: client.HEAD,
+    patch: client.PATCH,
+    trace: client.TRACE,
+  };
 
-    return {
-        ...mergeShortcuts(...shortcuts)(fetchClient),
-        ...fetchClient,
-        request: client.request,
-        use: client.use,
-        eject: client.eject,
-    };
+  return {
+    ...mergeShortcuts(...shortcuts)(fetchClient),
+    ...fetchClient,
+    request: client.request,
+    use: client.use,
+    eject: client.eject,
+  };
 };

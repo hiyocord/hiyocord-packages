@@ -12,8 +12,15 @@
     "url": "https://github.com/hiyocord/hiyocord-packages/issues"
   },
   "homepage": "https://github.com/hiyocord/hiyocord-packages#readme",
-  "type": "commonjs",
-  "main": "dist/index.js",
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
