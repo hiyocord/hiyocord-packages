@@ -2,7 +2,7 @@ import {
   InteractionRequest,
   InteractionResponse,
   InteractionType,
-} from "types";
+} from "../types";
 
 export interface BaseInteractionHandler<Type extends InteractionType> {
   handle(

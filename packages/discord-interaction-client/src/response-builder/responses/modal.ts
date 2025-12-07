@@ -3,7 +3,7 @@ import {
   InteractionRequest,
   InteractionResponseType,
   InteractionType,
-} from "types";
+} from "../../types";
 
 export class ModalBuilder {
   constructor(private interaction: InteractionRequest[InteractionType.Ping]) {}

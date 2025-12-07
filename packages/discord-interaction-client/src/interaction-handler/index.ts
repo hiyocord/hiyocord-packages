@@ -1,3 +1,4 @@
-export type * from "./handler";
-export type * from "./registry";
-export type * from "./resolver";
+export * from "./handler";
+export * from "./registry";
+export * from "./resolver";
+export * from "./module-worker-fetchhandler";

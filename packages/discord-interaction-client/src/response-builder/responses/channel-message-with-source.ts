@@ -10,7 +10,7 @@ import {
   RESTAPIAttachment,
   RESTAPIPoll,
   Snowflake,
-} from "types";
+} from "../../types";
 
 export class ChannelMessageWithSourceBuilder {
   constructor(

@@ -11,19 +11,21 @@ import { APIPingInteraction } from "./ping";
 import { APIInteractionResponse } from "./responses";
 
 // export types
-export { Snowflake } from "discord-api-types/globals";
-export {
-  InteractionType,
-  InteractionResponseType,
+export type { Snowflake } from "discord-api-types/globals";
+export type {
   APIInteraction,
   APIAllowedMentions,
-  MessageFlags,
   RESTAPIAttachment,
   APIMessageTopLevelComponent,
   APIEmbed,
   RESTAPIPoll,
   APIApplicationCommandOptionChoice,
   APIModalInteractionResponseCallbackComponent,
+} from "discord-api-types/v10";
+export {
+  MessageFlags,
+  InteractionType,
+  InteractionResponseType,
 } from "discord-api-types/v10";
 export * from "./applicationCommands";
 export * from "./autocomplete";

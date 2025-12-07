@@ -3,7 +3,7 @@ import {
   InteractionRequest,
   InteractionResponseType,
   InteractionType,
-} from "types";
+} from "../types";
 import { PongResponseBuilder } from "./responses/pong";
 import { ChannelMessageWithSourceBuilder } from "./responses/channel-message-with-source";
 import { DeferredChannelMessageWithSourceBuilder } from "./responses/deferred-channel-message-with-source";

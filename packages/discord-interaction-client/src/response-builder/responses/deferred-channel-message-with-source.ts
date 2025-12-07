@@ -4,7 +4,7 @@ import {
   InteractionResponseType,
   InteractionType,
   MessageFlags,
-} from "types";
+} from "../../types";
 
 export class DeferredChannelMessageWithSourceBuilder {
   constructor(

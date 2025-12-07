@@ -1,5 +1,5 @@
-import { InteractionHandler } from "interaction-handler/handler";
-import { InteractionRequest, InteractionType } from "types";
+import { InteractionHandler } from "../handler";
+import { InteractionRequest, InteractionType } from "../../types";
 
 export interface InteractionHandlerResolver {
   findFirst<K extends InteractionType>(

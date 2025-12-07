@@ -1,5 +1,5 @@
-import { InteractionHandler } from "interaction-handler/handler";
-import { InteractionType } from "types";
+import { InteractionHandler } from "../handler";
+import { InteractionType } from "../../types";
 import { InteractionHandlerRegistry } from "./registry";
 
 export class SimpleInteractionHandlerRegistry implements InteractionHandlerRegistry {

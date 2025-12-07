@@ -1,9 +1,6 @@
-import {
-  ApplicationCommandHandler,
-  InteractionHandler,
-} from "interaction-handler/handler";
-import { InteractionHandlerRegistry } from "interaction-handler/registry/registry";
-import { InteractionRequest, InteractionType } from "types";
+import { ApplicationCommandHandler, InteractionHandler } from "../handler";
+import { InteractionHandlerRegistry } from "../registry";
+import { InteractionRequest, InteractionType } from "../../types";
 import { InteractionHandlerResolver } from "./resolver";
 
 export class SimpleInteractionHandlerResolver implements InteractionHandlerResolver {

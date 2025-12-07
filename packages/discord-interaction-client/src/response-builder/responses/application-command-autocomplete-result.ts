@@ -4,7 +4,7 @@ import {
   InteractionResponseForResponseType,
   InteractionResponseType,
   InteractionType,
-} from "types";
+} from "../../types";
 
 export class ApplicationCommandAutocompleteResultBuilder {
   constructor(

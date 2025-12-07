@@ -2,7 +2,7 @@ import {
   InteractionRequest,
   InteractionResponseType,
   InteractionType,
-} from "types";
+} from "../../types";
 
 export class PongResponseBuilder {
   constructor(private interaction: InteractionRequest[InteractionType.Ping]) {}
