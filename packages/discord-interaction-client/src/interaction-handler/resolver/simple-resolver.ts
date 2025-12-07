@@ -6,9 +6,7 @@ import { InteractionHandlerRegistry } from "interaction-handler/registry/registr
 import { InteractionRequest, InteractionType } from "types";
 import { InteractionHandlerResolver } from "./resolver";
 
-export class SimpleInteractionHandlerResolver
-  implements InteractionHandlerResolver
-{
+export class SimpleInteractionHandlerResolver implements InteractionHandlerResolver {
   constructor(private registry: InteractionHandlerRegistry) {}
 
   private isMatch<T extends InteractionType>(

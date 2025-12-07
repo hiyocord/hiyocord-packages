@@ -2,9 +2,7 @@ import { InteractionHandler } from "interaction-handler/handler";
 import { InteractionType } from "types";
 import { InteractionHandlerRegistry } from "./registry";
 
-export class SimpleInteractionHandlerRegistry
-  implements InteractionHandlerRegistry
-{
+export class SimpleInteractionHandlerRegistry implements InteractionHandlerRegistry {
   private handlers: {
     [K in InteractionType]: Array<InteractionHandler<K>>;
   } = {

@@ -10,21 +10,16 @@ export interface BaseInteractionHandler<Type extends InteractionType> {
   ): Promise<InteractionResponse[Type]>;
 }
 
-export interface PingHandler
-  extends BaseInteractionHandler<InteractionType.Ping> {}
+export interface PingHandler extends BaseInteractionHandler<InteractionType.Ping> {}
 
-export interface ApplicationCommandHandler
-  extends BaseInteractionHandler<InteractionType.ApplicationCommand> {
+export interface ApplicationCommandHandler extends BaseInteractionHandler<InteractionType.ApplicationCommand> {
   name: string;
   description: string;
 }
 
-export interface MessageComponentHandler
-  extends BaseInteractionHandler<InteractionType.MessageComponent> {}
-export interface AutocompleteHandler
-  extends BaseInteractionHandler<InteractionType.ApplicationCommandAutocomplete> {}
-export interface ModalSubmitHandler
-  extends BaseInteractionHandler<InteractionType.ModalSubmit> {}
+export interface MessageComponentHandler extends BaseInteractionHandler<InteractionType.MessageComponent> {}
+export interface AutocompleteHandler extends BaseInteractionHandler<InteractionType.ApplicationCommandAutocomplete> {}
+export interface ModalSubmitHandler extends BaseInteractionHandler<InteractionType.ModalSubmit> {}
 
 export type InteractionHandler<K extends InteractionType> =
   K extends InteractionType.Ping
