@@ -1,0 +1,22 @@
+// discord-api-types/v10/_interactions/base
+export type {
+  APIMessageInteractionMetadata,
+  APIBaseInteractionMetadata,
+  APIApplicationCommandInteractionMetadata,
+  APIMessageComponentInteractionMetadata,
+  APIModalSubmitInteractionMetadata,
+  PartialAPIMessageInteractionGuildMember,
+  APIMessageInteraction,
+  APIInteractionGuildMember,
+  APIBaseInteraction,
+  APIAuthorizingIntegrationOwnersMap,
+  APIDMInteractionWrapper,
+  APIGuildInteractionWrapper,
+  APIInteractionDataResolvedChannelBase,
+  APIInteractionDataResolvedChannel,
+  APIInteractionDataResolvedGuildMember,
+  APIInteractionDataResolved,
+  APIChatInputApplicationCommandInteractionDataResolved,
+  APIUserInteractionDataResolved,
+  APIUserApplicationCommandInteractionDataResolved,
+} from "discord-api-types/v10";

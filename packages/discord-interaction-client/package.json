@@ -1,0 +1,30 @@
+{
+  "name": "@hiyocord/discord-interaction-client",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiyocord/hiyocord-packages.git"
+  },
+  "author": "kurages <develop@kurages.dev> (https://kurages.dev)",
+  "bugs": {
+    "url": "https://github.com/hiyocord/hiyocord-packages/issues"
+  },
+  "homepage": "https://github.com/hiyocord/hiyocord-packages#readme",
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord-api-types": "^0.38.36"
+  }
+}
