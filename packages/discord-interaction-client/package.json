@@ -26,6 +26,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "discord-api-types": "^0.38.36"
+    "discord-api-types": "^0.38.37"
   }
 }
