@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.0.4
+
+### Patch Changes
+
+- [#30](https://github.com/hiyocord/hiyocord-packages/pull/30) [`46b0d4e`](https://github.com/hiyocord/hiyocord-packages/commit/46b0d4ea4cfac9ce9754bf031a133b32681a8248) Thanks [@kurages](https://github.com/kurages)! - ハンドラーリゾルバの不具合解消
+
 ## 0.0.3
 
 ### Patch Changes
