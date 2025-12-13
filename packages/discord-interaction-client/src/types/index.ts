@@ -1,6 +1,7 @@
 import {
   InteractionType,
   InteractionResponseType,
+  APIInteraction,
 } from "discord-api-types/v10";
 
 import { APIApplicationCommandInteraction } from "./applicationCommands";
@@ -43,37 +44,14 @@ export interface InteractionRequest {
   [InteractionType.ModalSubmit]: APIModalSubmitInteraction;
 }
 
-export const isPing = (
-  interaction: InteractionRequest[keyof InteractionRequest],
-): interaction is APIPingInteraction => {
-  return interaction.type === InteractionType.Ping;
+export const equalsInteractionType = <T extends InteractionType>(
+  interaction: APIInteraction,
+  type: T,
+): interaction is InteractionRequest[T] => {
+  return interaction.type === type;
 };
 
-export const isApplicationCommand = (
-  interaction: InteractionRequest[keyof InteractionRequest],
-): interaction is APIApplicationCommandInteraction => {
-  return interaction.type === InteractionType.ApplicationCommand;
-};
-
-export const isMessageComponent = (
-  interaction: InteractionRequest[keyof InteractionRequest],
-): interaction is APIMessageComponentInteraction => {
-  return interaction.type === InteractionType.MessageComponent;
-};
-
-export const isApplicationCommandAutocomplete = (
-  interaction: InteractionRequest[keyof InteractionRequest],
-): interaction is APIApplicationCommandAutocompleteInteraction => {
-  return interaction.type === InteractionType.ApplicationCommandAutocomplete;
-};
-
-export const isModalSubmit = (
-  interaction: InteractionRequest[keyof InteractionRequest],
-): interaction is APIModalSubmitInteraction => {
-  return interaction.type === InteractionType.ModalSubmit;
-};
-
-export type AllowedInteractionResponseTypes = {
+export interface AllowedInteractionResponseTypes {
   [InteractionType.Ping]: InteractionResponseType.Pong;
 
   [InteractionType.ApplicationCommand]:
@@ -94,7 +72,7 @@ export type AllowedInteractionResponseTypes = {
     | InteractionResponseType.UpdateMessage
     | InteractionResponseType.DeferredMessageUpdate
     | InteractionResponseType.Modal;
-};
+}
 
 export type InteractionResponseForResponseType<
   T extends InteractionResponseType,
