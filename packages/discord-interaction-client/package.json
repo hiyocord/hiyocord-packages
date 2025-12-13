@@ -27,5 +27,12 @@
   },
   "dependencies": {
     "discord-api-types": "^0.38.37"
-  }
+  },
+  "files": [
+    "src",
+    "dist",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
