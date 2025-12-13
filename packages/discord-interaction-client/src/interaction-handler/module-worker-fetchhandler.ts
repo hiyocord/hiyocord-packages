@@ -23,18 +23,13 @@ const fetchApplicationCommand = async (
 export const fetchHandler = (resolver: InteractionHandlerResolver) => {
   const fetch = async (request: Request): Promise<Response> => {
     const body = (await request.json()) as APIInteraction;
-    try {
-      switch (body.type) {
-        case InteractionType.ApplicationCommand:
-          return await fetchApplicationCommand(resolver, body);
-        default:
-          break;
-      }
-    } catch (e) {
-      return new Response(null, {
-        status: 500,
-      });
+    switch (body.type) {
+      case InteractionType.ApplicationCommand:
+        return await fetchApplicationCommand(resolver, body);
+      default:
+        break;
     }
+    return new Response(null, { status: 404 });
   };
 
   return {

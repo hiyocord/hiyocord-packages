@@ -1,2 +1,2 @@
 export * from "./resolver";
-export * from "./simple-resolver";
+export * from "./simple";

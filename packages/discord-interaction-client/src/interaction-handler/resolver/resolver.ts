@@ -1,6 +1,6 @@
 import { InteractionHandler } from "../handler";
 import { InteractionRequest, InteractionType } from "../../types";
-import { InteractionHandlerRegistry } from "interaction-handler/registry";
+import { InteractionHandlerRegistry } from "../registry";
 
 /**
  * ハンドラの解決を行うためのインターフェース。
@@ -68,9 +68,13 @@ export class DelegatingTypedInteractionHandlerResolver implements InteractionHan
     const handlers = this.registry.get(
       interaction.type,
     ) as InteractionHandler<K>[];
+    console.log("Handlers for type", interaction.type, handlers);
+
     const resolver = this.getResolver(
       interaction.type,
     ) as TypedHandlerResolver<K>;
+
+    console.log("Using resolver", JSON.stringify(resolver));
     return resolver.getFirst(handlers, interaction);
   }
 
