@@ -1,6 +1,11 @@
 import {
-  AllowedInteractionResponseTypes,
-  InteractionRequest,
+  APIApplicationCommandAutocompleteInteraction,
+  APIApplicationCommandInteraction,
+  APIInteraction,
+  APIMessageComponentInteraction,
+  APIModalSubmitInteraction,
+  APIPingInteraction,
+  equalsInteractionType,
   InteractionResponseType,
   InteractionType,
 } from "../types";
@@ -9,54 +14,69 @@ import { ChannelMessageWithSourceBuilder } from "./responses/channel-message-wit
 import { DeferredChannelMessageWithSourceBuilder } from "./responses/deferred-channel-message-with-source";
 import { DeferredMessageUpdateBuilder } from "./responses/deferred-message-update";
 import { UpdateMessageBuilder } from "./responses/update-message";
-import {
-  ApplicationCommandAutocompleteResultBuilder,
-  ModalBuilder,
-} from "./responses";
+import { ModalBuilder } from "./responses";
 
-interface InteractionResponseTypeBuilder {
-  [InteractionResponseType.Pong]: PongResponseBuilder;
-  [InteractionResponseType.ChannelMessageWithSource]: ChannelMessageWithSourceBuilder;
-  [InteractionResponseType.DeferredChannelMessageWithSource]: DeferredChannelMessageWithSourceBuilder;
-  [InteractionResponseType.DeferredMessageUpdate]: DeferredMessageUpdateBuilder;
-  [InteractionResponseType.UpdateMessage]: UpdateMessageBuilder;
-  [InteractionResponseType.ApplicationCommandAutocompleteResult]: ApplicationCommandAutocompleteResultBuilder;
-  [InteractionResponseType.Modal]: ModalBuilder;
-}
+export function createBuilder(
+  interaction: APIPingInteraction,
+): PongResponseBuilder;
 
-export class Builder<T extends InteractionType> {
-  constructor(
-    private interaction: InteractionRequest[keyof InteractionRequest],
-  ) {}
+export function createBuilder(interaction: APIApplicationCommandInteraction): {
+  reply: () => ChannelMessageWithSourceBuilder;
+  defer: () => DeferredChannelMessageWithSourceBuilder;
+  modal: () => ModalBuilder;
+};
 
-  type<E extends AllowedInteractionResponseTypes[T]>(
-    type: E,
-  ): InteractionResponseTypeBuilder[E] {
-    let builder: any = null;
-    const interaction = this.interaction as any;
-    switch (type) {
-      case InteractionResponseType.Pong:
-        builder = new PongResponseBuilder(interaction);
-        break;
-      case InteractionResponseType.ChannelMessageWithSource:
-        builder = new ChannelMessageWithSourceBuilder(interaction);
-        break;
-      case InteractionResponseType.DeferredChannelMessageWithSource:
-        builder = new DeferredChannelMessageWithSourceBuilder(interaction);
-        break;
-      case InteractionResponseType.DeferredMessageUpdate:
-        builder = new DeferredMessageUpdateBuilder(interaction);
-        break;
-      case InteractionResponseType.UpdateMessage:
-        builder = new UpdateMessageBuilder(interaction);
-        break;
-      case InteractionResponseType.ApplicationCommandAutocompleteResult:
-        builder = new ApplicationCommandAutocompleteResultBuilder(interaction);
-        break;
-      case InteractionResponseType.Modal:
-        builder = new ModalBuilder(interaction);
-        break;
-    }
-    return builder;
+export function createBuilder(interaction: APIMessageComponentInteraction): {
+  reply: () => ChannelMessageWithSourceBuilder;
+  update: () => UpdateMessageBuilder;
+  defer: () => DeferredMessageUpdateBuilder;
+  modal: () => ModalBuilder;
+};
+
+export function createBuilder(
+  interaction: APIApplicationCommandAutocompleteInteraction,
+): InteractionResponseType.ApplicationCommandAutocompleteResult;
+
+export function createBuilder(interaction: APIModalSubmitInteraction): {
+  reply: () => ChannelMessageWithSourceBuilder;
+  update: () => UpdateMessageBuilder;
+  defer: () => DeferredMessageUpdateBuilder;
+  modal: () => ModalBuilder;
+};
+
+export function createBuilder<T extends APIInteraction>(interaction: T) {
+  if (equalsInteractionType(interaction, InteractionType.Ping)) {
+    return new PongResponseBuilder(interaction);
+  } else if (
+    equalsInteractionType(interaction, InteractionType.ApplicationCommand)
+  ) {
+    return {
+      reply: () => new ChannelMessageWithSourceBuilder(interaction),
+      defer: () => new DeferredChannelMessageWithSourceBuilder(interaction),
+      modal: () => new ModalBuilder(interaction),
+    };
+  } else if (
+    equalsInteractionType(interaction, InteractionType.MessageComponent)
+  ) {
+    return {
+      reply: () => new ChannelMessageWithSourceBuilder(interaction),
+      update: () => new UpdateMessageBuilder(interaction),
+      defer: () => new DeferredMessageUpdateBuilder(interaction),
+      modal: () => new ModalBuilder(interaction),
+    };
+  } else if (
+    equalsInteractionType(
+      interaction,
+      InteractionType.ApplicationCommandAutocomplete,
+    )
+  ) {
+    return InteractionResponseType.ApplicationCommandAutocompleteResult;
+  } else if (equalsInteractionType(interaction, InteractionType.ModalSubmit)) {
+    return {
+      reply: () => new ChannelMessageWithSourceBuilder(interaction),
+      update: () => new UpdateMessageBuilder(interaction),
+      defer: () => new DeferredMessageUpdateBuilder(interaction),
+      modal: () => new ModalBuilder(interaction),
+    };
   }
 }
