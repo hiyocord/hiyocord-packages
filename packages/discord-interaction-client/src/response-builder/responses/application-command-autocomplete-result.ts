@@ -8,7 +8,7 @@ import {
 
 export class ApplicationCommandAutocompleteResultBuilder {
   constructor(
-    private interaction: InteractionRequest[InteractionType.Ping],
+    private interaction: InteractionRequest[InteractionType.ApplicationCommandAutocomplete],
     private response: InteractionResponseForResponseType<InteractionResponseType.ApplicationCommandAutocompleteResult> = {
       type: InteractionResponseType.ApplicationCommandAutocompleteResult,
       data: {},

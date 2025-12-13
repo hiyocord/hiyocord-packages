@@ -8,7 +8,7 @@ import {
 
 export class DeferredChannelMessageWithSourceBuilder {
   constructor(
-    private interaction: InteractionRequest[InteractionType.Ping],
+    private interaction: InteractionRequest[InteractionType.ApplicationCommand],
     private response: InteractionResponseForResponseType<InteractionResponseType.DeferredChannelMessageWithSource> = {
       type: InteractionResponseType.DeferredChannelMessageWithSource,
       data: {},

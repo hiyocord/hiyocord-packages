@@ -14,7 +14,7 @@ import {
 
 export class ChannelMessageWithSourceBuilder {
   constructor(
-    private interaction: InteractionRequest[InteractionType.Ping],
+    private interaction: InteractionRequest[InteractionType.ApplicationCommand | InteractionType.MessageComponent | InteractionType.ModalSubmit],
     private response: InteractionResponseForResponseType<InteractionResponseType.ChannelMessageWithSource> = {
       type: InteractionResponseType.ChannelMessageWithSource,
       data: {},
