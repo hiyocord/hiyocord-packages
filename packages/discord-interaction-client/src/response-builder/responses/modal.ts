@@ -6,7 +6,11 @@ import {
 } from "../../types";
 
 export class ModalBuilder {
-  constructor(private interaction: InteractionRequest[InteractionType.ApplicationCommand | InteractionType.MessageComponent | InteractionType.ModalSubmit]
+  constructor(
+    private interaction: InteractionRequest[
+      | InteractionType.ApplicationCommand
+      | InteractionType.MessageComponent
+      | InteractionType.ModalSubmit],
   ) {}
 
   build(

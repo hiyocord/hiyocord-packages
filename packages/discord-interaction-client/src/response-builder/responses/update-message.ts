@@ -14,7 +14,9 @@ import {
 
 export class UpdateMessageBuilder {
   constructor(
-    private interaction: InteractionRequest[InteractionType.MessageComponent | InteractionType.ModalSubmit],
+    private interaction: InteractionRequest[
+      | InteractionType.MessageComponent
+      | InteractionType.ModalSubmit],
     private response: InteractionResponseForResponseType<InteractionResponseType.UpdateMessage> = {
       type: InteractionResponseType.UpdateMessage,
     },
