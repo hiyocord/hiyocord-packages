@@ -1,6 +1,7 @@
 import { resolve } from "path";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import dts from "vite-plugin-dts";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   build: {
@@ -10,5 +11,5 @@ export default defineConfig({
       fileName: "index",
     },
   },
-  plugins: [dts()],
+  plugins: [tsconfigPaths(), dts()],
 });

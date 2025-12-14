@@ -1,8 +1,18 @@
-import { InteractionType } from "../../../types";
+import {
+  APIApplicationCommandInteraction,
+  InteractionType,
+} from "../../../types";
+import {
+  ApplicationCommandHandler,
+  DeferredApplicationCommandHandler,
+} from "../../handler";
 import { TypedHandlerResolver } from "../resolver";
 
 export class SimpleApplicationCommandHandlerResolver implements TypedHandlerResolver<InteractionType.ApplicationCommand> {
-  get(handlers, interaction) {
+  get(
+    handlers: (ApplicationCommandHandler | DeferredApplicationCommandHandler)[],
+    interaction: APIApplicationCommandInteraction,
+  ): (ApplicationCommandHandler | DeferredApplicationCommandHandler)[] {
     for (const handler of handlers) {
       if (handler.name === interaction.data.name) {
         return [handler];
@@ -11,7 +21,10 @@ export class SimpleApplicationCommandHandlerResolver implements TypedHandlerReso
     return [];
   }
 
-  getFirst(handlers, interaction) {
+  getFirst(
+    handlers: (ApplicationCommandHandler | DeferredApplicationCommandHandler)[],
+    interaction: APIApplicationCommandInteraction,
+  ): ApplicationCommandHandler | DeferredApplicationCommandHandler | null {
     const handler = this.get(handlers, interaction);
     return handler ? handler[0] : null;
   }

@@ -79,4 +79,5 @@ export function createBuilder<T extends APIInteraction>(interaction: T) {
       modal: () => new ModalBuilder(interaction),
     };
   }
+  return undefined;
 }
