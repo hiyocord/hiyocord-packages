@@ -35,11 +35,17 @@ export abstract class TypedHandlerResolver<
 export class NullTypedHandlerResolver<
   T extends InteractionType,
 > implements TypedHandlerResolver<T> {
-  get(_handlers, _interaction) {
+  get(
+    handlers: InteractionHandler<T>[],
+    interaction: InteractionRequest[T],
+  ): InteractionHandler<T>[] {
     return [];
   }
 
-  getFirst(_handlers, _interaction) {
+  getFirst(
+    handlers: InteractionHandler<T>[],
+    interaction: InteractionRequest[T],
+  ): InteractionHandler<T> | null {
     return null;
   }
 }

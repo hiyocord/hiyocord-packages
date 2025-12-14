@@ -10,14 +10,18 @@ const fetchApplicationCommand = async (
   body: APIApplicationCommandInteraction,
 ) => {
   const handler = resolver.findFirst<InteractionType.ApplicationCommand>(body);
-  const res = await handler.handle(body);
+  if (handler) {
+    const res = await handler.handle(body);
 
-  return new Response(JSON.stringify(res), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    return new Response(JSON.stringify(res), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } else {
+    return new Response(null, { status: 404 });
+  }
 };
 
 export const fetchHandler = (resolver: InteractionHandlerResolver) => {

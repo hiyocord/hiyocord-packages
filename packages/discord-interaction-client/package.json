@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "true"
   },
   "dependencies": {
     "discord-api-types": "^0.38.37"

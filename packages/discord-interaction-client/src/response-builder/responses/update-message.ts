@@ -51,7 +51,6 @@ export class UpdateMessageBuilder {
   }
 
   content(content: string) {
-    this.response.data.content = content;
     return new UpdateMessageBuilder(this.interaction, {
       ...this.response,
       data: { ...this.response.data, content },
