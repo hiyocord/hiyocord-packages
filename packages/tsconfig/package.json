@@ -1,0 +1,10 @@
+{
+  "name": "@hiyocord/tsconfig",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "true",
+    "test": "true"
+  }
+}

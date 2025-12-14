@@ -37,6 +37,7 @@
     "wrangler": "^4.54.0"
   },
   "workspaces": [
+    "packages/tsconfig",
     "packages/discord-rest-api",
     "packages/github-rest-api",
     "packages/discord-interaction-client"

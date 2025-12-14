@@ -26,6 +26,6 @@ export class SimpleApplicationCommandHandlerResolver implements TypedHandlerReso
     interaction: APIApplicationCommandInteraction,
   ): ApplicationCommandHandler | DeferredApplicationCommandHandler | null {
     const handler = this.get(handlers, interaction);
-    return handler ? handler[0] : null;
+    return handler ? (handler[0] ?? null) : null;
   }
 }

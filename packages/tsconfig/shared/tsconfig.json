@@ -1,0 +1,53 @@
+{
+  "compileOnSave": true,
+  "buildOptions": {
+    "incremental": true
+  },
+  "compilerOptions": {
+    // 参照できるようにする
+    "composite": true,
+
+    // module resolution
+    // import * as hoge from 'hoge'; => import hoge from 'hoge';
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "bundler",
+
+    // checks
+    // "strict": true, // tscのバージョンによって挙動が変わるため個別指定
+    "noImplicitAny": true, // 暗黙的なanyの禁止
+    "noImplicitThis": true, // thisの型は明示すべき
+    "strictNullChecks": true, // null, undefinedの扱いを厳格に
+    "strictFunctionTypes": true, // 共変チェック
+    "strictBindCallApply": true, // bind, call, applyの引数チェック
+    "strictPropertyInitialization": true, // クラスプロパティの初期化を必須に
+    "useUnknownInCatchVariables": true, // catchの変数をunknownにする
+    "alwaysStrict": true, // 常にstrictモードで実行
+    "exactOptionalPropertyTypes": true, // オプショナルプロパティにundefinedの代入を禁止
+    "noImplicitReturns": true, // 暗黙的にundefinedを返すのを禁止
+    "noFallthroughCasesInSwitch": true, // switch文のフォールスルーを禁止
+    "noUncheckedIndexedAccess": true, // インデックスアクセスを厳格にする
+    "noImplicitOverride": true, // overrideキーワードを必須にする
+    "isolatedModules": true, // 各ファイルを独立したモジュールとして扱う
+
+    // tscでは無効。マージ前にlinterで検出
+    "noUnusedLocals": false, // 未使用のローカル変数を禁止
+    "noUnusedParameters": false, // 未使用のパラメータを禁止
+
+    // fucking Windows
+    "forceConsistentCasingInFileNames": true, // 大文字小文字の不一致検出
+
+    // dist size minimizing
+    "importHelpers": true,
+    "removeComments": true,
+
+    // types
+    "emitDeclarationOnly": true, // tscでjsを出力しない(viteありき)
+    "declaration": true, // 型定義ファイルを出力
+    "sourceMap": true, // ソースマップを出力
+    "declarationMap": true, // 型定義ファイルのソースマップを出力
+
+    "incremental": true
+  },
+  "exclude": ["node_modules", "${configDir}/node_modules", "${configDir}/dist"]
+}
