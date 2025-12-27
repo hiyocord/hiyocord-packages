@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.1.0
+
+### Minor Changes
+
+- [#40](https://github.com/hiyocord/hiyocord-packages/pull/40) [`6137f5e`](https://github.com/hiyocord/hiyocord-packages/commit/6137f5e0b10c21dfd1c7fe6b8a1d679970c3631b) Thanks [@kurages](https://github.com/kurages)! - defer系のbuilderでbuildに実際のレスポンスを返すメソッドを渡したい
+
 ## 0.0.6
 
 ### Patch Changes
