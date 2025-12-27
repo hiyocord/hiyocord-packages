@@ -3,6 +3,7 @@ import {
   InteractionResponse,
   InteractionType,
 } from "../types";
+import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
 
 export interface BaseInteractionHandler<
   Type extends InteractionType,
@@ -11,7 +12,15 @@ export interface BaseInteractionHandler<
   handle(
     component: InteractionRequest[Type],
   ): Deferred extends true
-    ? Promise<[InteractionResponse[Type], Promise<InteractionResponse[Type]>]>
+    ? Promise<
+        readonly [
+          InteractionResponse[Type],
+          () =>
+            | RESTPostAPIWebhookWithTokenJSONBody
+            | Promise<RESTPostAPIWebhookWithTokenJSONBody | void>
+            | void,
+        ]
+      >
     : Promise<InteractionResponse[Type]>;
 }
 

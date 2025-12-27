@@ -16,7 +16,7 @@ export class DeferredMessageUpdateBuilder {
     },
   ) {}
 
-  build() {
-    return this.response;
+  build<T>(func: () => T | Promise<T>) {
+    return [this.response, func] as const;
   }
 }
