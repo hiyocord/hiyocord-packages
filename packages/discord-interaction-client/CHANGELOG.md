@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.2.0
+
+### Minor Changes
+
+- [#42](https://github.com/hiyocord/hiyocord-packages/pull/42) [`8260dee`](https://github.com/hiyocord/hiyocord-packages/commit/8260deeca861d1deb75479f87ec14427d46663c3) Thanks [@kurages](https://github.com/kurages)! - ギルドコマンドを登録できるようにする
+
 ## 0.1.0
 
 ### Minor Changes
