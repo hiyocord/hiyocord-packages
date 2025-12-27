@@ -1,5 +1,11 @@
 # @hiyocord/discord-rest-api
 
+## 2.1.0
+
+### Minor Changes
+
+- [`a54ecff`](https://github.com/hiyocord/hiyocord-packages/commit/a54ecff83806a28c9ba6d42995e06588457faacc) Thanks [@kurages](https://github.com/kurages)! - baseUrlを変更できるようにする
+
 ## 2.0.2
 
 ### Patch Changes
