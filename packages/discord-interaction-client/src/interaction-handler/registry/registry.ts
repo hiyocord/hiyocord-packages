@@ -6,5 +6,5 @@ export interface InteractionHandlerRegistry {
     type: K,
     handler: InteractionHandler<K>,
   ): void;
-  get<K extends InteractionType>(type: K): ReadonlyArray<InteractionHandler<K>>;
+  get<K extends InteractionType>(type: K): InteractionHandler<K>[];
 }

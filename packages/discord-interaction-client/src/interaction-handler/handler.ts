@@ -3,6 +3,7 @@ import {
   InteractionResponse,
   InteractionType,
 } from "../types";
+import type { Snowflake } from "../types";
 import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
 
 export interface BaseInteractionHandler<
@@ -29,6 +30,7 @@ interface BaseApplicationCommandHandler<
 > extends BaseInteractionHandler<InteractionType.ApplicationCommand, Deferred> {
   name: string;
   description: string;
+  guildIds: Snowflake[];
 }
 
 interface BaseMessageComponentHandler<
