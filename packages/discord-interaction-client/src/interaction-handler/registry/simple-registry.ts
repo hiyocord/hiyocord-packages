@@ -18,6 +18,6 @@ export class SimpleInteractionHandlerRegistry implements InteractionHandlerRegis
   }
 
   get<K extends InteractionType>(type: K) {
-    return [...this.handlers[type]] as ReadonlyArray<InteractionHandler<K>>;
+    return [...this.handlers[type]];
   }
 }
