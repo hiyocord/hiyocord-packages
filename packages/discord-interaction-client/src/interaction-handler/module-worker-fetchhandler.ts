@@ -13,12 +13,10 @@ type ExecutionContext = {
 };
 
 // Type guard to check if response is a deferred tuple
-function isDeferredResponse(res: any): res is readonly [any, () => any | Promise<any>] {
-  return (
-    Array.isArray(res) &&
-    res.length === 2 &&
-    typeof res[1] === 'function'
-  );
+function isDeferredResponse(
+  res: any,
+): res is readonly [any, () => any | Promise<any>] {
+  return Array.isArray(res) && res.length === 2 && typeof res[1] === "function";
 }
 
 const fetchApplicationCommand = async (
@@ -45,15 +43,17 @@ const fetchApplicationCommand = async (
             const followupUrl = `https://discord.com/api/v10/webhooks/${body.application_id}/${body.token}`;
 
             await fetch(followupUrl, {
-              method: 'POST',
+              method: "POST",
               headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
               },
-              body: JSON.stringify(followupData as RESTPostAPIWebhookWithTokenJSONBody),
+              body: JSON.stringify(
+                followupData as RESTPostAPIWebhookWithTokenJSONBody,
+              ),
             });
           }
         } catch (error: any) {
-          console.error('Error executing deferred function:', error);
+          console.error("Error executing deferred function:", error);
         }
       };
 

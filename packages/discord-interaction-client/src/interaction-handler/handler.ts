@@ -12,7 +12,15 @@ export interface BaseInteractionHandler<
   handle(
     component: InteractionRequest[Type],
   ): Deferred extends true
-    ? Promise<readonly [InteractionResponse[Type], () => RESTPostAPIWebhookWithTokenJSONBody | Promise<RESTPostAPIWebhookWithTokenJSONBody | void> | void]>
+    ? Promise<
+        readonly [
+          InteractionResponse[Type],
+          () =>
+            | RESTPostAPIWebhookWithTokenJSONBody
+            | Promise<RESTPostAPIWebhookWithTokenJSONBody | void>
+            | void,
+        ]
+      >
     : Promise<InteractionResponse[Type]>;
 }
 
