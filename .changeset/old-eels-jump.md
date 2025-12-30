@@ -1,0 +1,5 @@
+---
+"@hiyocord/tsconfig": minor
+---
+
+importHelpersをfalseにする

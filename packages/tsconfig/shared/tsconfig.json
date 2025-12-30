@@ -38,7 +38,6 @@
     "forceConsistentCasingInFileNames": true, // 大文字小文字の不一致検出
 
     // dist size minimizing
-    "importHelpers": true,
     "removeComments": true,
 
     // types
