@@ -23,7 +23,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "0.5.2",
     "@changesets/cli": "2.29.8",
-    "@cloudflare/workers-types": "^4.20251230.0",
+    "@cloudflare/workers-types": "4.20251230.0",
     "@tsconfig/next": "^2.0.5",
     "@types/node": "^25.0.3",
     "openapi-typescript": "^7.10.1",
@@ -34,7 +34,7 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^6.0.3",
     "vitest": "^4.0.16",
-    "wrangler": "^4.54.0"
+    "wrangler": "4.54.0"
   },
   "workspaces": [
     "packages/tsconfig",
