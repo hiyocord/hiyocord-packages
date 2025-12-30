@@ -2,4 +2,6 @@
 "@hiyocord/tsconfig": minor
 ---
 
-importHelpersをfalseにする
+- importHelpersをfalseにする
+- moduleをpreserveに修正
+

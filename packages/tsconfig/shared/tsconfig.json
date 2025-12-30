@@ -11,6 +11,8 @@
     // import * as hoge from 'hoge'; => import hoge from 'hoge';
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+
+    "module": "preserve",
     "moduleResolution": "bundler",
 
     // checks

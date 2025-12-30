@@ -4,8 +4,6 @@
   "compilerOptions": {
     "composite": true,
 
-    "target": "esnext",
-    "module": "preserve",
-    "moduleResolution": "bundler"
+    "target": "esnext"
   }
 }

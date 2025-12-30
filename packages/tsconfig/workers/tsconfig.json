@@ -5,8 +5,6 @@
     "composite": true,
 
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "bundler",
 
     "types": ["@cloudflare/workers-types"]
   }
