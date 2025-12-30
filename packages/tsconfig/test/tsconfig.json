@@ -2,7 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../shared/tsconfig.json",
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "types": ["vitest/globals"]
   },
   "include": ["${configDir}/test/**/*"]
 }
