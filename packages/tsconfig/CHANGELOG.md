@@ -1,5 +1,12 @@
 # @hiyocord/tsconfig
 
+## 0.1.0
+
+### Minor Changes
+
+- [`28ed7c6`](https://github.com/hiyocord/hiyocord-packages/commit/28ed7c6877f9e4aaba7c4a5068c166d8b4311b27) Thanks [@kurages](https://github.com/kurages)! - - importHelpersをfalseにする
+  - moduleをpreserveに修正
+
 ## 0.0.1
 
 ### Patch Changes
