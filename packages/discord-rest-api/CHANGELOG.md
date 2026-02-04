@@ -1,5 +1,11 @@
 # @hiyocord/discord-rest-api
 
+## 2.2.0
+
+### Minor Changes
+
+- [`b71f463`](https://github.com/hiyocord/hiyocord-packages/commit/b71f463e44eedb174829b0bd935b7e1707ee4c03) Thanks [@kurages](https://github.com/kurages)! - Bearer token対応
+
 ## 2.1.1
 
 ### Patch Changes
