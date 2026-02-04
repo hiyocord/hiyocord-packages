@@ -26,7 +26,10 @@ export const getClient = (token: string, options?: ExtendedClientOptions) => {
   client.use({
     // TODO rate limit wait and try
     onRequest: (opt) => {
-      opt.request.headers.set("Authorization", `${options?.tokenType ?? "Bot"} ${token}`);
+      opt.request.headers.set(
+        "Authorization",
+        `${options?.tokenType ?? "Bot"} ${token}`,
+      );
     },
     // TODO rate limit wait and retry
     // onError: (opt) => {},
