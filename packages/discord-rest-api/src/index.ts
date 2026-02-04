@@ -10,6 +10,12 @@ export interface ExtendedClientOptions extends ClientOptions {
    * @default "https://discord.com/api/v10"
    */
   baseUrl?: string;
+
+  /**
+   * Type of the authorization token
+   * @default "Bot"
+   */
+  tokenType?: "Bot" | "Bearer";
 }
 
 export const getClient = (token: string, options?: ExtendedClientOptions) => {
@@ -20,7 +26,7 @@ export const getClient = (token: string, options?: ExtendedClientOptions) => {
   client.use({
     // TODO rate limit wait and try
     onRequest: (opt) => {
-      opt.request.headers.set("Authorization", `Bot ${token}`);
+      opt.request.headers.set("Authorization", `${options?.tokenType ?? "Bot"} ${token}`);
     },
     // TODO rate limit wait and retry
     // onError: (opt) => {},
