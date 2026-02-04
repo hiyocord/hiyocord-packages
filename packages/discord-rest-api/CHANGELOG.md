@@ -1,5 +1,11 @@
 # @hiyocord/discord-rest-api
 
+## 2.1.1
+
+### Patch Changes
+
+- [`2334d83`](https://github.com/hiyocord/hiyocord-packages/commit/2334d838219b4cb75f2e9eecd13caa6871198b4d) Thanks [@kurages](https://github.com/kurages)! - ファイル名修正💢
+
 ## 2.1.0
 
 ### Minor Changes
