@@ -18,6 +18,6 @@ export type {
   InteractionHandlerResolver,
   DelegatingTypedInteractionHandlerResolver,
   NullTypedHandlerResolver,
-  TypedHandlerResolver
+  TypedHandlerResolver,
 } from "./resolver";
 export * from "./module-worker-fetchhandler";
