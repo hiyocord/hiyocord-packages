@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.2.2
+
+### Patch Changes
+
+- [`4ccb9e6`](https://github.com/hiyocord/hiyocord-packages/commit/4ccb9e6e62cd6c6347762fff5c9c171bc819e9ae) Thanks [@kurages](https://github.com/kurages)! - export types for interaction handlers and registries in index files
+
 ## 0.2.1
 
 ### Patch Changes
