@@ -30,31 +30,29 @@ interface BaseApplicationCommandHandler<
   guildIds: Snowflake[];
 }
 
-type BaseMessageComponentHandler<
-  Deferred extends boolean,
-> = BaseInteractionHandler<InteractionType.MessageComponent, Deferred>
+type BaseMessageComponentHandler<Deferred extends boolean> =
+  BaseInteractionHandler<InteractionType.MessageComponent, Deferred>;
 
-type BaseAutocompleteHandler<
-  Deferred extends boolean,
-> = BaseInteractionHandler<
+type BaseAutocompleteHandler<Deferred extends boolean> = BaseInteractionHandler<
   InteractionType.ApplicationCommandAutocomplete,
   Deferred
->
+>;
 
-type BaseModalSubmitHandler<Deferred extends boolean> = BaseInteractionHandler<InteractionType.ModalSubmit, Deferred>
+type BaseModalSubmitHandler<Deferred extends boolean> = BaseInteractionHandler<
+  InteractionType.ModalSubmit,
+  Deferred
+>;
 
-export type PingHandler = BaseInteractionHandler<
-  InteractionType.Ping,
-  false
->
-export type ApplicationCommandHandler = BaseApplicationCommandHandler<false>
-export type DeferredApplicationCommandHandler = BaseApplicationCommandHandler<true>
-export type MessageComponentHandler = BaseMessageComponentHandler<false>
-export type DeferredMessageComponentHandler = BaseMessageComponentHandler<true>
-export type AutocompleteHandler = BaseAutocompleteHandler<false>
-export type DeferredAutocompleteHandler = BaseAutocompleteHandler<true>
-export type ModalSubmitHandler = BaseModalSubmitHandler<false>
-export type DeferredModalSubmitHandler = BaseModalSubmitHandler<true>
+export type PingHandler = BaseInteractionHandler<InteractionType.Ping, false>;
+export type ApplicationCommandHandler = BaseApplicationCommandHandler<false>;
+export type DeferredApplicationCommandHandler =
+  BaseApplicationCommandHandler<true>;
+export type MessageComponentHandler = BaseMessageComponentHandler<false>;
+export type DeferredMessageComponentHandler = BaseMessageComponentHandler<true>;
+export type AutocompleteHandler = BaseAutocompleteHandler<false>;
+export type DeferredAutocompleteHandler = BaseAutocompleteHandler<true>;
+export type ModalSubmitHandler = BaseModalSubmitHandler<false>;
+export type DeferredModalSubmitHandler = BaseModalSubmitHandler<true>;
 
 export type InteractionHandler<K extends InteractionType> =
   K extends InteractionType.Ping

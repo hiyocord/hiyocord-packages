@@ -1,9 +1,9 @@
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
 import typescriptEslintParser from "@typescript-eslint/parser";
 import js from "@eslint/js";
-import tseslint from 'typescript-eslint';
+import tseslint from "typescript-eslint";
 
 export default [
   {
@@ -16,13 +16,13 @@ export default [
         project: true,
         sourceType: "module",
       },
-    }
+    },
   },
   // js.configs.recommended,
   ...tseslint.configs.recommended,
 
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -31,12 +31,10 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': typescriptEslint,
+      "@typescript-eslint": typescriptEslint,
     },
     rules: {
-      '@typescript-eslint/no-explicit-any': [
-        'error'
-      ],
+      "@typescript-eslint/no-explicit-any": ["error"],
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
