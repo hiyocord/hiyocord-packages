@@ -1,16 +1,18 @@
 import {
+  InteractionRequest,
+  InteractionResponseForResponseType,
+} from "../../types";
+import { InteractionResponseType } from "discord-api-types/v10";
+import type {
   APIAllowedMentions,
   APIEmbed,
   APIMessageTopLevelComponent,
-  InteractionRequest,
-  InteractionResponseForResponseType,
-  InteractionResponseType,
   InteractionType,
   MessageFlags,
   RESTAPIAttachment,
   RESTAPIPoll,
   Snowflake,
-} from "../../types";
+} from "discord-api-types/v10";
 
 export class UpdateMessageBuilder {
   constructor(

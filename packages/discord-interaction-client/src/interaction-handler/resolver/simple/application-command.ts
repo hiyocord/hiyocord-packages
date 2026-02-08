@@ -1,7 +1,7 @@
-import {
+import type {
   APIApplicationCommandInteraction,
   InteractionType,
-} from "../../../types";
+} from "discord-api-types/v10";
 import {
   ApplicationCommandHandler,
   DeferredApplicationCommandHandler,

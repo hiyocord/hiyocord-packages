@@ -1,9 +1,6 @@
-import {
-  InteractionRequest,
-  InteractionResponse,
-  InteractionType,
-} from "../types";
-import type { Snowflake } from "../types";
+import { InteractionRequest, InteractionResponse } from "../types";
+import type { InteractionType } from "discord-api-types/v10";
+import type { Snowflake } from "discord-api-types/globals";
 import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
 
 export interface BaseInteractionHandler<

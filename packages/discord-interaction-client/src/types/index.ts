@@ -1,40 +1,14 @@
-import {
+import type {
   InteractionType,
   InteractionResponseType,
   APIInteraction,
+  APIPingInteraction,
+  APIApplicationCommandInteraction,
+  APIMessageComponentInteraction,
+  APIApplicationCommandAutocompleteInteraction,
+  APIModalSubmitInteraction,
+  APIInteractionResponse,
 } from "discord-api-types/v10";
-
-import { APIApplicationCommandInteraction } from "./applicationCommands";
-import { APIApplicationCommandAutocompleteInteraction } from "./autocomplete";
-import { APIModalSubmitInteraction } from "./modalSubmit";
-import { APIMessageComponentInteraction } from "./messageComponents";
-import { APIPingInteraction } from "./ping";
-import { APIInteractionResponse } from "./responses";
-
-// export types
-export type { Snowflake } from "discord-api-types/globals";
-export type {
-  APIInteraction,
-  APIAllowedMentions,
-  RESTAPIAttachment,
-  APIMessageTopLevelComponent,
-  APIEmbed,
-  RESTAPIPoll,
-  APIApplicationCommandOptionChoice,
-  APIModalInteractionResponseCallbackComponent,
-} from "discord-api-types/v10";
-export {
-  MessageFlags,
-  InteractionType,
-  InteractionResponseType,
-} from "discord-api-types/v10";
-export * from "./applicationCommands";
-export * from "./autocomplete";
-export * from "./base";
-export * from "./messageComponents";
-export * from "./modalSubmit";
-export * from "./ping";
-export * from "./responses";
 
 export interface InteractionRequest {
   [InteractionType.Ping]: APIPingInteraction;

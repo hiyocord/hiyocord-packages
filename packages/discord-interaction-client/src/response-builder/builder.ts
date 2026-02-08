@@ -1,14 +1,16 @@
+import { equalsInteractionType } from "../types";
 import {
+  InteractionType,
+  InteractionResponseType,
+} from "discord-api-types/v10";
+import type {
   APIApplicationCommandAutocompleteInteraction,
   APIApplicationCommandInteraction,
   APIInteraction,
   APIMessageComponentInteraction,
   APIModalSubmitInteraction,
   APIPingInteraction,
-  equalsInteractionType,
-  InteractionResponseType,
-  InteractionType,
-} from "../types";
+} from "discord-api-types/v10";
 import { PongResponseBuilder } from "./responses/pong";
 import { ChannelMessageWithSourceBuilder } from "./responses/channel-message-with-source";
 import { DeferredChannelMessageWithSourceBuilder } from "./responses/deferred-channel-message-with-source";

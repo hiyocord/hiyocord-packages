@@ -1,5 +1,6 @@
 import { InteractionHandler } from "../handler";
-import { InteractionRequest, InteractionType } from "../../types";
+import { InteractionRequest } from "../../types";
+import type { InteractionType } from "discord-api-types/v10";
 import { InteractionHandlerRegistry } from "../registry";
 
 /**

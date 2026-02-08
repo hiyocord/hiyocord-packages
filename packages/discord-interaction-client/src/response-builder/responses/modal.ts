@@ -1,9 +1,9 @@
-import {
+import { InteractionRequest } from "../../types";
+import type {
   APIModalInteractionResponseCallbackComponent,
-  InteractionRequest,
-  InteractionResponseType,
   InteractionType,
-} from "../../types";
+} from "discord-api-types/v10";
+import { InteractionResponseType } from "discord-api-types/v10";
 
 export class ModalBuilder {
   constructor(

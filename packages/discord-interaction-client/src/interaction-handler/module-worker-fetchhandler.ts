@@ -1,8 +1,8 @@
-import {
+import type {
   APIApplicationCommandInteraction,
   APIInteraction,
-  InteractionType,
-} from "../types";
+} from "discord-api-types/v10";
+import { InteractionType } from "discord-api-types/v10";
 import { InteractionHandlerResolver } from "./resolver";
 import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
 

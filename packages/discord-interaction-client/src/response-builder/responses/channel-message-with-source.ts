@@ -1,16 +1,20 @@
-import {
+import type {
+  InteractionRequest,
+  InteractionResponseForResponseType,
+} from "../../types";
+import type {
   APIAllowedMentions,
   APIEmbed,
   APIMessageTopLevelComponent,
-  InteractionRequest,
-  InteractionResponseForResponseType,
-  InteractionResponseType,
-  InteractionType,
   MessageFlags,
   RESTAPIAttachment,
   RESTAPIPoll,
   Snowflake,
-} from "../../types";
+} from "discord-api-types/v10";
+import {
+  InteractionType,
+  InteractionResponseType,
+} from "discord-api-types/v10";
 
 export class ChannelMessageWithSourceBuilder {
   constructor(

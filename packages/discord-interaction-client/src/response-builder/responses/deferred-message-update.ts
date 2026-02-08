@@ -1,10 +1,11 @@
 import {
   InteractionRequest,
   InteractionResponseForResponseType,
+} from "../../types";
+import {
   InteractionResponseType,
   InteractionType,
-  MessageFlags,
-} from "../../types";
+} from "discord-api-types/v10";
 
 export class DeferredMessageUpdateBuilder {
   constructor(
