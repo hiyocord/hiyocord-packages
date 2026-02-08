@@ -1,12 +1,12 @@
-import {
+import type {
   InteractionRequest,
   InteractionResponseForResponseType,
 } from "../../types";
-import {
+import type {
   APIApplicationCommandOptionChoice,
-  InteractionResponseType,
   InteractionType,
 } from "discord-api-types/v10";
+import { InteractionResponseType } from "discord-api-types/v10";
 
 export class ApplicationCommandAutocompleteResultBuilder {
   constructor(

@@ -3,19 +3,19 @@ import type {
   APIInteraction,
 } from "discord-api-types/v10";
 import { InteractionType } from "discord-api-types/v10";
-import { InteractionHandlerResolver } from "./resolver";
+import type { InteractionHandlerResolver } from "./resolver";
 import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
 
 // Cloudflare Workers ExecutionContext type
 type ExecutionContext = {
-  waitUntil(promise: Promise<any>): void;
+  waitUntil(promise: Promise<unknown>): void;
   passThroughOnException(): void;
 };
 
 // Type guard to check if response is a deferred tuple
 function isDeferredResponse(
-  res: any,
-): res is readonly [any, () => any | Promise<any>] {
+  res: unknown,
+): res is readonly [unknown, () => unknown | Promise<unknown>] {
   return Array.isArray(res) && res.length === 2 && typeof res[1] === "function";
 }
 
@@ -52,7 +52,7 @@ const fetchApplicationCommand = async (
               ),
             });
           }
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error("Error executing deferred function:", error);
         }
       };

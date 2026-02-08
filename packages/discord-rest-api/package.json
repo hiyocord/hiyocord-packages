@@ -34,7 +34,8 @@
     "build": "vite build",
     "test": "true",
     "publish": "true",
-    "openapi": "npx openapi-typescript https://raw.githubusercontent.com/discord/discord-api-spec/refs/heads/main/specs/openapi.json  -o src/discord-api-spec.gen.ts"
+    "openapi": "npx openapi-typescript https://raw.githubusercontent.com/discord/discord-api-spec/refs/heads/main/specs/openapi.json  -o src/discord-api-spec.gen.ts",
+    "eslint": "eslint -c ../../eslint.config.js \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "openapi-fetch": "^0.15.0"

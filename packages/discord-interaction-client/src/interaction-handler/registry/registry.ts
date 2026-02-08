@@ -1,4 +1,4 @@
-import { InteractionHandler } from "../handler";
+import type { InteractionHandler } from "../handler";
 import type { InteractionType } from "discord-api-types/v10";
 
 export interface InteractionHandlerRegistry {

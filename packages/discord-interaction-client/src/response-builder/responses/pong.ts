@@ -1,4 +1,4 @@
-import { InteractionRequest } from "../../types";
+import type { InteractionRequest } from "../../types";
 import type { InteractionType } from "discord-api-types/v10";
 import { InteractionResponseType } from "discord-api-types/v10";
 

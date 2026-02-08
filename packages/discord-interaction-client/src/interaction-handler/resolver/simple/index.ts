@@ -1,11 +1,9 @@
 export * from "./application-command";
 
-import { InteractionHandlerRegistry } from "../../registry";
+import type { InteractionHandlerRegistry } from "../../registry";
 import { InteractionType } from "discord-api-types/v10";
-import {
-  DelegatingTypedInteractionHandlerResolver,
-  TypedHandlerResolver,
-} from "../resolver";
+import type { TypedHandlerResolver } from "../resolver";
+import { DelegatingTypedInteractionHandlerResolver } from "../resolver";
 import { SimpleApplicationCommandHandlerResolver } from "./application-command";
 
 /**

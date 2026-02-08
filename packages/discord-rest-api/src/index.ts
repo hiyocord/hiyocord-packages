@@ -1,6 +1,7 @@
 export * from "./discord-api-spec.gen";
-import { paths } from "./discord-api-spec.gen";
-import createClient, { ClientOptions } from "openapi-fetch";
+import type { paths } from "./discord-api-spec.gen";
+import type { ClientOptions } from "openapi-fetch";
+import createClient from "openapi-fetch";
 
 export type DefaultClient = ReturnType<typeof getClient>;
 

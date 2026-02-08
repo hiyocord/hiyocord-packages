@@ -49,6 +49,8 @@ jobs:
           key: dist-${{ github.sha }}
       - name: lint
         run: npm run lint
+      - name: check
+        run: npm run eslint:fix
 
   # TODO テストコード書く
   # test:

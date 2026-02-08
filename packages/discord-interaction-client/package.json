@@ -23,7 +23,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "test": "true"
+    "test": "true",
+    "eslint": "eslint -c ../../eslint.config.js \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "discord-api-types": "^0.38.38"

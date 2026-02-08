@@ -1,7 +1,7 @@
-import { InteractionHandler } from "../handler";
-import { InteractionRequest } from "../../types";
+import type { InteractionHandler } from "../handler";
+import type { InteractionRequest } from "../../types";
 import type { InteractionType } from "discord-api-types/v10";
-import { InteractionHandlerRegistry } from "../registry";
+import type { InteractionHandlerRegistry } from "../registry";
 
 /**
  * ハンドラの解決を行うためのインターフェース。
@@ -36,17 +36,11 @@ export abstract class TypedHandlerResolver<
 export class NullTypedHandlerResolver<
   T extends InteractionType,
 > implements TypedHandlerResolver<T> {
-  get(
-    handlers: InteractionHandler<T>[],
-    interaction: InteractionRequest[T],
-  ): InteractionHandler<T>[] {
+  get(): InteractionHandler<T>[] {
     return [];
   }
 
-  getFirst(
-    handlers: InteractionHandler<T>[],
-    interaction: InteractionRequest[T],
-  ): InteractionHandler<T> | null {
+  getFirst(): InteractionHandler<T> | null {
     return null;
   }
 }

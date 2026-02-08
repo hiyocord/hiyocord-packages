@@ -1,11 +1,11 @@
-import { InteractionRequest, InteractionResponse } from "../types";
+import type { InteractionRequest, InteractionResponse } from "../types";
 import type { InteractionType } from "discord-api-types/v10";
 import type { Snowflake } from "discord-api-types/globals";
 import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
 
 export interface BaseInteractionHandler<
   Type extends InteractionType,
-  Deferred extends Boolean = false,
+  Deferred extends boolean = false,
 > {
   handle(
     component: InteractionRequest[Type],
@@ -23,40 +23,38 @@ export interface BaseInteractionHandler<
 }
 
 interface BaseApplicationCommandHandler<
-  Deferred extends Boolean,
+  Deferred extends boolean,
 > extends BaseInteractionHandler<InteractionType.ApplicationCommand, Deferred> {
   name: string;
   description: string;
   guildIds: Snowflake[];
 }
 
-interface BaseMessageComponentHandler<
-  Deferred extends Boolean,
-> extends BaseInteractionHandler<InteractionType.MessageComponent, Deferred> {}
+type BaseMessageComponentHandler<
+  Deferred extends boolean,
+> = BaseInteractionHandler<InteractionType.MessageComponent, Deferred>
 
-interface BaseAutocompleteHandler<
-  Deferred extends Boolean,
-> extends BaseInteractionHandler<
+type BaseAutocompleteHandler<
+  Deferred extends boolean,
+> = BaseInteractionHandler<
   InteractionType.ApplicationCommandAutocomplete,
   Deferred
-> {}
+>
 
-interface BaseModalSubmitHandler<
-  Deferred extends Boolean,
-> extends BaseInteractionHandler<InteractionType.ModalSubmit, Deferred> {}
+type BaseModalSubmitHandler<Deferred extends boolean> = BaseInteractionHandler<InteractionType.ModalSubmit, Deferred>
 
-export interface PingHandler extends BaseInteractionHandler<
+export type PingHandler = BaseInteractionHandler<
   InteractionType.Ping,
   false
-> {}
-export interface ApplicationCommandHandler extends BaseApplicationCommandHandler<false> {}
-export interface DeferredApplicationCommandHandler extends BaseApplicationCommandHandler<true> {}
-export interface MessageComponentHandler extends BaseMessageComponentHandler<false> {}
-export interface DeferredMessageComponentHandler extends BaseMessageComponentHandler<true> {}
-export interface AutocompleteHandler extends BaseAutocompleteHandler<false> {}
-export interface DeferredAutocompleteHandler extends BaseAutocompleteHandler<true> {}
-export interface ModalSubmitHandler extends BaseModalSubmitHandler<false> {}
-export interface DeferredModalSubmitHandler extends BaseModalSubmitHandler<true> {}
+>
+export type ApplicationCommandHandler = BaseApplicationCommandHandler<false>
+export type DeferredApplicationCommandHandler = BaseApplicationCommandHandler<true>
+export type MessageComponentHandler = BaseMessageComponentHandler<false>
+export type DeferredMessageComponentHandler = BaseMessageComponentHandler<true>
+export type AutocompleteHandler = BaseAutocompleteHandler<false>
+export type DeferredAutocompleteHandler = BaseAutocompleteHandler<true>
+export type ModalSubmitHandler = BaseModalSubmitHandler<false>
+export type DeferredModalSubmitHandler = BaseModalSubmitHandler<true>
 
 export type InteractionHandler<K extends InteractionType> =
   K extends InteractionType.Ping

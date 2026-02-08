@@ -1,7 +1,7 @@
-import { InteractionHandler } from "../handler";
+import type { InteractionHandler } from "../handler";
 import { InteractionType } from "discord-api-types/v10";
 
-import { InteractionHandlerRegistry } from "./registry";
+import type { InteractionHandlerRegistry } from "./registry";
 
 export class SimpleInteractionHandlerRegistry implements InteractionHandlerRegistry {
   private handlers: {
