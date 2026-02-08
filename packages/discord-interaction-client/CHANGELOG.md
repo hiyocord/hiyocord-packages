@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.3.1
+
+### Patch Changes
+
+- [`a77bf50`](https://github.com/hiyocord/hiyocord-packages/commit/a77bf5074d207bbc53ac26ccf70b29dce515c139) Thanks [@kurages](https://github.com/kurages)! - refactor: enhance interaction handler types and registry structure
+
 ## 0.3.0
 
 ### Minor Changes
