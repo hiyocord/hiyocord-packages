@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/discord-interaction-client" },
+    { "path": "./packages/discord-rest-api" },
+    { "path": "./packages/github-rest-api" }
+  ]
+}

@@ -10,11 +10,9 @@ import type {
   RESTAPIAttachment,
   RESTAPIPoll,
   Snowflake,
-} from "discord-api-types/v10";
-import {
   InteractionType,
-  InteractionResponseType,
 } from "discord-api-types/v10";
+import { InteractionResponseType } from "discord-api-types/v10";
 
 export class ChannelMessageWithSourceBuilder {
   constructor(

@@ -1,4 +1,4 @@
-import { InteractionRequest } from "../../types";
+import type { InteractionRequest } from "../../types";
 import type {
   APIModalInteractionResponseCallbackComponent,
   InteractionType,

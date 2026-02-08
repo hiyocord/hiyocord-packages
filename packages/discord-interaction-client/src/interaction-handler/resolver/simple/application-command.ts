@@ -2,11 +2,11 @@ import type {
   APIApplicationCommandInteraction,
   InteractionType,
 } from "discord-api-types/v10";
-import {
+import type {
   ApplicationCommandHandler,
   DeferredApplicationCommandHandler,
 } from "../../handler";
-import { TypedHandlerResolver } from "../resolver";
+import type { TypedHandlerResolver } from "../resolver";
 
 export class SimpleApplicationCommandHandlerResolver implements TypedHandlerResolver<InteractionType.ApplicationCommand> {
   get(

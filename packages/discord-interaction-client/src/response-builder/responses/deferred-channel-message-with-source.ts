@@ -1,12 +1,9 @@
-import {
+import type {
   InteractionRequest,
   InteractionResponseForResponseType,
 } from "../../types";
-import {
-  InteractionResponseType,
-  InteractionType,
-  MessageFlags,
-} from "discord-api-types/v10";
+import type { InteractionType, MessageFlags } from "discord-api-types/v10";
+import { InteractionResponseType } from "discord-api-types/v10";
 
 export class DeferredChannelMessageWithSourceBuilder {
   constructor(
