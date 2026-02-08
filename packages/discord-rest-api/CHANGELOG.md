@@ -1,5 +1,11 @@
 # @hiyocord/discord-rest-api
 
+## 2.2.1
+
+### Patch Changes
+
+- [#120](https://github.com/hiyocord/hiyocord-packages/pull/120) [`50630c0`](https://github.com/hiyocord/hiyocord-packages/commit/50630c028218246c102dd313c9ac5f22e1231661) Thanks [@kurages](https://github.com/kurages)! - eslint設定
+
 ## 2.2.0
 
 ### Minor Changes
