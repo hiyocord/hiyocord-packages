@@ -1,5 +1,15 @@
 # @hiyocord/discord-interaction-client
 
+## 0.3.0
+
+### Minor Changes
+
+- [`c37b657`](https://github.com/hiyocord/hiyocord-packages/commit/c37b657c5ec3f0c35a6755e37229559573c4a3da) Thanks [@kurages](https://github.com/kurages)! - refactor: update imports to use discord-api-types/v10 and remove deprecated types
+
+### Patch Changes
+
+- [#120](https://github.com/hiyocord/hiyocord-packages/pull/120) [`50630c0`](https://github.com/hiyocord/hiyocord-packages/commit/50630c028218246c102dd313c9ac5f22e1231661) Thanks [@kurages](https://github.com/kurages)! - eslint設定
+
 ## 0.2.2
 
 ### Patch Changes
