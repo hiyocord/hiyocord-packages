@@ -2,7 +2,6 @@ import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
 import typescriptEslintParser from "@typescript-eslint/parser";
-import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
 export default [
