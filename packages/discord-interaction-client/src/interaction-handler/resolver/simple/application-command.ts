@@ -2,17 +2,14 @@ import type {
   APIApplicationCommandInteraction,
   InteractionType,
 } from "discord-api-types/v10";
-import type {
-  ApplicationCommandHandler,
-  DeferredApplicationCommandHandler,
-} from "../../handler";
 import type { TypedHandlerResolver } from "../resolver";
+import { InteractionHandlerMap } from "interaction-handler/registry/registry";
 
 export class SimpleApplicationCommandHandlerResolver implements TypedHandlerResolver<InteractionType.ApplicationCommand> {
   get(
-    handlers: (ApplicationCommandHandler | DeferredApplicationCommandHandler)[],
+    handlers: InteractionHandlerMap[InteractionType.ApplicationCommand][],
     interaction: APIApplicationCommandInteraction,
-  ): (ApplicationCommandHandler | DeferredApplicationCommandHandler)[] {
+  ) {
     for (const handler of handlers) {
       if (handler.name === interaction.data.name) {
         return [handler];
@@ -22,10 +19,10 @@ export class SimpleApplicationCommandHandlerResolver implements TypedHandlerReso
   }
 
   getFirst(
-    handlers: (ApplicationCommandHandler | DeferredApplicationCommandHandler)[],
+    handlers: InteractionHandlerMap[InteractionType.ApplicationCommand][],
     interaction: APIApplicationCommandInteraction,
-  ): ApplicationCommandHandler | DeferredApplicationCommandHandler | null {
+  ) {
     const handler = this.get(handlers, interaction);
-    return handler ? (handler[0] ?? null) : null;
+    return handler[0] ?? null;
   }
 }

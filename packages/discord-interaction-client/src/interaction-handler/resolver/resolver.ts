@@ -13,7 +13,7 @@ export interface InteractionHandlerResolver {
 
   find<K extends InteractionType>(
     interaction: InteractionRequest[K],
-  ): Array<InteractionHandler<K>> | null;
+  ): Array<InteractionHandler<K>>;
 }
 
 export abstract class TypedHandlerResolver<

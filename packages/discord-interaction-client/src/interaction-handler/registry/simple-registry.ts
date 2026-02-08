@@ -1,11 +1,13 @@
-import type { InteractionHandler } from "../handler";
 import { InteractionType } from "discord-api-types/v10";
 
-import type { InteractionHandlerRegistry } from "./registry";
+import type {
+  InteractionHandlerMap,
+  InteractionHandlerRegistry,
+} from "./registry";
 
 export class SimpleInteractionHandlerRegistry implements InteractionHandlerRegistry {
   private handlers: {
-    [K in InteractionType]: Array<InteractionHandler<K>>;
+    [K in InteractionType]: InteractionHandlerMap[K][];
   } = {
     [InteractionType.Ping]: [],
     [InteractionType.ApplicationCommand]: [],
@@ -14,11 +16,14 @@ export class SimpleInteractionHandlerRegistry implements InteractionHandlerRegis
     [InteractionType.ModalSubmit]: [],
   };
 
-  register<K extends InteractionType>(type: K, handler: InteractionHandler<K>) {
+  register<K extends InteractionType>(
+    type: K,
+    handler: InteractionHandlerMap[K],
+  ) {
     this.handlers[type].push(handler);
   }
 
-  get<K extends InteractionType>(type: K) {
-    return [...this.handlers[type]];
+  get<K extends InteractionType>(type: K): InteractionHandlerMap[K][] {
+    return this.handlers[type].slice(0);
   }
 }
