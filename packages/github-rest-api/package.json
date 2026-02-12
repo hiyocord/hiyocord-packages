@@ -30,6 +30,6 @@
     "eslint": "eslint -c ../../eslint.config.js \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "openapi-fetch": "^0.15.0"
+    "openapi-fetch": "^0.17.0"
   }
 }
