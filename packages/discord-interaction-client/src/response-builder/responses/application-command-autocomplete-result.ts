@@ -25,6 +25,9 @@ export class ApplicationCommandAutocompleteResultBuilder {
   }
 
   build() {
-    return this.response;
+    return {
+      deferred: false,
+      response: this.response,
+    };
   }
 }

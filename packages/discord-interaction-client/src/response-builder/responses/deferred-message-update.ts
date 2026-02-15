@@ -2,8 +2,12 @@ import type {
   InteractionRequest,
   InteractionResponseForResponseType,
 } from "../../types";
-import type { InteractionType } from "discord-api-types/v10";
+import type {
+  InteractionType,
+  RESTPatchAPIWebhookWithTokenMessageJSONBody,
+} from "discord-api-types/v10";
 import { InteractionResponseType } from "discord-api-types/v10";
+import type { FollowupMessageUpdateBuilder } from "../../response-builder/followup";
 
 export class DeferredMessageUpdateBuilder {
   constructor(
@@ -15,7 +19,17 @@ export class DeferredMessageUpdateBuilder {
     },
   ) {}
 
-  build<T>(func: () => T | Promise<T>) {
-    return [this.response, func] as const;
+  build(
+    func: (
+      builder: FollowupMessageUpdateBuilder,
+    ) =>
+      | RESTPatchAPIWebhookWithTokenMessageJSONBody
+      | Promise<RESTPatchAPIWebhookWithTokenMessageJSONBody>,
+  ) {
+    return {
+      deferred: true,
+      response: this.response,
+      followup: func,
+    } as const;
   }
 }

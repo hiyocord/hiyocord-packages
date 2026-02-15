@@ -1,5 +1,6 @@
 import type { InteractionRequest } from "../../types";
 import type {
+  APIModalInteractionResponse,
   APIModalInteractionResponseCallbackComponent,
   InteractionType,
 } from "discord-api-types/v10";
@@ -19,12 +20,15 @@ export class ModalBuilder {
     components: APIModalInteractionResponseCallbackComponent[],
   ) {
     return {
-      type: InteractionResponseType.Modal,
-      data: {
-        title,
-        custom_id,
-        components,
-      },
+      deferred: false,
+      response: {
+        type: InteractionResponseType.Modal as const,
+        data: {
+          title,
+          custom_id,
+          components,
+        },
+      } satisfies APIModalInteractionResponse,
     };
   }
 }

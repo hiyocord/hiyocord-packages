@@ -1,10 +1,23 @@
-import type {
-  APIApplicationCommandInteraction,
-  APIInteraction,
-} from "discord-api-types/v10";
+import { InteractionResponseType } from "discord-api-types/v10";
 import { InteractionType } from "discord-api-types/v10";
 import type { InteractionHandlerResolver } from "./resolver";
-import type { RESTPostAPIWebhookWithTokenJSONBody } from "discord-api-types/v10";
+import type {
+  RESTPostAPIWebhookWithTokenJSONBody,
+  APIApplicationCommandInteraction,
+  APIInteraction,
+  APIMessageComponentInteraction,
+  APIModalSubmitInteraction,
+} from "discord-api-types/v10";
+import {
+  createBuilder,
+  FollowupMessageUpdateBuilder,
+  FollowupReplyBuilder,
+} from "../response-builder";
+import type { BaseInteractionHandler } from "./handler";
+import type {
+  InteractionRequest,
+  InteractionResponseForResponseType,
+} from "../types";
 
 // Cloudflare Workers ExecutionContext type
 type ExecutionContext = {
@@ -12,76 +25,134 @@ type ExecutionContext = {
   passThroughOnException(): void;
 };
 
-// Type guard to check if response is a deferred tuple
-function isDeferredResponse(
-  res: unknown,
-): res is readonly [unknown, () => unknown | Promise<unknown>] {
-  return Array.isArray(res) && res.length === 2 && typeof res[1] === "function";
+type PromiseType<T> = T extends Promise<infer P> ? P : T;
+type DeferredHandler = BaseInteractionHandler<InteractionType, true>["handle"];
+
+function isDeferredChannelMessageWithSource(
+  response: PromiseType<ReturnType<DeferredHandler>>,
+): response is PromiseType<ReturnType<DeferredHandler>> & {
+  response: InteractionResponseForResponseType<InteractionResponseType.DeferredChannelMessageWithSource>;
+  followup: (
+    builder: FollowupReplyBuilder,
+  ) =>
+    | RESTPostAPIWebhookWithTokenJSONBody
+    | Promise<RESTPostAPIWebhookWithTokenJSONBody>;
+} {
+  return (
+    response.response.type ===
+    InteractionResponseType.DeferredChannelMessageWithSource
+  );
 }
+
+const execute = async <I extends InteractionType>(
+  handler: BaseInteractionHandler<I, boolean> | null,
+  body: InteractionRequest[I],
+  ctx?: ExecutionContext,
+) => {
+  if (handler === null) {
+    return new Response(null, { status: 404 });
+  }
+
+  const result = await handler.handle(body);
+  const { response } = result;
+
+  // Check if response is a deferred tuple [response, func]
+  if (result.deferred) {
+    // Execute afterFunc in background and send followup message
+    const sendFollowup = async () => {
+      let followupData;
+      if (isDeferredChannelMessageWithSource(result)) {
+        followupData = await result.followup(new FollowupReplyBuilder());
+      } else {
+        followupData = await result.followup(
+          new FollowupMessageUpdateBuilder(),
+        );
+      }
+
+      if (followupData) {
+        // Send followup message to Discord
+        let method: string;
+        let followupUrl = "https://discord.com/api/v10/webhooks";
+        switch (response.type) {
+          case InteractionResponseType.DeferredChannelMessageWithSource:
+            method = "POST";
+            followupUrl += `/${body.application_id}/${body.token}`;
+            break;
+          case InteractionResponseType.DeferredMessageUpdate:
+            method = "PATCH";
+            followupUrl += `/${body.application_id}/${body.token}/messages/@original`;
+            break;
+          default:
+            throw new Error("not deferred response");
+        }
+        await fetch(followupUrl, {
+          method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(followupData),
+        });
+      }
+    };
+
+    if (ctx) {
+      ctx.waitUntil(sendFollowup());
+    } else {
+      // Fallback: execute without waiting
+      sendFollowup();
+    }
+
+    return new Response(JSON.stringify(response), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  // Normal response
+  return new Response(JSON.stringify(result.response), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
 const fetchApplicationCommand = async (
   resolver: InteractionHandlerResolver,
   body: APIApplicationCommandInteraction,
   ctx?: ExecutionContext,
 ) => {
-  const handler = resolver.findFirst<InteractionType.ApplicationCommand>(body);
-  if (handler) {
-    const res = await handler.handle(body);
+  return await execute(
+    resolver.findFirst<InteractionType.ApplicationCommand>(body),
+    body,
+    ctx,
+  );
+};
 
-    // Check if response is a deferred tuple [response, func]
-    if (isDeferredResponse(res)) {
-      const deferResponse = res[0];
-      const afterFunc = res[1];
+const fetchMessageComponent = async (
+  resolver: InteractionHandlerResolver,
+  body: APIMessageComponentInteraction,
+  ctx?: ExecutionContext,
+) => {
+  return await execute(
+    resolver.findFirst<InteractionType.MessageComponent>(body),
+    body,
+    ctx,
+  );
+};
 
-      // Execute afterFunc in background and send followup message
-      const sendFollowup = async () => {
-        try {
-          const followupData = await afterFunc();
-
-          if (followupData) {
-            // Send followup message to Discord
-            const followupUrl = `https://discord.com/api/v10/webhooks/${body.application_id}/${body.token}`;
-
-            await fetch(followupUrl, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(
-                followupData as RESTPostAPIWebhookWithTokenJSONBody,
-              ),
-            });
-          }
-        } catch (error: unknown) {
-          console.error("Error executing deferred function:", error);
-        }
-      };
-
-      if (ctx) {
-        ctx.waitUntil(sendFollowup());
-      } else {
-        // Fallback: execute without waiting
-        sendFollowup();
-      }
-
-      return new Response(JSON.stringify(deferResponse), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
-
-    // Normal response
-    return new Response(JSON.stringify(res), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } else {
-    return new Response(null, { status: 404 });
-  }
+const fetchModalSubmit = async (
+  resolver: InteractionHandlerResolver,
+  body: APIModalSubmitInteraction,
+  ctx?: ExecutionContext,
+) => {
+  return await execute(
+    resolver.findFirst<InteractionType.ModalSubmit>(body),
+    body,
+    ctx,
+  );
 };
 
 export const fetchHandler = (resolver: InteractionHandlerResolver) => {
@@ -92,8 +163,21 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
   ): Promise<Response> => {
     const body = (await request.json()) as APIInteraction;
     switch (body.type) {
+      case InteractionType.Ping:
+        return new Response(JSON.stringify(createBuilder(body).build()), {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
       case InteractionType.ApplicationCommand:
         return await fetchApplicationCommand(resolver, body, ctx);
+      case InteractionType.MessageComponent:
+        return await fetchMessageComponent(resolver, body, ctx);
+      case InteractionType.ModalSubmit:
+        return await fetchModalSubmit(resolver, body, ctx);
+      // case InteractionType.ApplicationCommandAutocomplete:
+      // TODO ApplicationCommandHandlerからよしなにやりたい
       default:
         break;
     }

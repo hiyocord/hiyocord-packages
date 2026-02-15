@@ -7,7 +7,10 @@ export class PongResponseBuilder {
 
   build() {
     return {
-      type: InteractionResponseType.Pong,
+      deferred: false,
+      response: {
+        type: InteractionResponseType.Pong,
+      },
     };
   }
 }

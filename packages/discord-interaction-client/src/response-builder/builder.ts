@@ -31,7 +31,8 @@ export function createBuilder(interaction: APIApplicationCommandInteraction): {
 export function createBuilder(interaction: APIMessageComponentInteraction): {
   reply: () => ChannelMessageWithSourceBuilder;
   update: () => UpdateMessageBuilder;
-  defer: () => DeferredMessageUpdateBuilder;
+  deferUpdate: () => DeferredMessageUpdateBuilder;
+  deferReply: () => DeferredChannelMessageWithSourceBuilder;
   modal: () => ModalBuilder;
 };
 
@@ -63,7 +64,9 @@ export function createBuilder<T extends APIInteraction>(interaction: T) {
     return {
       reply: () => new ChannelMessageWithSourceBuilder(interaction),
       update: () => new UpdateMessageBuilder(interaction),
-      defer: () => new DeferredMessageUpdateBuilder(interaction),
+      deferUpdate: () => new DeferredMessageUpdateBuilder(interaction),
+      deferReply: () =>
+        new DeferredChannelMessageWithSourceBuilder(interaction),
       modal: () => new ModalBuilder(interaction),
     };
   } else if (

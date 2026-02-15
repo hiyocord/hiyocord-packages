@@ -3,7 +3,7 @@ import type {
   InteractionType,
 } from "discord-api-types/v10";
 import type { TypedHandlerResolver } from "../resolver";
-import { InteractionHandlerMap } from "interaction-handler/registry/registry";
+import type { InteractionHandlerMap } from "interaction-handler/registry/registry";
 
 export class SimpleApplicationCommandHandlerResolver implements TypedHandlerResolver<InteractionType.ApplicationCommand> {
   get(

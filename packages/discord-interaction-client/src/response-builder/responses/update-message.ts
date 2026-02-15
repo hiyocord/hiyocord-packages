@@ -95,6 +95,9 @@ export class UpdateMessageBuilder {
   }
 
   build() {
-    return this.response;
+    return {
+      deferred: false,
+      response: this.response,
+    };
   }
 }

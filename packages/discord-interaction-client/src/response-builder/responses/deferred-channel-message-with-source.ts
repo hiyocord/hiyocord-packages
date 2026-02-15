@@ -2,12 +2,19 @@ import type {
   InteractionRequest,
   InteractionResponseForResponseType,
 } from "../../types";
-import type { InteractionType, MessageFlags } from "discord-api-types/v10";
+import type {
+  InteractionType,
+  MessageFlags,
+  RESTPostAPIWebhookWithTokenJSONBody,
+} from "discord-api-types/v10";
 import { InteractionResponseType } from "discord-api-types/v10";
+import type { FollowupReplyBuilder } from "../../response-builder/followup";
 
 export class DeferredChannelMessageWithSourceBuilder {
   constructor(
-    private interaction: InteractionRequest[InteractionType.ApplicationCommand],
+    private interaction: InteractionRequest[
+      | InteractionType.ApplicationCommand
+      | InteractionType.MessageComponent],
     private response: InteractionResponseForResponseType<InteractionResponseType.DeferredChannelMessageWithSource> = {
       type: InteractionResponseType.DeferredChannelMessageWithSource,
       data: {},
@@ -21,7 +28,17 @@ export class DeferredChannelMessageWithSourceBuilder {
     });
   }
 
-  build<T>(func: () => T | Promise<T>) {
-    return [this.response, func] as const;
+  build(
+    func: (
+      builder: FollowupReplyBuilder,
+    ) =>
+      | RESTPostAPIWebhookWithTokenJSONBody
+      | Promise<RESTPostAPIWebhookWithTokenJSONBody>,
+  ) {
+    return {
+      deferred: true,
+      response: this.response,
+      followup: func,
+    } as const;
   }
 }

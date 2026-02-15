@@ -35,6 +35,7 @@ export interface AllowedInteractionResponseTypes {
 
   [InteractionType.MessageComponent]:
     | InteractionResponseType.ChannelMessageWithSource
+    | InteractionResponseType.DeferredChannelMessageWithSource
     | InteractionResponseType.UpdateMessage
     | InteractionResponseType.DeferredMessageUpdate
     | InteractionResponseType.Modal;
@@ -43,6 +44,7 @@ export interface AllowedInteractionResponseTypes {
 
   [InteractionType.ModalSubmit]:
     | InteractionResponseType.ChannelMessageWithSource
+    | InteractionResponseType.DeferredChannelMessageWithSource
     | InteractionResponseType.UpdateMessage
     | InteractionResponseType.DeferredMessageUpdate
     | InteractionResponseType.Modal;
