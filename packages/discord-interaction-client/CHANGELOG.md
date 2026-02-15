@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.4.0
+
+### Minor Changes
+
+- [`3d479ea`](https://github.com/hiyocord/hiyocord-packages/commit/3d479ea8a2521fb64ab6bb4b416c2c2b4ef85b40) Thanks [@kurages](https://github.com/kurages)! - 遅延応答用にbuilderを受け取れるように変更
+
 ## 0.3.1
 
 ### Patch Changes
