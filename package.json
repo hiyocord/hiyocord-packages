@@ -42,7 +42,7 @@
     "vite-plugin-dts": "4.5.4",
     "vite-tsconfig-paths": "6.1.1",
     "vitest": "4.0.18",
-    "wrangler": "4.65.0"
+    "wrangler": "4.66.0"
   },
   "workspaces": [
     "packages/tsconfig",
