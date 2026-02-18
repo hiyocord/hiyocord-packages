@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.4.1
+
+### Patch Changes
+
+- [`d93d9c2`](https://github.com/hiyocord/hiyocord-packages/commit/d93d9c2dd7c2f5025612c93d7305f4c94905a394) Thanks [@kurages](https://github.com/kurages)! - 型定義修正
+
 ## 0.4.0
 
 ### Minor Changes
