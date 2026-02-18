@@ -101,6 +101,6 @@ export class ChannelMessageWithSourceBuilder {
     return {
       deferred: false,
       response: this.response,
-    };
+    } as const;
   }
 }

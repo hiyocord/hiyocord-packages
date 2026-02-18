@@ -98,6 +98,6 @@ export class UpdateMessageBuilder {
     return {
       deferred: false,
       response: this.response,
-    };
+    } as const;
   }
 }

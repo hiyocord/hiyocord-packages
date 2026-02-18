@@ -28,6 +28,6 @@ export class ApplicationCommandAutocompleteResultBuilder {
     return {
       deferred: false,
       response: this.response,
-    };
+    } as const;
   }
 }

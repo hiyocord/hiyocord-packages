@@ -11,6 +11,6 @@ export class PongResponseBuilder {
       response: {
         type: InteractionResponseType.Pong,
       },
-    };
+    } as const;
   }
 }

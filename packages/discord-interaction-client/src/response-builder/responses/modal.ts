@@ -29,6 +29,6 @@ export class ModalBuilder {
           components,
         },
       } satisfies APIModalInteractionResponse,
-    };
+    } as const;
   }
 }
