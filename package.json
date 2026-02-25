@@ -26,7 +26,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "0.5.2",
     "@changesets/cli": "2.29.8",
-    "@cloudflare/workers-types": "4.20260303.0",
+    "@cloudflare/workers-types": "4.20260304.0",
     "@tsconfig/next": "2.0.5",
     "@types/node": "25.3.0",
     "@typescript-eslint/eslint-plugin": "8.56.1",
