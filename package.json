@@ -28,7 +28,7 @@
     "@changesets/cli": "2.29.8",
     "@cloudflare/workers-types": "4.20260305.0",
     "@tsconfig/next": "2.0.6",
-    "@types/node": "25.3.2",
+    "@types/node": "25.3.3",
     "@typescript-eslint/eslint-plugin": "8.56.1",
     "@typescript-eslint/parser": "8.56.1",
     "eslint": "10.0.2",
