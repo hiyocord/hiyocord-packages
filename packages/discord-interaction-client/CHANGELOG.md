@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.0
+
+### Minor Changes
+
+- [#187](https://github.com/hiyocord/hiyocord-packages/pull/187) [`c635ec5`](https://github.com/hiyocord/hiyocord-packages/commit/c635ec5d7d6a0446e70197faec74fb3b13f94ca2) Thanks [@kurages](https://github.com/kurages)! - handlerでrequestを扱いたい
+
 ## 0.4.1
 
 ### Patch Changes
