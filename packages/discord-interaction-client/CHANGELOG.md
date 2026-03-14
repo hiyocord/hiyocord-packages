@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.3
+
+### Patch Changes
+
+- [#193](https://github.com/hiyocord/hiyocord-packages/pull/193) [`deeb199`](https://github.com/hiyocord/hiyocord-packages/commit/deeb199a6410fac53432623e2b6809de9e6eadd8) Thanks [@kurages](https://github.com/kurages)! - fix: update handler to accept context object for request in fetchHandler
+
 ## 0.5.2
 
 ### Patch Changes
