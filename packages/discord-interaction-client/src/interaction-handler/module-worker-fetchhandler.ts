@@ -170,7 +170,7 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
     env?: unknown,
     ctx?: ExecutionContext,
   ): Promise<Response> => {
-    const body = (await new Request(request).json()) as APIInteraction;
+    const body = (await request.clone().json()) as APIInteraction;
     switch (body.type) {
       case InteractionType.Ping:
         return new Response(JSON.stringify(createBuilder(body).build()), {
