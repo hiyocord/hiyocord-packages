@@ -54,7 +54,9 @@ const execute = async <I extends InteractionType>(
     return new Response(null, { status: 404 });
   }
 
-  const result = await handler.handle(body, new Request(request));
+  const result = await handler.handle(body, {
+    request: new Request(request),
+  });
   const { response } = result;
 
   // Check if response is a deferred tuple [response, func]
@@ -168,7 +170,7 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
     env?: unknown,
     ctx?: ExecutionContext,
   ): Promise<Response> => {
-    const body = (await request.json()) as APIInteraction;
+    const body = (await new Request(request).json()) as APIInteraction;
     switch (body.type) {
       case InteractionType.Ping:
         return new Response(JSON.stringify(createBuilder(body).build()), {
