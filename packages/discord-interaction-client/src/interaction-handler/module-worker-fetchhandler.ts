@@ -46,6 +46,7 @@ function isDeferredChannelMessageWithSource(
 
 const execute = async <I extends InteractionType>(
   handler: BaseInteractionHandler<I, boolean> | null,
+  request: Request,
   body: InteractionRequest[I],
   ctx?: ExecutionContext,
 ) => {
@@ -53,7 +54,7 @@ const execute = async <I extends InteractionType>(
     return new Response(null, { status: 404 });
   }
 
-  const result = await handler.handle(body);
+  const result = await handler.handle(body, request);
   const { response } = result;
 
   // Check if response is a deferred tuple [response, func]
@@ -121,11 +122,13 @@ const execute = async <I extends InteractionType>(
 
 const fetchApplicationCommand = async (
   resolver: InteractionHandlerResolver,
+  request: Request,
   body: APIApplicationCommandInteraction,
   ctx?: ExecutionContext,
 ) => {
   return await execute(
     resolver.findFirst<InteractionType.ApplicationCommand>(body),
+    request,
     body,
     ctx,
   );
@@ -133,11 +136,13 @@ const fetchApplicationCommand = async (
 
 const fetchMessageComponent = async (
   resolver: InteractionHandlerResolver,
+  request: Request,
   body: APIMessageComponentInteraction,
   ctx?: ExecutionContext,
 ) => {
   return await execute(
     resolver.findFirst<InteractionType.MessageComponent>(body),
+    request,
     body,
     ctx,
   );
@@ -145,11 +150,13 @@ const fetchMessageComponent = async (
 
 const fetchModalSubmit = async (
   resolver: InteractionHandlerResolver,
+  request: Request,
   body: APIModalSubmitInteraction,
   ctx?: ExecutionContext,
 ) => {
   return await execute(
     resolver.findFirst<InteractionType.ModalSubmit>(body),
+    request,
     body,
     ctx,
   );
@@ -171,11 +178,21 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
           },
         });
       case InteractionType.ApplicationCommand:
-        return await fetchApplicationCommand(resolver, body, ctx);
+        return await fetchApplicationCommand(
+          resolver,
+          request.clone(),
+          body,
+          ctx,
+        );
       case InteractionType.MessageComponent:
-        return await fetchMessageComponent(resolver, body, ctx);
+        return await fetchMessageComponent(
+          resolver,
+          request.clone(),
+          body,
+          ctx,
+        );
       case InteractionType.ModalSubmit:
-        return await fetchModalSubmit(resolver, body, ctx);
+        return await fetchModalSubmit(resolver, request.clone(), body, ctx);
       // case InteractionType.ApplicationCommandAutocomplete:
       // TODO ApplicationCommandHandlerからよしなにやりたい
       default:
