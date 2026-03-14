@@ -178,9 +178,19 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
           },
         });
       case InteractionType.ApplicationCommand:
-        return await fetchApplicationCommand(resolver, request.clone(), body, ctx);
+        return await fetchApplicationCommand(
+          resolver,
+          request.clone(),
+          body,
+          ctx,
+        );
       case InteractionType.MessageComponent:
-        return await fetchMessageComponent(resolver, request.clone(), body, ctx);
+        return await fetchMessageComponent(
+          resolver,
+          request.clone(),
+          body,
+          ctx,
+        );
       case InteractionType.ModalSubmit:
         return await fetchModalSubmit(resolver, request.clone(), body, ctx);
       // case InteractionType.ApplicationCommandAutocomplete:

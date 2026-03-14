@@ -19,7 +19,10 @@ export interface BaseInteractionHandler<
   Type extends InteractionType,
   Deferred extends boolean = false,
 > {
-  handle(component: InteractionRequest[Type], request: Request): Deferred extends true
+  handle(
+    component: InteractionRequest[Type],
+    request: Request,
+  ): Deferred extends true
     ? Promise<
         | {
             deferred: true;
