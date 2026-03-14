@@ -21,7 +21,7 @@ export interface BaseInteractionHandler<
 > {
   handle(
     component: InteractionRequest[Type],
-    context?: {
+    context: {
       request: Request;
     },
   ): Deferred extends true
