@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.4
+
+### Patch Changes
+
+- [#195](https://github.com/hiyocord/hiyocord-packages/pull/195) [`67f903b`](https://github.com/hiyocord/hiyocord-packages/commit/67f903b957e933ba43e84593dc0a69d43ad86740) Thanks [@kurages](https://github.com/kurages)! - fix: update fetchHandler to use request cloning for body extraction
+
 ## 0.5.3
 
 ### Patch Changes
