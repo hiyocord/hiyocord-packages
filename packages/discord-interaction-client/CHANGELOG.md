@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.1
+
+### Patch Changes
+
+- [#190](https://github.com/hiyocord/hiyocord-packages/pull/190) [`0ff7731`](https://github.com/hiyocord/hiyocord-packages/commit/0ff773144a6b2bcf57b2e0005533ed7efc9ad15c) Thanks [@kurages](https://github.com/kurages)! - fix clone
+
 ## 0.5.0
 
 ### Minor Changes
