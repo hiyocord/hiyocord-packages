@@ -54,7 +54,7 @@ const execute = async <I extends InteractionType>(
     return new Response(null, { status: 404 });
   }
 
-  const result = await handler.handle(body, request);
+  const result = await handler.handle(body, new Request(request));
   const { response } = result;
 
   // Check if response is a deferred tuple [response, func]
