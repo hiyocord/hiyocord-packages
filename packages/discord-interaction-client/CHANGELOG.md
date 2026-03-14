@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.5
+
+### Patch Changes
+
+- [#197](https://github.com/hiyocord/hiyocord-packages/pull/197) [`36d1fa4`](https://github.com/hiyocord/hiyocord-packages/commit/36d1fa40e643cc58ef05be18aeca10d4c719f25f) Thanks [@kurages](https://github.com/kurages)! - fix: update handle method to require context object in BaseInteractionHandler
+
 ## 0.5.4
 
 ### Patch Changes
