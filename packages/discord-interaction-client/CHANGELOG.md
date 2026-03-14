@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.2
+
+### Patch Changes
+
+- [#191](https://github.com/hiyocord/hiyocord-packages/pull/191) [`9010601`](https://github.com/hiyocord/hiyocord-packages/commit/9010601e25063491bc9537d5f5f7ac5a3e532b63) Thanks [@kurages](https://github.com/kurages)! - fix: remove unnecessary request cloning in fetchHandler
+
 ## 0.5.1
 
 ### Patch Changes
