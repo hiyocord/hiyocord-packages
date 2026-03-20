@@ -18,11 +18,13 @@ import type {
 export interface BaseInteractionHandler<
   Type extends InteractionType,
   Deferred extends boolean = false,
+  Env = unknown,
 > {
   handle(
     component: InteractionRequest[Type],
     context: {
       request: Request;
+      env: Env;
     },
   ): Deferred extends true
     ? Promise<
