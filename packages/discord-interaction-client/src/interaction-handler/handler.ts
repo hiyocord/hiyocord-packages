@@ -15,10 +15,12 @@ import type {
   FollowupReplyBuilder,
 } from "../response-builder";
 
+export type BlankEnv = Record<string, string>;
+
 export interface BaseInteractionHandler<
   Type extends InteractionType,
   Deferred extends boolean = false,
-  Env = unknown,
+  Env extends BlankEnv = BlankEnv,
 > {
   handle(
     component: InteractionRequest[Type],
@@ -55,7 +57,12 @@ export interface BaseInteractionHandler<
 
 interface BaseApplicationCommandHandler<
   Deferred extends boolean,
-> extends BaseInteractionHandler<InteractionType.ApplicationCommand, Deferred> {
+  Env extends BlankEnv = BlankEnv,
+> extends BaseInteractionHandler<
+  InteractionType.ApplicationCommand,
+  Deferred,
+  Env
+> {
   name: string;
   description: string;
   guildIds: Snowflake[];
@@ -63,41 +70,65 @@ interface BaseApplicationCommandHandler<
 
 interface BaseMessageComponentHandler<
   Deferred extends boolean,
-> extends BaseInteractionHandler<InteractionType.MessageComponent, Deferred> {
+  Env extends BlankEnv = BlankEnv,
+> extends BaseInteractionHandler<
+  InteractionType.MessageComponent,
+  Deferred,
+  Env
+> {
   customId: string;
 }
 
-type BaseAutocompleteHandler<Deferred extends boolean> = BaseInteractionHandler<
+type BaseAutocompleteHandler<
+  Deferred extends boolean,
+  Env extends BlankEnv = BlankEnv,
+> = BaseInteractionHandler<
   InteractionType.ApplicationCommandAutocomplete,
-  Deferred
+  Deferred,
+  Env
 >;
 
 interface BaseModalSubmitHandler<
   Deferred extends boolean,
-> extends BaseInteractionHandler<InteractionType.ModalSubmit, Deferred> {
+  Env extends BlankEnv = BlankEnv,
+> extends BaseInteractionHandler<InteractionType.ModalSubmit, Deferred, Env> {
   customId: string;
 }
 
-export type PingHandler = BaseInteractionHandler<InteractionType.Ping, false>;
-export type ApplicationCommandHandler = BaseApplicationCommandHandler<false>;
-export type DeferredApplicationCommandHandler =
-  BaseApplicationCommandHandler<true>;
-export type MessageComponentHandler = BaseMessageComponentHandler<false>;
-export type DeferredMessageComponentHandler = BaseMessageComponentHandler<true>;
-export type AutocompleteHandler = BaseAutocompleteHandler<false>;
-export type DeferredAutocompleteHandler = BaseAutocompleteHandler<true>;
-export type ModalSubmitHandler = BaseModalSubmitHandler<false>;
-export type DeferredModalSubmitHandler = BaseModalSubmitHandler<true>;
+export type PingHandler<Env extends BlankEnv = BlankEnv> =
+  BaseInteractionHandler<InteractionType.Ping, false, Env>;
+export type ApplicationCommandHandler<Env extends BlankEnv = BlankEnv> =
+  BaseApplicationCommandHandler<false, Env>;
+export type DeferredApplicationCommandHandler<Env extends BlankEnv = BlankEnv> =
+  BaseApplicationCommandHandler<true, Env>;
+export type MessageComponentHandler<Env extends BlankEnv = BlankEnv> =
+  BaseMessageComponentHandler<false, Env>;
+export type DeferredMessageComponentHandler<Env extends BlankEnv = BlankEnv> =
+  BaseMessageComponentHandler<true, Env>;
+export type AutocompleteHandler<Env extends BlankEnv = BlankEnv> =
+  BaseAutocompleteHandler<false, Env>;
+export type DeferredAutocompleteHandler<Env extends BlankEnv = BlankEnv> =
+  BaseAutocompleteHandler<true, Env>;
+export type ModalSubmitHandler<Env extends BlankEnv = BlankEnv> =
+  BaseModalSubmitHandler<false, Env>;
+export type DeferredModalSubmitHandler<Env extends BlankEnv = BlankEnv> =
+  BaseModalSubmitHandler<true, Env>;
 
-export type InteractionHandler<K extends InteractionType> =
-  K extends InteractionType.Ping
-    ? PingHandler
-    : K extends InteractionType.ApplicationCommand
-      ? ApplicationCommandHandler | DeferredApplicationCommandHandler
-      : K extends InteractionType.MessageComponent
-        ? MessageComponentHandler | DeferredMessageComponentHandler
-        : K extends InteractionType.ApplicationCommandAutocomplete
-          ? AutocompleteHandler | DeferredAutocompleteHandler
-          : K extends InteractionType.ModalSubmit
-            ? ModalSubmitHandler | DeferredModalSubmitHandler
-            : BaseInteractionHandler<keyof InteractionRequest & { type: K }>;
+export type InteractionHandler<
+  K extends InteractionType,
+  Env extends BlankEnv = BlankEnv,
+> = K extends InteractionType.Ping
+  ? PingHandler
+  : K extends InteractionType.ApplicationCommand
+    ? ApplicationCommandHandler | DeferredApplicationCommandHandler
+    : K extends InteractionType.MessageComponent
+      ? MessageComponentHandler | DeferredMessageComponentHandler
+      : K extends InteractionType.ApplicationCommandAutocomplete
+        ? AutocompleteHandler | DeferredAutocompleteHandler
+        : K extends InteractionType.ModalSubmit
+          ? ModalSubmitHandler | DeferredModalSubmitHandler
+          : BaseInteractionHandler<
+              keyof InteractionRequest & { type: K },
+              boolean,
+              Env
+            >;

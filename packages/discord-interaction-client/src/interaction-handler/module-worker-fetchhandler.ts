@@ -10,7 +10,7 @@ import {
   FollowupMessageUpdateBuilder,
   FollowupReplyBuilder,
 } from "../response-builder";
-import type { BaseInteractionHandler } from "./handler";
+import type { BaseInteractionHandler, BlankEnv } from "./handler";
 import type {
   InteractionRequest,
   InteractionResponseForResponseType,
@@ -41,16 +41,16 @@ function isDeferredChannelMessageWithSource(
   );
 }
 
-type ExecuteParam<I extends InteractionType, Env = unknown> = {
+type ExecuteParam<I extends InteractionType, Env extends BlankEnv> = {
   body: InteractionRequest[I];
   request: Request;
-  env: Env | undefined;
+  env: Env;
   ctx: ExecutionContext | undefined;
 };
 
-const execute = async <I extends InteractionType>(
+const execute = async <I extends InteractionType, Env extends BlankEnv>(
   handler: BaseInteractionHandler<I, boolean> | null,
-  { request, body, env, ctx }: ExecuteParam<I>,
+  { request, body, env, ctx }: ExecuteParam<I, Env>,
 ) => {
   if (handler === null) {
     return new Response(null, { status: 404 });
@@ -125,9 +125,9 @@ const execute = async <I extends InteractionType>(
   });
 };
 
-const fetchApplicationCommand = async (
+const fetchApplicationCommand = async <Env extends BlankEnv>(
   resolver: InteractionHandlerResolver,
-  param: ExecuteParam<InteractionType.ApplicationCommand>,
+  param: ExecuteParam<InteractionType.ApplicationCommand, Env>,
 ) => {
   return await execute(
     resolver.findFirst<InteractionType.ApplicationCommand>(param.body),
@@ -135,9 +135,9 @@ const fetchApplicationCommand = async (
   );
 };
 
-const fetchMessageComponent = async (
+const fetchMessageComponent = async <Env extends BlankEnv>(
   resolver: InteractionHandlerResolver,
-  param: ExecuteParam<InteractionType.MessageComponent>,
+  param: ExecuteParam<InteractionType.MessageComponent, Env>,
 ) => {
   return await execute(
     resolver.findFirst<InteractionType.MessageComponent>(param.body),
@@ -145,9 +145,9 @@ const fetchMessageComponent = async (
   );
 };
 
-const fetchModalSubmit = async (
+const fetchModalSubmit = async <Env extends BlankEnv>(
   resolver: InteractionHandlerResolver,
-  param: ExecuteParam<InteractionType.ModalSubmit>,
+  param: ExecuteParam<InteractionType.ModalSubmit, Env>,
 ) => {
   return await execute(
     resolver.findFirst<InteractionType.ModalSubmit>(param.body),
@@ -158,13 +158,13 @@ const fetchModalSubmit = async (
 export const fetchHandler = (resolver: InteractionHandlerResolver) => {
   const fetch = async (
     request: Request,
-    env?: unknown,
+    env?: BlankEnv,
     ctx?: ExecutionContext,
   ): Promise<Response> => {
     const body = (await request.clone().json()) as APIInteraction;
     const param = {
       request,
-      env,
+      env: env ?? {},
       ctx,
     };
     switch (body.type) {
