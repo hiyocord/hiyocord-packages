@@ -31,7 +31,7 @@
     "@types/node": "25.5.0",
     "@typescript-eslint/eslint-plugin": "8.57.1",
     "@typescript-eslint/parser": "8.57.1",
-    "eslint": "10.0.3",
+    "eslint": "10.1.0",
     "eslint-config-prettier": "10.1.8",
     "openapi-typescript": "7.13.0",
     "prettier": "3.8.1",
