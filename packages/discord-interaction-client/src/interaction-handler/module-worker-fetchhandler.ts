@@ -3,10 +3,7 @@ import { InteractionType } from "discord-api-types/v10";
 import type { InteractionHandlerResolver } from "./resolver";
 import type {
   RESTPostAPIWebhookWithTokenJSONBody,
-  APIApplicationCommandInteraction,
   APIInteraction,
-  APIMessageComponentInteraction,
-  APIModalSubmitInteraction,
 } from "discord-api-types/v10";
 import {
   createBuilder,
@@ -44,11 +41,16 @@ function isDeferredChannelMessageWithSource(
   );
 }
 
+type ExecuteParam<I extends InteractionType, Env = any> = {
+  body: InteractionRequest[I];
+  request: Request;
+  env: Env | undefined;
+  ctx: ExecutionContext | undefined;
+};
+
 const execute = async <I extends InteractionType>(
   handler: BaseInteractionHandler<I, boolean> | null,
-  request: Request,
-  body: InteractionRequest[I],
-  ctx?: ExecutionContext,
+  { request, body, env, ctx }: ExecuteParam<I>,
 ) => {
   if (handler === null) {
     return new Response(null, { status: 404 });
@@ -56,6 +58,7 @@ const execute = async <I extends InteractionType>(
 
   const result = await handler.handle(body, {
     request: new Request(request),
+    env,
   });
   const { response } = result;
 
@@ -124,43 +127,31 @@ const execute = async <I extends InteractionType>(
 
 const fetchApplicationCommand = async (
   resolver: InteractionHandlerResolver,
-  request: Request,
-  body: APIApplicationCommandInteraction,
-  ctx?: ExecutionContext,
+  param: ExecuteParam<InteractionType.ApplicationCommand>,
 ) => {
   return await execute(
-    resolver.findFirst<InteractionType.ApplicationCommand>(body),
-    request,
-    body,
-    ctx,
+    resolver.findFirst<InteractionType.ApplicationCommand>(param.body),
+    param,
   );
 };
 
 const fetchMessageComponent = async (
   resolver: InteractionHandlerResolver,
-  request: Request,
-  body: APIMessageComponentInteraction,
-  ctx?: ExecutionContext,
+  param: ExecuteParam<InteractionType.MessageComponent>,
 ) => {
   return await execute(
-    resolver.findFirst<InteractionType.MessageComponent>(body),
-    request,
-    body,
-    ctx,
+    resolver.findFirst<InteractionType.MessageComponent>(param.body),
+    param,
   );
 };
 
 const fetchModalSubmit = async (
   resolver: InteractionHandlerResolver,
-  request: Request,
-  body: APIModalSubmitInteraction,
-  ctx?: ExecutionContext,
+  param: ExecuteParam<InteractionType.ModalSubmit>,
 ) => {
   return await execute(
-    resolver.findFirst<InteractionType.ModalSubmit>(body),
-    request,
-    body,
-    ctx,
+    resolver.findFirst<InteractionType.ModalSubmit>(param.body),
+    param,
   );
 };
 
@@ -171,6 +162,11 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
     ctx?: ExecutionContext,
   ): Promise<Response> => {
     const body = (await request.clone().json()) as APIInteraction;
+    const param = {
+      request,
+      env,
+      ctx,
+    };
     switch (body.type) {
       case InteractionType.Ping:
         return new Response(JSON.stringify(createBuilder(body).build()), {
@@ -180,11 +176,11 @@ export const fetchHandler = (resolver: InteractionHandlerResolver) => {
           },
         });
       case InteractionType.ApplicationCommand:
-        return await fetchApplicationCommand(resolver, request, body, ctx);
+        return await fetchApplicationCommand(resolver, { body, ...param });
       case InteractionType.MessageComponent:
-        return await fetchMessageComponent(resolver, request, body, ctx);
+        return await fetchMessageComponent(resolver, { body, ...param });
       case InteractionType.ModalSubmit:
-        return await fetchModalSubmit(resolver, request, body, ctx);
+        return await fetchModalSubmit(resolver, { body, ...param });
       // case InteractionType.ApplicationCommandAutocomplete:
       // TODO ApplicationCommandHandlerからよしなにやりたい
       default:
