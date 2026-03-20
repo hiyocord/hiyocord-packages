@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.7
+
+### Patch Changes
+
+- [`205c349`](https://github.com/hiyocord/hiyocord-packages/commit/205c3498827cebab34245a7558c874c0a03cd883) Thanks [@kurages](https://github.com/kurages)! - fix: update BaseInteractionHandler to use BlankEnv for consistent environment handling
+
 ## 0.5.6
 
 ### Patch Changes
