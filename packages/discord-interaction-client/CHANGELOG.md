@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.6
+
+### Patch Changes
+
+- [#206](https://github.com/hiyocord/hiyocord-packages/pull/206) [`57a9573`](https://github.com/hiyocord/hiyocord-packages/commit/57a9573e31d4346d1011a8ce1f5e8d45c6ce5ce9) Thanks [@kurages](https://github.com/kurages)! - fix: update execute function to use ExecuteParam for cleaner parameter handling
+
 ## 0.5.5
 
 ### Patch Changes
