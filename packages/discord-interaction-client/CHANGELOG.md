@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.8
+
+### Patch Changes
+
+- [`2a8a76e`](https://github.com/hiyocord/hiyocord-packages/commit/2a8a76e574ca8b179557f9b5e266b0e0e52aa58a) Thanks [@kurages](https://github.com/kurages)! - fix: change BlankEnv type from Record<string, string> to object for broader compatibility
+
 ## 0.5.7
 
 ### Patch Changes
