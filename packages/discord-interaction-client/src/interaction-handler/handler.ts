@@ -15,7 +15,7 @@ import type {
   FollowupReplyBuilder,
 } from "../response-builder";
 
-export type BlankEnv = Record<string, string>;
+export type BlankEnv = object;
 
 export interface BaseInteractionHandler<
   Type extends InteractionType,
