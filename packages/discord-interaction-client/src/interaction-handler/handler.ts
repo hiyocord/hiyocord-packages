@@ -4,7 +4,17 @@ import type {
   InteractionResponseForResponseType,
 } from "../types";
 import type {
-  APIApplicationCommandOption,
+  APIApplicationCommandAttachmentOption,
+  APIApplicationCommandBooleanOption,
+  APIApplicationCommandChannelOption,
+  APIApplicationCommandIntegerOption,
+  APIApplicationCommandMentionableOption,
+  APIApplicationCommandNumberOption,
+  APIApplicationCommandRoleOption,
+  APIApplicationCommandStringOption,
+  APIApplicationCommandSubcommandGroupOption,
+  APIApplicationCommandSubcommandOption,
+  APIApplicationCommandUserOption,
   InteractionResponseType,
   InteractionType,
   RESTPatchAPIWebhookWithTokenMessageJSONBody,
@@ -66,8 +76,22 @@ interface BaseApplicationCommandHandler<
 > {
   name: string;
   description: string;
-  guildIds: Snowflake[];
-  options: APIApplicationCommandOption[];
+  guildIds?: Snowflake[];
+  options?:
+    | (
+        | APIApplicationCommandAttachmentOption
+        | APIApplicationCommandBooleanOption
+        | APIApplicationCommandChannelOption
+        | APIApplicationCommandIntegerOption
+        | APIApplicationCommandMentionableOption
+        | APIApplicationCommandNumberOption
+        | APIApplicationCommandRoleOption
+        | APIApplicationCommandStringOption
+        | APIApplicationCommandSubcommandGroupOption
+        | APIApplicationCommandSubcommandOption
+        | APIApplicationCommandUserOption
+      )[]
+    | null;
 }
 
 interface BaseMessageComponentHandler<
