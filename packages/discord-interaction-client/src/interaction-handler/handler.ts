@@ -4,6 +4,7 @@ import type {
   InteractionResponseForResponseType,
 } from "../types";
 import type {
+  APIApplicationCommandOption,
   InteractionResponseType,
   InteractionType,
   RESTPatchAPIWebhookWithTokenMessageJSONBody,
@@ -66,6 +67,7 @@ interface BaseApplicationCommandHandler<
   name: string;
   description: string;
   guildIds: Snowflake[];
+  options: APIApplicationCommandOption[];
 }
 
 interface BaseMessageComponentHandler<
