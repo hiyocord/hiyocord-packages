@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.9
+
+### Patch Changes
+
+- [`cdf0037`](https://github.com/hiyocord/hiyocord-packages/commit/cdf00372e403ecc3a7a353bd6e95e8f4995b1bba) Thanks [@kurages](https://github.com/kurages)! - feat: add options property to BaseApplicationCommandHandler for command options support
+
 ## 0.5.8
 
 ### Patch Changes
