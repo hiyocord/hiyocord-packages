@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.5.10
+
+### Patch Changes
+
+- [`1a4620d`](https://github.com/hiyocord/hiyocord-packages/commit/1a4620dbfe4fdaf4b77c03aedd0d00231095864d) Thanks [@kurages](https://github.com/kurages)! - feat: enhance BaseApplicationCommandHandler to support additional command options
+
 ## 0.5.9
 
 ### Patch Changes
