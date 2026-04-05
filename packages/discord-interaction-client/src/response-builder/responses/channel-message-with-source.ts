@@ -1,5 +1,5 @@
 import type {
-  InteractionRequest,
+  APIInteractionByType,
   InteractionResponseForResponseType,
 } from "../../types";
 import type {
@@ -16,10 +16,10 @@ import { InteractionResponseType } from "discord-api-types/v10";
 
 export class ChannelMessageWithSourceBuilder {
   constructor(
-    private interaction: InteractionRequest[
+    private interaction: APIInteractionByType<
       | InteractionType.ApplicationCommand
       | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit],
+      | InteractionType.ModalSubmit>,
     private response: InteractionResponseForResponseType<InteractionResponseType.ChannelMessageWithSource> = {
       type: InteractionResponseType.ChannelMessageWithSource,
       data: {},

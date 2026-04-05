@@ -2,26 +2,18 @@ import type {
   InteractionType,
   InteractionResponseType,
   APIInteraction,
-  APIPingInteraction,
-  APIApplicationCommandInteraction,
-  APIMessageComponentInteraction,
-  APIApplicationCommandAutocompleteInteraction,
-  APIModalSubmitInteraction,
   APIInteractionResponse,
+  APIBaseInteraction,
 } from "discord-api-types/v10";
 
-export interface InteractionRequest {
-  [InteractionType.Ping]: APIPingInteraction;
-  [InteractionType.ApplicationCommand]: APIApplicationCommandInteraction;
-  [InteractionType.MessageComponent]: APIMessageComponentInteraction;
-  [InteractionType.ApplicationCommandAutocomplete]: APIApplicationCommandAutocompleteInteraction;
-  [InteractionType.ModalSubmit]: APIModalSubmitInteraction;
+export type APIInteractionByType<Type extends InteractionType> = APIInteraction & {
+  type: Type
 }
 
 export const equalsInteractionType = <T extends InteractionType>(
   interaction: APIInteraction,
   type: T,
-): interaction is InteractionRequest[T] => {
+): interaction is APIInteractionByType<T> => {
   return interaction.type === type;
 };
 

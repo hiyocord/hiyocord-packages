@@ -12,7 +12,7 @@ import {
 } from "../response-builder";
 import type { BaseInteractionHandler, BlankEnv } from "./handler";
 import type {
-  InteractionRequest,
+  APIInteractionByType,
   InteractionResponseForResponseType,
 } from "../types";
 
@@ -42,7 +42,7 @@ function isDeferredChannelMessageWithSource(
 }
 
 type ExecuteParam<I extends InteractionType, Env extends BlankEnv> = {
-  body: InteractionRequest[I];
+  body: APIInteractionByType<I>;
   request: Request;
   env: Env;
   ctx: ExecutionContext | undefined;

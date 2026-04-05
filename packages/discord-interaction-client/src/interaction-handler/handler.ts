@@ -1,5 +1,5 @@
 import type {
-  InteractionRequest,
+  APIInteractionByType,
   InteractionResponse,
   InteractionResponseForResponseType,
 } from "../types";
@@ -34,7 +34,7 @@ export interface BaseInteractionHandler<
   Env extends BlankEnv = BlankEnv,
 > {
   handle(
-    component: InteractionRequest[Type],
+    component: APIInteractionByType<Type>,
     context: {
       request: Request;
       env: Env;
@@ -154,7 +154,7 @@ export type InteractionHandler<
         : K extends InteractionType.ModalSubmit
           ? ModalSubmitHandler | DeferredModalSubmitHandler
           : BaseInteractionHandler<
-              keyof InteractionRequest & { type: K },
+              K,
               boolean,
               Env
             >;

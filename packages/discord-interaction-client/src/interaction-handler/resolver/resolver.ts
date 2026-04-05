@@ -1,5 +1,5 @@
 import type { InteractionHandler } from "../handler";
-import type { InteractionRequest } from "../../types";
+import type { APIInteractionByType } from "../../types";
 import type { InteractionType } from "discord-api-types/v10";
 import type { InteractionHandlerRegistry } from "../registry";
 
@@ -8,25 +8,25 @@ import type { InteractionHandlerRegistry } from "../registry";
  */
 export interface InteractionHandlerResolver {
   findFirst<K extends InteractionType>(
-    interaction: InteractionRequest[K],
+    interaction: APIInteractionByType<K>,
   ): InteractionHandler<K> | null;
 
   find<K extends InteractionType>(
-    interaction: InteractionRequest[K],
+    interaction: APIInteractionByType<K>,
   ): Array<InteractionHandler<K>>;
 }
 
 export abstract class TypedHandlerResolver<
-  T extends InteractionType & keyof InteractionRequest,
+  T extends InteractionType,
 > {
   abstract get(
     handlers: InteractionHandler<T>[],
-    interaction: InteractionRequest[T],
+    interaction: APIInteractionByType<T>,
   ): InteractionHandler<T>[];
 
   abstract getFirst(
     handlers: InteractionHandler<T>[],
-    interaction: InteractionRequest[T],
+    interaction: APIInteractionByType<T>,
   ): InteractionHandler<T> | null;
 }
 
@@ -64,7 +64,7 @@ export class DelegatingTypedInteractionHandlerResolver implements InteractionHan
   }
 
   findFirst<K extends InteractionType>(
-    interaction: InteractionRequest[K],
+    interaction: APIInteractionByType<K>,
   ): InteractionHandler<K> | null {
     const handlers = this.registry.get(
       interaction.type,
@@ -80,7 +80,7 @@ export class DelegatingTypedInteractionHandlerResolver implements InteractionHan
   }
 
   find<K extends InteractionType>(
-    interaction: InteractionRequest[K],
+    interaction: APIInteractionByType<K>,
   ): InteractionHandler<K>[] {
     const handlers = this.registry.get(
       interaction.type,

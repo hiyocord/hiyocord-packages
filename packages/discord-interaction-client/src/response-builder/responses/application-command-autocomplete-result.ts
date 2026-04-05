@@ -1,5 +1,5 @@
 import type {
-  InteractionRequest,
+  APIInteractionByType,
   InteractionResponseForResponseType,
 } from "../../types";
 import type {
@@ -10,7 +10,7 @@ import { InteractionResponseType } from "discord-api-types/v10";
 
 export class ApplicationCommandAutocompleteResultBuilder {
   constructor(
-    private interaction: InteractionRequest[InteractionType.ApplicationCommandAutocomplete],
+    private interaction: APIInteractionByType<InteractionType.ApplicationCommandAutocomplete>,
     private response: InteractionResponseForResponseType<InteractionResponseType.ApplicationCommandAutocompleteResult> = {
       type: InteractionResponseType.ApplicationCommandAutocompleteResult,
       data: {},
