@@ -2,26 +2,20 @@ import type {
   InteractionType,
   InteractionResponseType,
   APIInteraction,
-  APIPingInteraction,
-  APIApplicationCommandInteraction,
-  APIMessageComponentInteraction,
-  APIApplicationCommandAutocompleteInteraction,
-  APIModalSubmitInteraction,
   APIInteractionResponse,
 } from "discord-api-types/v10";
 
-export interface InteractionRequest {
-  [InteractionType.Ping]: APIPingInteraction;
-  [InteractionType.ApplicationCommand]: APIApplicationCommandInteraction;
-  [InteractionType.MessageComponent]: APIMessageComponentInteraction;
-  [InteractionType.ApplicationCommandAutocomplete]: APIApplicationCommandAutocompleteInteraction;
-  [InteractionType.ModalSubmit]: APIModalSubmitInteraction;
-}
+export type BlankEnv = object;
+
+export type APIInteractionByType<Type extends InteractionType> =
+  APIInteraction & {
+    type: Type;
+  };
 
 export const equalsInteractionType = <T extends InteractionType>(
   interaction: APIInteraction,
   type: T,
-): interaction is InteractionRequest[T] => {
+): interaction is APIInteractionByType<T> => {
   return interaction.type === type;
 };
 
@@ -52,9 +46,7 @@ export interface AllowedInteractionResponseTypes {
 
 export type InteractionResponseForResponseType<
   T extends InteractionResponseType,
-> = APIInteractionResponse & {
-  type: T;
-};
+> = APIInteractionResponse & { type: T };
 
 export type InteractionResponse = {
   [K in keyof AllowedInteractionResponseTypes]: AllowedInteractionResponseTypes[K] extends infer R

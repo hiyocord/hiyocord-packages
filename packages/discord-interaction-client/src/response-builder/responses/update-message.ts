@@ -1,5 +1,5 @@
 import type {
-  InteractionRequest,
+  APIInteractionByType,
   InteractionResponseForResponseType,
 } from "../../types";
 import { InteractionResponseType } from "discord-api-types/v10";
@@ -16,9 +16,9 @@ import type {
 
 export class UpdateMessageBuilder {
   constructor(
-    private interaction: InteractionRequest[
-      | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit],
+    private interaction: APIInteractionByType<
+      InteractionType.MessageComponent | InteractionType.ModalSubmit
+    >,
     private response: InteractionResponseForResponseType<InteractionResponseType.UpdateMessage> = {
       type: InteractionResponseType.UpdateMessage,
     },

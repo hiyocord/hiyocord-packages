@@ -1,17 +1,6 @@
-export type * from "./types";
-export * from "./interaction-handler";
-export type {
-  BaseInteractionHandler,
-  PingHandler,
-  ApplicationCommandHandler,
-  DeferredApplicationCommandHandler,
-  MessageComponentHandler,
-  DeferredMessageComponentHandler,
-  AutocompleteHandler,
-  DeferredAutocompleteHandler,
-  ModalSubmitHandler,
-  DeferredModalSubmitHandler,
-  InteractionHandler,
-  InteractionHandlerRegistry,
-} from "./interaction-handler";
+export * from "./factory";
+export * from "./handler";
+export * from "./metadata";
 export * from "./response-builder";
+export * from "./wrapper";
+export * from "./types";

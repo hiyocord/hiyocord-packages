@@ -1,5 +1,5 @@
 import type {
-  InteractionRequest,
+  APIInteractionByType,
   InteractionResponseForResponseType,
 } from "../../types";
 import type {
@@ -11,9 +11,9 @@ import type { FollowupMessageUpdateBuilder } from "../../response-builder/follow
 
 export class DeferredMessageUpdateBuilder {
   constructor(
-    private interaction: InteractionRequest[
-      | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit],
+    private interaction: APIInteractionByType<
+      InteractionType.MessageComponent | InteractionType.ModalSubmit
+    >,
     private response: InteractionResponseForResponseType<InteractionResponseType.DeferredMessageUpdate> = {
       type: InteractionResponseType.DeferredMessageUpdate,
     },

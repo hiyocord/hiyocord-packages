@@ -18,17 +18,21 @@ import { DeferredMessageUpdateBuilder } from "./responses/deferred-message-updat
 import { UpdateMessageBuilder } from "./responses/update-message";
 import { ModalBuilder } from "./responses";
 
-export function createBuilder(
-  interaction: APIPingInteraction,
+export function createBuilder<T extends APIPingInteraction>(
+  interaction: T,
 ): PongResponseBuilder;
 
-export function createBuilder(interaction: APIApplicationCommandInteraction): {
+export function createBuilder<T extends APIApplicationCommandInteraction>(
+  interaction: T,
+): {
   reply: () => ChannelMessageWithSourceBuilder;
   defer: () => DeferredChannelMessageWithSourceBuilder;
   modal: () => ModalBuilder;
 };
 
-export function createBuilder(interaction: APIMessageComponentInteraction): {
+export function createBuilder<T extends APIMessageComponentInteraction>(
+  interaction: T,
+): {
   reply: () => ChannelMessageWithSourceBuilder;
   update: () => UpdateMessageBuilder;
   deferUpdate: () => DeferredMessageUpdateBuilder;
@@ -36,11 +40,13 @@ export function createBuilder(interaction: APIMessageComponentInteraction): {
   modal: () => ModalBuilder;
 };
 
-export function createBuilder(
-  interaction: APIApplicationCommandAutocompleteInteraction,
-): InteractionResponseType.ApplicationCommandAutocompleteResult;
+export function createBuilder<
+  T extends APIApplicationCommandAutocompleteInteraction,
+>(interaction: T): InteractionResponseType.ApplicationCommandAutocompleteResult;
 
-export function createBuilder(interaction: APIModalSubmitInteraction): {
+export function createBuilder<T extends APIModalSubmitInteraction>(
+  interaction: T,
+): {
   reply: () => ChannelMessageWithSourceBuilder;
   update: () => UpdateMessageBuilder;
   defer: () => DeferredMessageUpdateBuilder;

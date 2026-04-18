@@ -10,11 +10,13 @@ import {
   FollowupMessageUpdateBuilder,
   FollowupReplyBuilder,
 } from "../response-builder";
-import type { BaseInteractionHandler, BlankEnv } from "./handler";
 import type {
-  InteractionRequest,
+  APIInteractionByType,
+  BlankEnv,
   InteractionResponseForResponseType,
 } from "../types";
+import type { BaseInteractionHandler } from "./base-handler";
+import type { InteractionDefinition } from "./registry/registry";
 
 // Cloudflare Workers ExecutionContext type
 type ExecutionContext = {
@@ -23,7 +25,11 @@ type ExecutionContext = {
 };
 
 type PromiseType<T> = T extends Promise<infer P> ? P : T;
-type DeferredHandler = BaseInteractionHandler<InteractionType, true>["handle"];
+type DeferredHandler = BaseInteractionHandler<
+  InteractionType,
+  APIInteractionByType<InteractionType>,
+  true
+>;
 
 function isDeferredChannelMessageWithSource(
   response: PromiseType<ReturnType<DeferredHandler>>,
@@ -42,21 +48,21 @@ function isDeferredChannelMessageWithSource(
 }
 
 type ExecuteParam<I extends InteractionType, Env extends BlankEnv> = {
-  body: InteractionRequest[I];
+  body: APIInteractionByType<I>;
   request: Request;
   env: Env;
   ctx: ExecutionContext | undefined;
 };
 
 const execute = async <I extends InteractionType, Env extends BlankEnv>(
-  handler: BaseInteractionHandler<I, boolean> | null,
+  handler: InteractionDefinition<I>["handler"] | null | undefined,
   { request, body, env, ctx }: ExecuteParam<I, Env>,
 ) => {
-  if (handler === null) {
+  if (handler == null) {
     return new Response(null, { status: 404 });
   }
 
-  const result = await handler.handle(body, {
+  const result = await handler(body, {
     request: new Request(request),
     env,
   });
@@ -130,7 +136,7 @@ const fetchApplicationCommand = async <Env extends BlankEnv>(
   param: ExecuteParam<InteractionType.ApplicationCommand, Env>,
 ) => {
   return await execute(
-    resolver.findFirst<InteractionType.ApplicationCommand>(param.body),
+    resolver.findFirst<InteractionType.ApplicationCommand>(param.body)?.handler,
     param,
   );
 };
@@ -140,7 +146,7 @@ const fetchMessageComponent = async <Env extends BlankEnv>(
   param: ExecuteParam<InteractionType.MessageComponent, Env>,
 ) => {
   return await execute(
-    resolver.findFirst<InteractionType.MessageComponent>(param.body),
+    resolver.findFirst<InteractionType.MessageComponent>(param.body)?.handler,
     param,
   );
 };
@@ -150,7 +156,7 @@ const fetchModalSubmit = async <Env extends BlankEnv>(
   param: ExecuteParam<InteractionType.ModalSubmit, Env>,
 ) => {
   return await execute(
-    resolver.findFirst<InteractionType.ModalSubmit>(param.body),
+    resolver.findFirst<InteractionType.ModalSubmit>(param.body)?.handler,
     param,
   );
 };

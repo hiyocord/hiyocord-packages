@@ -1,4 +1,4 @@
-import type { InteractionRequest } from "../../types";
+import type { APIInteractionByType } from "../../types";
 import type {
   APIModalInteractionResponse,
   APIModalInteractionResponseCallbackComponent,
@@ -8,10 +8,11 @@ import { InteractionResponseType } from "discord-api-types/v10";
 
 export class ModalBuilder {
   constructor(
-    private interaction: InteractionRequest[
+    private interaction: APIInteractionByType<
       | InteractionType.ApplicationCommand
       | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit],
+      | InteractionType.ModalSubmit
+    >,
   ) {}
 
   build(
