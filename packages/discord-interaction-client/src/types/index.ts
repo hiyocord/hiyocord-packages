@@ -3,12 +3,14 @@ import type {
   InteractionResponseType,
   APIInteraction,
   APIInteractionResponse,
-  APIBaseInteraction,
 } from "discord-api-types/v10";
 
-export type APIInteractionByType<Type extends InteractionType> = APIInteraction & {
-  type: Type
-}
+export type BlankEnv = object;
+
+export type APIInteractionByType<Type extends InteractionType> =
+  APIInteraction & {
+    type: Type;
+  };
 
 export const equalsInteractionType = <T extends InteractionType>(
   interaction: APIInteraction,
@@ -44,9 +46,7 @@ export interface AllowedInteractionResponseTypes {
 
 export type InteractionResponseForResponseType<
   T extends InteractionResponseType,
-> = APIInteractionResponse & {
-  type: T;
-};
+> = APIInteractionResponse & { type: T };
 
 export type InteractionResponse = {
   [K in keyof AllowedInteractionResponseTypes]: AllowedInteractionResponseTypes[K] extends infer R

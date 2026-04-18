@@ -11,7 +11,8 @@ export class ModalBuilder {
     private interaction: APIInteractionByType<
       | InteractionType.ApplicationCommand
       | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit>,
+      | InteractionType.ModalSubmit
+    >,
   ) {}
 
   build(

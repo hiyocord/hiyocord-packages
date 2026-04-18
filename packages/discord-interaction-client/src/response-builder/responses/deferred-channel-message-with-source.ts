@@ -13,8 +13,8 @@ import type { FollowupReplyBuilder } from "../../response-builder/followup";
 export class DeferredChannelMessageWithSourceBuilder {
   constructor(
     private interaction: APIInteractionByType<
-      | InteractionType.ApplicationCommand
-      | InteractionType.MessageComponent>,
+      InteractionType.ApplicationCommand | InteractionType.MessageComponent
+    >,
     private response: InteractionResponseForResponseType<InteractionResponseType.DeferredChannelMessageWithSource> = {
       type: InteractionResponseType.DeferredChannelMessageWithSource,
       data: {},

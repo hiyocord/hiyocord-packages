@@ -19,7 +19,8 @@ export class ChannelMessageWithSourceBuilder {
     private interaction: APIInteractionByType<
       | InteractionType.ApplicationCommand
       | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit>,
+      | InteractionType.ModalSubmit
+    >,
     private response: InteractionResponseForResponseType<InteractionResponseType.ChannelMessageWithSource> = {
       type: InteractionResponseType.ChannelMessageWithSource,
       data: {},

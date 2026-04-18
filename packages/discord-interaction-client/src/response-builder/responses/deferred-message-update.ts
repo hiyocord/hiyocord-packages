@@ -12,8 +12,8 @@ import type { FollowupMessageUpdateBuilder } from "../../response-builder/follow
 export class DeferredMessageUpdateBuilder {
   constructor(
     private interaction: APIInteractionByType<
-      | InteractionType.MessageComponent
-      | InteractionType.ModalSubmit>,
+      InteractionType.MessageComponent | InteractionType.ModalSubmit
+    >,
     private response: InteractionResponseForResponseType<InteractionResponseType.DeferredMessageUpdate> = {
       type: InteractionResponseType.DeferredMessageUpdate,
     },
