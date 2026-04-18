@@ -1,5 +1,11 @@
 # @hiyocord/discord-interaction-client
 
+## 0.6.0
+
+### Minor Changes
+
+- [#223](https://github.com/hiyocord/hiyocord-packages/pull/223) [`ce0f5c1`](https://github.com/hiyocord/hiyocord-packages/commit/ce0f5c10901a0f9f542b0a107403c75796880703) Thanks [@kurages](https://github.com/kurages)! - feat: implement simple message component and modal submit handler resolvers
+
 ## 0.5.10
 
 ### Patch Changes
