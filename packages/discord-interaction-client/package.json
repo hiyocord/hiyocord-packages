@@ -27,7 +27,7 @@
     "eslint": "eslint -c ../../eslint.config.js \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "discord-api-types": "^0.38.42"
+    "discord-api-types": "^0.38.48"
   },
   "files": [
     "src",
